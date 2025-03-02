@@ -1,4 +1,4 @@
-namespace TLUScience.Models
+namespace OAuthv2.Models
 {
     public class ErrorViewModel
     {

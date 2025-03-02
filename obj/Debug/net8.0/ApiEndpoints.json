@@ -1,1 +1,85 @@
-[]
+[
+  {
+    "ContainingType": "OAuthv2.Controllers.AuthController",
+    "Method": "ForgetPassword",
+    "RelativePath": "forgetpassword",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OAuthv2.Controllers.AuthController",
+    "Method": "listUsers",
+    "RelativePath": "listUsers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OAuthv2.Controllers.AuthController",
+    "Method": "actionResult",
+    "RelativePath": "listUsers/{username}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "username",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OAuthv2.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "OAuthv2.Models.LoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OAuthv2.Controllers.AuthController",
+    "Method": "Logout",
+    "RelativePath": "logout",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OAuthv2.Controllers.AuthController",
+    "Method": "Register",
+    "RelativePath": "register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "UserRegis",
+        "Type": "OAuthv2.Models.Registerform",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
