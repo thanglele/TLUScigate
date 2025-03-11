@@ -1,23 +1,24 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
-using OAuthv2.Models;
+using TLUScience.Models;
 
-namespace OAuthv2.Services
+namespace TLUScience.Services
 {
     public interface IAuthenticationService
     {
-        public List<User> ListUsers();
+        public List<TaiKhoan> ListUsers();
         #region LOGIN
-        public Task RenewCache();
+        public void RenewCache();
         public int ValidateInput(LoginRequest request);
-        public CacheUser CheckLoginWithCache(LoginRequest request);
-        public Task<CacheUser> CheckLoginWithDb(LoginRequest request);
-        public Task<ResponseToken> SaveTokenWithDb(CacheUser user);
+        public TaiKhoan CheckLoginWithCache(LoginRequest request);
+        public Task<TaiKhoan> CheckLoginWithDb(LoginRequest request);
+        public ResponseToken SaveTokenWithDb(TaiKhoan user);
+        public ResponseToken NewPassword(LoginRequest request);
         #endregion
 
         #region REGISTER
-        public int ValidateInputRegister(Registerform request);
-        public bool CheckUserAvailable(string username);
-        public Task<ResponseToken> AddNewUsersToDb(User NewUser);
+        //public int ValidateInputRegister(Registerform request);
+        //public bool CheckUserAvailable(string username);
+        //public Task<ResponseToken> AddNewUsersToDb(User NewUser);
         #endregion
 
         #region MAILSERVICES

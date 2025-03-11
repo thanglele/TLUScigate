@@ -1,11 +1,11 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
-using OAuthv2.Models;
-using OAuthv2.Repository;
+using TLUScience.Models;
+using TLUScience.Repository;
 using System.Net.Mail;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace OAuthv2.Services
+namespace TLUScience.Services
 {
     public class AuthenticationService : IAuthenticationService
     {
@@ -20,15 +20,6 @@ namespace OAuthv2.Services
         private static readonly string _host = "smtp.gmail.com";
         private static readonly int _port = 587;
 
-        //public AuthenticationService(IUserRepository userRepository, TokenService tokenService)
-        //{
-        //    _userRepository = userRepository;
-
-        //    CacheUsers = userRepository.GetFullUser();
-
-        //    _tokenService = tokenService;
-        //}
-
         public AuthenticationService(IUserRepository userRepository, TokenService tokenService, IMemoryCache cache)
         {
             _userRepository = userRepository;
@@ -39,26 +30,26 @@ namespace OAuthv2.Services
 
         private void LoadCache()
         {
-            if (!_cache.TryGetValue(_cacheKey, out List<CacheUser> users))
+            if (!_cache.TryGetValue(_cacheKey, out List<TaiKhoan> users))
             {
                 users = _userRepository.GetFullUser();   
                 _cache.Set(_cacheKey, users, TimeSpan.FromMinutes(10));
             }
         }
 
-        public async Task RenewCache()
+        public void RenewCache()
         {
-            Console.WriteLine("Cập nhật Cache...");
-            var users = await _userRepository.GetFullUserAsync();
+            Console.WriteLine("Update Cache...");
+            var users = _userRepository.GetFullUser();
             _cache.Set(_cacheKey, users, TimeSpan.FromMinutes(10));
         }
 
-        public List<User> ListUsers()
+        public List<TaiKhoan> ListUsers()
         {
-            if (!_cache.TryGetValue(_cacheKey, out List<User> users))
+            if (!_cache.TryGetValue(_cacheKey, out List<TaiKhoan> users))
             {
                 LoadCache();
-                users = _cache.Get<List<User>>(_cacheKey);
+                users = _cache.Get<List<TaiKhoan>>(_cacheKey);
             }
             return users;
         }
@@ -90,19 +81,19 @@ namespace OAuthv2.Services
             return 200;
         }
 
-        public CacheUser CheckLoginWithCache(LoginRequest request)
+        public TaiKhoan CheckLoginWithCache(LoginRequest request)
         {
             try
             {
-                if (!_cache.TryGetValue(_cacheKey, out List<CacheUser> users))
+                if (!_cache.TryGetValue(_cacheKey, out List<TaiKhoan> users))
                 {
                     LoadCache();
-                    users = _cache.Get<List<CacheUser>>(_cacheKey);
+                    users = _cache.Get<List<TaiKhoan>>(_cacheKey);
                 }
 
                 for (int i = 0; i < users.Count; i++)
                 {
-                    if (users[i].Email == request.Email && _userRepository.VerifyPassword(request.Password, users[i].PasswordHash))
+                    if (users[i].Email == request.Email && _userRepository.VerifyPassword(request.Password, users[i].MatKhau))
                     {
                         return users[i];
                     }      
@@ -115,7 +106,7 @@ namespace OAuthv2.Services
             }
         }
 
-        public async Task<CacheUser> CheckLoginWithDb(LoginRequest request)
+        public async Task<TaiKhoan> CheckLoginWithDb(LoginRequest request)
         {
             try
             {
@@ -127,16 +118,15 @@ namespace OAuthv2.Services
             }
         }
 
-        public async Task<ResponseToken> SaveTokenWithDb(CacheUser user)
+        public ResponseToken SaveTokenWithDb(TaiKhoan user)
         {
-            int? maxrole = 10;
             try
             {
                 /* Xử lý Token theo thứ tự:
                  * GenerateToken -> AddNewTokenAsync (repo) -> return static and tokenlogin*/
 
                 //Tạo token
-                Token token = _tokenService.GenerateToken(await _userRepository.GetUserWithRolesAsync(user.IdUser));
+                Token token = _tokenService.GenerateToken(user);
 
                 //Cấp token mới
                 ResponseToken responseToken = new ResponseToken()
@@ -150,16 +140,7 @@ namespace OAuthv2.Services
 
                 responseToken.Messages = "Đăng nhập thành công, đang chuyển hướng...";
                 responseToken.Email = user.Email;
-
-                foreach (var userrole in user.UserRoles)
-                {
-                    if (userrole.IdRole < maxrole)
-                    {
-                        maxrole = userrole.IdRole;
-                    }
-                }
-
-                responseToken.MaxRole = maxrole;
+                responseToken.Role = user.VaiTro; 
 
                 return responseToken;
             }
@@ -169,7 +150,7 @@ namespace OAuthv2.Services
                 return new ResponseToken()
                 {
                     staticID = 500,
-                    Id = user.IdUser,
+                    Id = user.Id,
                     Messages = "Có lỗi xảy ra trong quá trình đăng nhập, vui lòng thử lại sau.",
                     AccessToken = null,
                     RefreshToken = null,
@@ -178,30 +159,26 @@ namespace OAuthv2.Services
             }
         }
 
-        #endregion
-
-        #region REGISTER SERVICES
-        public async Task<ResponseToken> AddNewUsersToDb(User newUser)
+        public ResponseToken NewPassword(LoginRequest request)
         {
             try
             {
-                newUser.PasswordHash = _userRepository.HashPassword(newUser.PasswordHash, out _);
-                if (await _userRepository.AddUsertoDbAsync(newUser))
+                if (!_cache.TryGetValue(_cacheKey, out List<TaiKhoan> users))
                 {
-                    await RenewCache();
-                    var users = _cache.Get<List<User>>(_cacheKey);
-                    var user = users?.FirstOrDefault(u => u.Email == newUser.Email);
+                    LoadCache();
+                    users = _cache.Get<List<TaiKhoan>>(_cacheKey);
+                }
 
-                    if (user != null)
+                for (int i = 0; i < users.Count; i++)
+                {
+                    if (users[i].Email == request.Email && users[i].MatKhau == null)
                     {
-                        if (!await _userRepository.AddUserRoletoDbAsync(user.IdUser))
-                        {
-                            await _userRepository.RemoveUserDbAsync(user);
-                            return new ResponseToken { staticID = 500, Messages = "Lỗi đăng ký!" };
-                        }
+                        users[i].MatKhau = _userRepository.HashPassword(request.Password, out _);
+                        _userRepository.AddNewPasswordtoDbAsync(users[i]);
+                        //LoadCache();
 
-                        var token = _tokenService.GenerateToken(user);
-                        await RenewCache();
+                        Token token = _tokenService.GenerateToken(users[i]);
+                        RenewCache();
 
                         return new ResponseToken
                         {
@@ -210,63 +187,109 @@ namespace OAuthv2.Services
                             AccessToken = token.AccessToken,
                             RefreshToken = token.RefeshToken,
                             ExpiresAt = token.ExpiresAt,
-                            Messages = "Đăng ký thành công!",
-                            Email = newUser.Email,
-                            MaxRole = newUser.UserRoles.Min(ur => ur.IdRole)
+                            Messages = "Cập nhật mật khẩu mới thành công, đang chuyển hướng...",
+                            Email = users[i].Email,
+                            Role = users[i].VaiTro
                         };
                     }
                 }
-                return new ResponseToken { staticID = 500, Messages = "Lỗi đăng ký!" };
+                return null;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine("Lỗi đăng ký: " + ex.ToString());
-                return new ResponseToken { staticID = 500, Messages = "Lỗi đăng ký!" };
+                return null;
             }
         }
-        public int ValidateInputRegister(Registerform request)
-        {
-            //Kiểm tra Chuỗi trống trong loggin
-            if (string.IsNullOrEmpty(request.Password) == true || string.IsNullOrEmpty(request.Email) == true || string.IsNullOrEmpty(request.Email) == true)
-            {
-                return 400;
-            }
 
-            //Kiểm tra chuỗi thực thi, SQL Injection trong string
-            //string valueRegrex = @"^[\w\s]";
-            //if (Regex.IsMatch(request.Username, valueRegrex) == false || Regex.IsMatch(request.Password, valueRegrex) == false)
-            //{
-            //    return 400;
-            //}
+        #endregion
 
-            ////Kiểm tra chuỗi mật khẩu có đạt đủ điều kiện mật khẩu mạnh hay không
-            //valueRegrex = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$";
-            //if (Regex.IsMatch(request.Password, valueRegrex) == false)
-            //{
-            //    return 400;
-            //}
+        #region REGISTER SERVICES
+        //public async Task<ResponseToken> AddNewUsersToDb(User newUser)
+        //{
+        //    try
+        //    {
+        //        newUser.PasswordHash = _userRepository.HashPassword(newUser.PasswordHash, out _);
+        //        if (await _userRepository.AddUsertoDbAsync(newUser))
+        //        {
+        //            await RenewCache();
+        //            var users = _cache.Get<List<User>>(_cacheKey);
+        //            var user = users?.FirstOrDefault(u => u.Email == newUser.Email);
 
-            //Kiểm tra chuỗi email có phải là email hợp lệ hay không
-            string valueRegrex = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
-            if (Regex.IsMatch(request.Email, valueRegrex) == false)
-            {
-                return 400;
-            }
+        //            if (user != null)
+        //            {
+        //                if (!await _userRepository.AddUserRoletoDbAsync(user.IdUser))
+        //                {
+        //                    await _userRepository.RemoveUserDbAsync(user);
+        //                    return new ResponseToken { staticID = 500, Messages = "Lỗi đăng ký!" };
+        //                }
 
-            //Kiểm tra thoát thành công
-            return 200;
-        }
+        //                var token = _tokenService.GenerateToken(user);
+        //                await RenewCache();
 
-        public bool CheckUserAvailable(string username)
-        {
-            if (!_cache.TryGetValue(_cacheKey, out List<User> users))
-            {
-                LoadCache();
-                users = _cache.Get<List<User>>(_cacheKey);
-            }
+        //                return new ResponseToken
+        //                {
+        //                    staticID = 200,
+        //                    Id = token.UserId,
+        //                    AccessToken = token.AccessToken,
+        //                    RefreshToken = token.RefeshToken,
+        //                    ExpiresAt = token.ExpiresAt,
+        //                    Messages = "Đăng ký thành công!",
+        //                    Email = newUser.Email,
+        //                    MaxRole = newUser.UserRoles.Min(ur => ur.IdRole)
+        //                };
+        //            }
+        //        }
+        //        return new ResponseToken { staticID = 500, Messages = "Lỗi đăng ký!" };
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine("Lỗi đăng ký: " + ex.ToString());
+        //        return new ResponseToken { staticID = 500, Messages = "Lỗi đăng ký!" };
+        //    }
+        //}
+        //public int ValidateInputRegister(Registerform request)
+        //{
+        //    //Kiểm tra Chuỗi trống trong loggin
+        //    if (string.IsNullOrEmpty(request.Password) == true || string.IsNullOrEmpty(request.Email) == true || string.IsNullOrEmpty(request.Email) == true)
+        //    {
+        //        return 400;
+        //    }
 
-            return users?.Any(u => u.Email == username) == false;
-        }
+        //    //Kiểm tra chuỗi thực thi, SQL Injection trong string
+        //    //string valueRegrex = @"^[\w\s]";
+        //    //if (Regex.IsMatch(request.Username, valueRegrex) == false || Regex.IsMatch(request.Password, valueRegrex) == false)
+        //    //{
+        //    //    return 400;
+        //    //}
+
+        //    ////Kiểm tra chuỗi mật khẩu có đạt đủ điều kiện mật khẩu mạnh hay không
+        //    //valueRegrex = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$";
+        //    //if (Regex.IsMatch(request.Password, valueRegrex) == false)
+        //    //{
+        //    //    return 400;
+        //    //}
+
+        //    //Kiểm tra chuỗi email có phải là email hợp lệ hay không
+        //    string valueRegrex = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+        //    if (Regex.IsMatch(request.Email, valueRegrex) == false)
+        //    {
+        //        return 400;
+        //    }
+
+        //    //Kiểm tra thoát thành công
+        //    return 200;
+        //}
+
+        //public bool CheckUserAvailable(string username)
+        //{
+        //    if (!_cache.TryGetValue(_cacheKey, out List<User> users))
+        //    {
+        //        LoadCache();
+        //        users = _cache.Get<List<User>>(_cacheKey);
+        //    }
+
+        //    return users?.Any(u => u.Email == username) == false;
+        //}
         #endregion
 
         #region mailServices

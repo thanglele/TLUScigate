@@ -2,9 +2,9 @@
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
-using OAuthv2.Data;
-using OAuthv2.Services;
-using OAuthv2.Repository;
+using TLUScience.Data;
+using TLUScience.Services;
+using TLUScience.Repository;
 using System.Net.NetworkInformation;
 using Microsoft.OpenApi.Models;
 
@@ -189,43 +189,43 @@ try
 
     var app = builder.Build();
 
-    if (args.Contains("/remove"))
-    {
-        Console.WriteLine("Removing database and Migrations");
-        try
-        {
-            var scope = app.Services.CreateScope();
-            var services = scope.ServiceProvider;
-            var context = services.GetRequiredService<ApplicationDbContext>();
-            DbInitializer.Remove(context);
+    //if (args.Contains("/remove"))
+    //{
+    //    Console.WriteLine("Removing database and Migrations");
+    //    try
+    //    {
+    //        var scope = app.Services.CreateScope();
+    //        var services = scope.ServiceProvider;
+    //        var context = services.GetRequiredService<ApplicationDbContext>();
+    //        DbInitializer.Remove(context);
 
-            // Xóa thư mục Migrations
-            string migrationsPath = Path.Combine(Directory.GetCurrentDirectory(), "Migrations");
-            if (Directory.Exists(migrationsPath))
-            {
-                Directory.Delete(migrationsPath, true);
-                Console.WriteLine("Migrations folder deleted successfully.");
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"An error occurred: {ex.Message}");
-        }
-        Console.WriteLine("Done remove Database and Migrations. Exiting.");
-        return;
-    }
+    //        // Xóa thư mục Migrations
+    //        string migrationsPath = Path.Combine(Directory.GetCurrentDirectory(), "Migrations");
+    //        if (Directory.Exists(migrationsPath))
+    //        {
+    //            Directory.Delete(migrationsPath, true);
+    //            Console.WriteLine("Migrations folder deleted successfully.");
+    //        }
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        Console.WriteLine($"An error occurred: {ex.Message}");
+    //    }
+    //    Console.WriteLine("Done remove Database and Migrations. Exiting.");
+    //    return;
+    //}
 
-    if (args.Contains("/seed"))
-    {
-        Console.WriteLine("Seeding database...");
-        // Seed Data
-        var scope = app.Services.CreateScope();
-        var services = scope.ServiceProvider;
-        var context = services.GetRequiredService<ApplicationDbContext>();
-        DbInitializer.Seed(context);
-        Console.WriteLine("Done seeding database. Exiting.");
-        return;
-    }
+    //if (args.Contains("/seed"))
+    //{
+    //    Console.WriteLine("Seeding database...");
+    //    // Seed Data
+    //    var scope = app.Services.CreateScope();
+    //    var services = scope.ServiceProvider;
+    //    var context = services.GetRequiredService<ApplicationDbContext>();
+    //    DbInitializer.Seed(context);
+    //    Console.WriteLine("Done seeding database. Exiting.");
+    //    return;
+    //}
 
     app.UseCookiePolicy(new CookiePolicyOptions
     {

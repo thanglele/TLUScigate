@@ -1,55 +1,29 @@
-﻿using OAuthv2.Models;
-using OAuthv2.Data;
+﻿using TLUScience.Models;
+using TLUScience.Data;
 using System;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
-using System.Collections.Generic;
 
-namespace OAuthv2.Repository
+namespace TLUScience.Repository
 {
     public class UserRepository : IUserRepository
     {
-        private readonly ApplicationDbContext NDCC_Auth;
+        private readonly ApplicationDbContext SciGate_Auth;
         
-        public UserRepository(ApplicationDbContext NDCC_Auth)
+        public UserRepository(ApplicationDbContext Scigate_Auth)
         {
-            this.NDCC_Auth = NDCC_Auth;
+            this.SciGate_Auth = Scigate_Auth;
         }
 
         #region PREPARE CACHE
         //Chỉ sử dụng thuộc tính này cho quá trình khởi tạo lần đầu tiên!
-        public List<CacheUser> GetFullUser()
+        public List<TaiKhoan> GetFullUser()
         {
             try
             {
                 Console.WriteLine("GET CACHE USERS");
-                List<User> users = NDCC_Auth.Users.ToList();
-                List<UserRole> userRoles = NDCC_Auth.UserRoles.ToList();
-                List<CacheUser> cacheUsers = new List<CacheUser>();
-                for (int i = 0; i < users.Count(); i++)
-                {
-                    Console.WriteLine(users.Count);
-                    CacheUser cacheUser = new CacheUser()
-                    {
-                        IdUser = users[i].IdUser,
-                        Email = users[i].Email,
-                        FullName = users[i].FullName,
-                        PasswordHash = users[i].PasswordHash,
-                        CreateAt = users[i].CreateAt,
-                        UpdateAt = users[i].UpdateAt,
-                        IsActive = users[i].IsActive,
-                        userOTPs = users[i].userOTPs
-                    };
-                    for(int j = 0; j < userRoles.Count; j++)
-                    {
-                        if (userRoles[j].IdUser == users[i].IdUser)
-                        {
-                            cacheUser.UserRoles.Add(userRoles[j]);
-                        }
-                    }    
-                    cacheUsers.Add(cacheUser);
-                }
-                return cacheUsers;
+                List<TaiKhoan> listAccount = SciGate_Auth.Taikhoan.ToList();
+                return listAccount;
             }
             catch (Exception ex)
             {
@@ -58,19 +32,19 @@ namespace OAuthv2.Repository
             }
         }
 
-        public async Task<List<User>> GetFullUserAsync()
-        {
-            try
-            {
-                Console.WriteLine("GET CACHE USERS ASYNC");
-                return await NDCC_Auth.Users.ToListAsync();
-            }
-            catch (Exception ex) 
-            {
-                Console.WriteLine("ERROR REPOSITORY: " + ex.ToString());
-                return null;
-            }
-        }
+        //public async Task<List<User>> GetFullUserAsync()
+        //{
+        //    try
+        //    {
+        //        Console.WriteLine("GET CACHE USERS ASYNC");
+        //        return await NDCC_Auth.Users.ToListAsync();
+        //    }
+        //    catch (Exception ex) 
+        //    {
+        //        Console.WriteLine("ERROR REPOSITORY: " + ex.ToString());
+        //        return null;
+        //    }
+        //}
         #endregion
 
         #region LOGIN REPOSITORY
@@ -92,7 +66,7 @@ namespace OAuthv2.Repository
             return storedHash.SequenceEqual(computedHash);
         }
 
-        public async Task<CacheUser> ValidateUserAsync(LoginRequest request)
+        public async Task<TaiKhoan> ValidateUserAsync(LoginRequest request)
         {
             try
             {
@@ -104,23 +78,12 @@ namespace OAuthv2.Repository
                 }
                 else
                 {
-                    List<User> listDb = await NDCC_Auth.Users.ToListAsync();
-                    foreach (User user in listDb)
+                    List<TaiKhoan> listAccount = await SciGate_Auth.Taikhoan.ToListAsync();
+                    foreach (TaiKhoan account in listAccount)
                     {
-                        if (user.Email == request.Email && VerifyPassword(request.Password, user.PasswordHash) == true)
+                        if (account.Email == request.Email && VerifyPassword(request.Password, account.MatKhau) == true)
                         {
-                            return new CacheUser()
-                            {
-                                IdUser = user.IdUser,
-                                Email = user.Email,
-                                FullName = user.FullName,
-                                PasswordHash = user.PasswordHash,
-                                CreateAt = user.CreateAt,
-                                UpdateAt = user.UpdateAt,
-                                IsActive = user.IsActive,
-                                UserRoles = user.UserRoles.ToList(),
-                                userOTPs = user.userOTPs
-                            };
+                            return account;
                         }
                     }
                     return null;
@@ -131,9 +94,21 @@ namespace OAuthv2.Repository
                 Console.WriteLine("REPOSITORY ERROR: ValidateUserAsync -> " + ex.ToString());
                 return null;
             }
-            finally 
-            { 
-                //_semaphore.Release();
+        }
+
+        public async Task<TaiKhoan> AddNewPasswordtoDbAsync(TaiKhoan taiKhoan)
+        {
+            try
+            {
+                SciGate_Auth.Taikhoan.Update(taiKhoan);
+
+                await SciGate_Auth.SaveChangesAsync();
+                return taiKhoan;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("REPOSITORY ERROR: AddUserLocalAsync -> " + ex.ToString());
+                return null;
             }
         }
 
@@ -170,10 +145,10 @@ namespace OAuthv2.Repository
 
         #region TOKEN REPOSITORY
 
-        public async Task<User> GetUserWithRolesAsync(int IdUser)
-        {
-            return await NDCC_Auth.Users.Include(u => u.UserRoles).ThenInclude(ur => ur.Role).FirstOrDefaultAsync(u => u.IdUser == IdUser);
-        }
+        //public async Task<User> GetUserWithRolesAsync(int IdUser)
+        //{
+        //    return await NDCC_Auth.Users.Include(u => u.UserRoles).ThenInclude(ur => ur.Role).FirstOrDefaultAsync(u => u.IdUser == IdUser);
+        //}
 
         #endregion
 
@@ -193,54 +168,54 @@ namespace OAuthv2.Repository
             return $"{Convert.ToBase64String(hash)}:{salt}";
         }
 
-        public async Task<bool> AddUsertoDbAsync(User NewUser)
-        {
-            try
-            {
-                NDCC_Auth.Users.Add(NewUser);
-                await NDCC_Auth.SaveChangesAsync();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("REPOSITORY ERROR: AddUserLocalAsync -> " + ex.ToString());
-                return false;
-            }
-        }
+        //public async Task<bool> AddUsertoDbAsync(User NewUser)
+        //{
+        //    try
+        //    {
+        //        NDCC_Auth.Users.Add(NewUser);
+        //        await NDCC_Auth.SaveChangesAsync();
+        //        return true;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine("REPOSITORY ERROR: AddUserLocalAsync -> " + ex.ToString());
+        //        return false;
+        //    }
+        //}
 
-        public async Task<bool> RemoveUserDbAsync(User NewUser)
-        {
-            try
-            {
-                NDCC_Auth.Users.Remove(NewUser);
-                await NDCC_Auth.SaveChangesAsync();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("REPOSITORY ERROR: RemoveUserLocalAsync -> " + ex.ToString());
-                return false;
-            }
-        }
+        //public async Task<bool> RemoveUserDbAsync(User NewUser)
+        //{
+        //    try
+        //    {
+        //        NDCC_Auth.Users.Remove(NewUser);
+        //        await NDCC_Auth.SaveChangesAsync();
+        //        return true;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine("REPOSITORY ERROR: RemoveUserLocalAsync -> " + ex.ToString());
+        //        return false;
+        //    }
+        //}
 
-        public async Task<bool> AddUserRoletoDbAsync(int IDUser)
-        {
-            try
-            {
-                NDCC_Auth.UserRoles.Add(new UserRole()
-                {
-                    IdUser = IDUser,
-                    IdRole = new Random().Next(4, 6)
-                });
-                await NDCC_Auth.SaveChangesAsync();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("REPOSITORY ERROR: AddUserRoleAsync -> " + ex.ToString());
-                return false;
-            }
-        }
+        //public async Task<bool> AddUserRoletoDbAsync(int IDUser)
+        //{
+        //    try
+        //    {
+        //        NDCC_Auth.UserRoles.Add(new UserRole()
+        //        {
+        //            IdUser = IDUser,
+        //            IdRole = new Random().Next(4, 6)
+        //        });
+        //        await NDCC_Auth.SaveChangesAsync();
+        //        return true;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine("REPOSITORY ERROR: AddUserRoleAsync -> " + ex.ToString());
+        //        return false;
+        //    }
+        //}
         #endregion
     }
 }

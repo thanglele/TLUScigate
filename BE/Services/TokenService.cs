@@ -1,11 +1,12 @@
 ﻿using Microsoft.IdentityModel.Tokens;
+using OAuthv2.Models;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
-using OAuthv2.Models;
+using TLUScience.Models;
 
-namespace OAuthv2.Services
+namespace TLUScience.Services
 {
     public class TokenService
     {
@@ -28,7 +29,7 @@ namespace OAuthv2.Services
         #endregion
 
         #region GENERATE TOKEN WORKING
-        public Token GenerateToken(User user)
+        public Token GenerateToken(TaiKhoan taiKhoan)
         {
             // Giải mã khóa từ Base64
             SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:SecretKey"]));
@@ -36,8 +37,8 @@ namespace OAuthv2.Services
             // Access token claims
             List<Claim> accessTokenClaims = new List<Claim>
     {
-        new Claim("Email", user.Email),
-        new Claim("FullName", user.FullName),
+        new Claim("Email", taiKhoan.Email),
+        //new Claim("FullName", user.FullName),
         new Claim("TokenType", "AccessToken"),
         new Claim(JwtRegisteredClaimNames.Nbf, new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds().ToString()),
         new Claim(JwtRegisteredClaimNames.Exp, new DateTimeOffset(DateTime.UtcNow.AddHours(4)).ToUnixTimeSeconds().ToString()),
@@ -47,7 +48,7 @@ namespace OAuthv2.Services
             // Refresh token claims
             List<Claim> refreshTokenClaims = new List<Claim>
     {
-        new Claim("Email", user.Email),
+        new Claim("Email", taiKhoan.Email),
         new Claim("TokenType", "RefreshToken"),
         new Claim("UniqueIdentifier", Guid.NewGuid().ToString()),
         new Claim(JwtRegisteredClaimNames.Nbf, new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds().ToString()),
@@ -55,18 +56,10 @@ namespace OAuthv2.Services
         new Claim(JwtRegisteredClaimNames.Iat, new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds().ToString())
     };
 
+
             // Kiểm tra UserRoles
-            if (user.UserRoles != null)
-            {
-                foreach (var userRole in user.UserRoles)
-                {
-                    if (userRole?.Role?.Name != null)
-                    {
-                        accessTokenClaims.Add(new Claim(ClaimTypes.Role, userRole.Role.Name));
-                        refreshTokenClaims.Add(new Claim(ClaimTypes.Role, userRole.Role.Name));
-                    }
-                }
-            }
+            accessTokenClaims.Add(new Claim(ClaimTypes.Role, taiKhoan.VaiTro));
+            refreshTokenClaims.Add(new Claim(ClaimTypes.Role, taiKhoan.VaiTro));
 
             JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
 
@@ -98,7 +91,7 @@ namespace OAuthv2.Services
 
             return new Token()
             {
-                UserId = user.IdUser,
+                UserId = taiKhoan.Id,
                 AccessToken = "Bearer " + accessToken,
                 RefeshToken = "Bearer " + refreshToken,
                 ExpiresAt = DateTime.Now.AddHours(4)

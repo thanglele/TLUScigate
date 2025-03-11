@@ -7,7 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="FE\" />
+    <Compile Remove="FE\**" />
+    <Content Remove="FE\**" />
+    <EmbeddedResource Remove="FE\**" />
+    <None Remove="FE\**" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,65 +1,24 @@
 [
   {
-    "ContainingType": "OAuthv2.Controllers.AuthController",
-    "Method": "ForgetPassword",
-    "RelativePath": "forgetpassword",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "OAuthv2.Controllers.AuthController",
-    "Method": "listUsers",
-    "RelativePath": "listUsers",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "OAuthv2.Controllers.AuthController",
-    "Method": "actionResult",
-    "RelativePath": "listUsers/{username}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "email",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "username",
-        "Type": "",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "OAuthv2.Controllers.AuthController",
+    "ContainingType": "TLUScience.Controllers.AuthController",
     "Method": "Login",
-    "RelativePath": "login",
+    "RelativePath": "Auth/login",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "request",
-        "Type": "OAuthv2.Models.LoginRequest",
+        "Type": "TLUScience.Models.LoginRequest",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "OAuthv2.Controllers.AuthController",
+    "ContainingType": "TLUScience.Controllers.AuthController",
     "Method": "Logout",
-    "RelativePath": "logout",
+    "RelativePath": "Auth/logout",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -67,16 +26,16 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "OAuthv2.Controllers.AuthController",
-    "Method": "Register",
-    "RelativePath": "register",
+    "ContainingType": "TLUScience.Controllers.AuthController",
+    "Method": "NewPassword",
+    "RelativePath": "Auth/NewPassword",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "UserRegis",
-        "Type": "OAuthv2.Models.Registerform",
+        "Name": "RequestPassword",
+        "Type": "TLUScience.Models.LoginRequest",
         "IsRequired": true
       }
     ],
