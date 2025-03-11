@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- https://go.microsoft.com/fwlink/?LinkID=208121. -->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>D:\OneDrive - Thanglele\DATA-LEARNING\Phân tích dự án phần mềm\TEAM 5 - Triển Khai\Published</_PublishTargetUrl>
+    <History>True|2025-03-03T07:00:31.1928198Z||;True|2025-03-03T14:00:07.6163223+07:00||;False|2025-03-03T13:59:41.1363935+07:00||;False|2025-03-03T13:59:10.7452171+07:00||;True|2025-03-03T13:45:04.9843134+07:00||;</History>
+    <LastFailureDetails />
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Server=127.0.0.1%3bDatabase=TLUScigate%3bUser Id=applicationSQL%3bPassword=E+PrX4hDu+OucniK5PGNDfwfXn9hUuzo3RQJpXcFeSQ=%3bTrustServerCertificate=True</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="OAuthv2.Data.ApplicationDbContext">
+      <Value>Server=127.0.0.1%3bDatabase=TLUScigate%3bUser Id=applicationSQL%3bPassword=E+PrX4hDu+OucniK5PGNDfwfXn9hUuzo3RQJpXcFeSQ=%3bTrustServerCertificate=True</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>
