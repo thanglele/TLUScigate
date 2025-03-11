@@ -7,6 +7,7 @@ using TLUScience.Services;
 using TLUScience.Repository;
 using System.Net.NetworkInformation;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.HttpOverrides;
 
 Console.WriteLine("Starting Identity OAuth2");
 
@@ -259,23 +260,23 @@ try
     app.UseAuthentication();
     app.UseAuthorization();
 
-    //app.UseStatusCodePages(context =>
-    //{
-    //    if (context.HttpContext.Response.StatusCode == 404)
-    //    {
-    //        context.HttpContext.Response.Redirect("https://api.thanglele08.id.vn/404");
-    //    }
+    app.UseStatusCodePages(context =>
+    {
+        if (context.HttpContext.Response.StatusCode == 404)
+        {
+            context.HttpContext.Response.Redirect("https://api.thanglele08.id.vn/404");
+        }
 
-    //    if (context.HttpContext.Response.StatusCode == 500)
-    //    {
-    //        context.HttpContext.Response.Redirect("https://api.thanglele08.id.vn/500");
-    //    }
-    //    return Task.CompletedTask;
-    //});
+        if (context.HttpContext.Response.StatusCode == 500)
+        {
+            context.HttpContext.Response.Redirect("https://api.thanglele08.id.vn/500");
+        }
+        return Task.CompletedTask;
+    });
 
     app.MapControllerRoute(
         name: "default",
-        pattern: "{controller=Auth}/{action=Index}");
+        pattern: "{controller=Auth}");
 
     app.Run();
 }

@@ -348,10 +348,10 @@ D:\TLUScience\BE\obj\Debug\net8.0\staticwebassets\msbuild.build.TLUScience.props
 D:\TLUScience\BE\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.TLUScience.props
 D:\TLUScience\BE\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.TLUScience.props
 D:\TLUScience\BE\obj\Debug\net8.0\staticwebassets.pack.json
-D:\TLUScience\BE\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 D:\TLUScience\BE\obj\Debug\net8.0\TLUScience.csproj.Up2Date
 D:\TLUScience\BE\obj\Debug\net8.0\TLUScience.dll
 D:\TLUScience\BE\obj\Debug\net8.0\refint\TLUScience.dll
 D:\TLUScience\BE\obj\Debug\net8.0\TLUScience.pdb
 D:\TLUScience\BE\obj\Debug\net8.0\TLUScience.genruntimeconfig.cache
 D:\TLUScience\BE\obj\Debug\net8.0\ref\TLUScience.dll
+D:\TLUScience\BE\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
