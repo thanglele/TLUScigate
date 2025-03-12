@@ -1,6 +1,38 @@
 [
   {
     "ContainingType": "TLUScience.Controllers.AuthController",
+    "Method": "CheckOTP",
+    "RelativePath": "Auth/CheckOTP",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "OTPRequest",
+        "Type": "TLUScience.Models.OTPRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TLUScience.Controllers.AuthController",
+    "Method": "ForgetPassword",
+    "RelativePath": "Auth/forgetpassword",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "TLUScience.Models.LoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TLUScience.Controllers.AuthController",
     "Method": "Login",
     "RelativePath": "Auth/login",
     "HttpMethod": "POST",

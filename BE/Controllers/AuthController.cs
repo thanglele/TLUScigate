@@ -18,12 +18,6 @@ namespace TLUScience.Controllers
             authenService = authenticationService;
         }
 
-        // GET: AuthController
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         [AllowAnonymous]
         [HttpPost("[controller]/login")]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
@@ -119,12 +113,89 @@ namespace TLUScience.Controllers
             }
         }
 
-        //[AllowAnonymous]
-        //[HttpPost("[controller]/forgetpassword")]
-        //public IActionResult ForgetPassword([FromBody] LoginRequest request)
-        //{
-        //    return View();
-        //}
+        [AllowAnonymous]
+        [HttpPost("[controller]/forgetpassword")]
+        public async Task<IActionResult> ForgetPassword([FromBody] LoginRequest request)
+        {
+            if (authenService.ValidateInput(request) == 400)
+            {
+                //Trả trạng thái không thành công do lỗi kí tự
+                return StatusCode(400, new ResponseToken()
+                {
+                    staticID = 400,
+                    Id = null,
+                    Messages = "Thông tin yêu cầu không hợp lệ, vui lòng kiểm tra lại!"
+                });
+            }
+
+            if (await authenService.CheckStatusOTPAccount(request))
+            {
+                if (await authenService.SendMail(request) == true)
+                {
+                    return Ok(new ResponseToken()
+                    {
+                        staticID = 200,
+                        Email = request.Email,
+                        Messages = "Gửi Mail OTP thành công!"
+                    });
+                }
+                else
+                {
+                    return StatusCode(500, new ResponseToken()
+                    {
+                        staticID = 500,
+                        Email = request.Email,
+                        Messages = "Lỗi không thể gửi mail, vui lòng thao tác lại!"
+                    });
+                }
+            }
+            else
+            {
+                //Trả trạng thái không thành công do gửi quá nhiều yêu cầu OTP
+                return StatusCode(400, new ResponseToken()
+                {
+                    staticID = 400,
+                    Email = request.Email,
+                    Messages = "Thao tác bị chặn do gửi quá nhiều yêu cầu OTP!"
+                });
+            }    
+        }
+
+        [AllowAnonymous]
+        [HttpPost("[controller]/CheckOTP")]
+        public async Task<IActionResult> CheckOTP([FromBody] OTPRequest OTPRequest)
+        {
+            if (await authenService.CheckOTP(OTPRequest) == true) 
+            {
+                if (await authenService.RemovePassword(OTPRequest.Email) == null)
+                {
+                    return StatusCode(500, new ResponseToken()
+                    {
+                        staticID = 500,
+                        Email = OTPRequest.Email,
+                        Messages = "Lỗi hệ thống máy chủ, vui lòng thao tác lại!"
+                    });
+                }
+                else
+                {
+                    return Ok(new ResponseToken()
+                    {
+                        staticID = 200,
+                        Email = OTPRequest.Email,
+                        Messages = "Xóa mật khẩu cũ thành công!"
+                    });
+                }
+            }
+            else
+            {
+                return StatusCode(400, new ResponseToken()
+                {
+                    staticID = 400,
+                    Email = OTPRequest.Email,
+                    Messages = "Sai mã OTP!"
+                });
+            }    
+        }
 
         [AllowAnonymous]
         [HttpGet("[controller]/logout")]

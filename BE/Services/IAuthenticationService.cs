@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Caching.Memory;
-using TLUScience.Models;
+﻿using TLUScience.Models;
 
 namespace TLUScience.Services
 {
@@ -21,8 +20,14 @@ namespace TLUScience.Services
         //public Task<ResponseToken> AddNewUsersToDb(User NewUser);
         #endregion
 
+        #region RESETSERVICES
+        public Task<bool> CheckOTP(OTPRequest OTPRequest);
+        public Task<TaiKhoan> RemovePassword(string Email);
+        #endregion
+
         #region MAILSERVICES
-        public Task<string> SendMail(string to, string subject, string body);
+        public Task<bool> CheckStatusOTPAccount(LoginRequest loginRequest);
+        public Task<bool> SendMail(LoginRequest loginRequest);
         #endregion
     }
 }

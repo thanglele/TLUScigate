@@ -6,14 +6,15 @@
         public string Email { get; set; }
         public string? MatKhau { get; set; }
         public string VaiTro { get; set; }
+        public ICollection<UserOTP> userOTPs { get; set; }
     }
 
-    public class UserReturn
-    {
-        public int IdUser { get; set; }
-        public string Email { get; set; }
-        public string? Password { get; set; }
-    }
+    //public class UserReturn
+    //{
+    //    public int IdUser { get; set; }
+    //    public string Email { get; set; }
+    //    public string? Password { get; set; }
+    //}
 
     public class Token
     {
@@ -38,15 +39,23 @@
     public class UserOTP
     {
         public int Id { get; set; }
-        public short OTP { get; set; }
-        public DateTime CreateAt { get; set; }
-        public DateTime UpdateAt { get; set; } = DateTime.Now;
-        public DateTime ExpireAt { get; set; } = DateTime.Now.AddMinutes(5);
+        public int TaiKhoanID { get; set; }
+        public string MaOTP { get; set; }
+        public DateTime ThoiGianTao { get; set; } = DateTime.Now;
+        public DateTime ThoiGianHetHan { get; set; } = DateTime.Now.AddMinutes(5);
+        public string? TrangThai { get; set; }
+        public TaiKhoan TaiKhoan { get; set; }
     }
 
     public class LoginRequest
     {
         public string? Email { get; set; }
         public string? Password { get; set; }
+    }
+
+    public class OTPRequest
+    {
+        public string? Email { get; set; }
+        public string? OTP { get; set; }
     }
 }
