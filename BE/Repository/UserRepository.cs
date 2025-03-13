@@ -16,14 +16,26 @@ namespace TLUScience.Repository
         }
 
         #region PREPARE CACHE
-        //Chỉ sử dụng thuộc tính này cho quá trình khởi tạo lần đầu tiên!
         public List<TaiKhoan> GetFullUser()
         {
             try
             {
                 Console.WriteLine("GET CACHE USERS");
-                List<TaiKhoan> listAccount = SciGate_Auth.Taikhoan.ToList();
-                return listAccount;
+                return SciGate_Auth.Taikhoan.ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR REPOSITORY: " + ex.ToString());
+                return null;
+            }
+        }
+
+        public List<UserOTP> GetFullOTP()
+        {
+            try
+            {
+                Console.WriteLine("GET CACHE OTP");
+                return SciGate_Auth.OTP.ToList();
             }
             catch (Exception ex)
             {
@@ -97,6 +109,22 @@ namespace TLUScience.Repository
         }
 
         public async Task<TaiKhoan> AddNewPasswordtoDbAsync(TaiKhoan taiKhoan)
+        {
+            try
+            {
+                SciGate_Auth.Taikhoan.Update(taiKhoan);
+
+                await SciGate_Auth.SaveChangesAsync();
+                return taiKhoan;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("REPOSITORY ERROR: AddUserLocalAsync -> " + ex.ToString());
+                return null;
+            }
+        }
+
+        public async Task<TaiKhoan> RemovePasswordtoDbAsync(TaiKhoan taiKhoan)
         {
             try
             {
@@ -216,6 +244,42 @@ namespace TLUScience.Repository
         //        return false;
         //    }
         //}
+        #endregion
+
+        #region OTP REPOSITORY
+        public void CleanOldOTP()
+        {
+            try
+            {
+                List<UserOTP> userOTP = SciGate_Auth.OTP.ToList();
+                for(int i = 0; i < userOTP.Count(); i++)
+                {
+                    if ((DateTime.Now - userOTP[i].ThoiGianHetHan).TotalMinutes > 2 || userOTP[i].TrangThai == "DaSuDung")
+                    {
+                        SciGate_Auth.OTP.Remove(userOTP[i]);
+                    }    
+                }    
+                SciGate_Auth.SaveChanges();
+            }
+            catch (Exception ex) 
+            {
+                Console.WriteLine("ERROR REPOSITORY: " + ex.ToString());
+            }
+        }
+        public async Task<bool> AddNewOTP(UserOTP userOTP) 
+        {
+            try
+            {
+                SciGate_Auth.OTP.Add(userOTP);
+                await SciGate_Auth.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR REPOSITORY: " + ex.ToString());
+                return false;
+            }
+        }
         #endregion
     }
 }

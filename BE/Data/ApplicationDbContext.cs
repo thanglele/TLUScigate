@@ -11,17 +11,29 @@ namespace TLUScience.Data
         }
 
         public DbSet<TaiKhoan> Taikhoan { get; set; }
+        public DbSet<UserOTP> OTP { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
             // Cấu hình model nếu cần
-            //modelBuilder.Entity<User>(entity =>
-            //{
-            //    entity.HasKey(e => e.IdUser);
-            //    entity.Property(e => e.Email).IsRequired();
-            //});
+            modelBuilder.Entity<TaiKhoan>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Email).IsRequired();
+                entity.Property(e => e.VaiTro).IsRequired();
+            });
+
+            modelBuilder.Entity<UserOTP>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.TaiKhoanID).IsRequired();
+                entity.Property(e => e.MaOTP).IsRequired();
+                entity.Property(e => e.ThoiGianTao).IsRequired();
+                entity.Property(e => e.ThoiGianHetHan).IsRequired();
+                entity.HasOne(e => e.TaiKhoan).WithMany(u => u.userOTPs).HasForeignKey(e => e.TaiKhoanID).OnDelete(DeleteBehavior.Cascade);
+            });
 
             //modelBuilder.Entity<Role>(entity =>
             //{
