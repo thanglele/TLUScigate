@@ -1,5 +1,5 @@
 import React from 'react';
-import InputField from '/Users/leduc/QLKHTLU/src/assets/components/atoms/InputFiled.jsx';
+import InputField from '../atoms/InputFiled';
 import Link from '../atoms/Link';
 
 const LoginFormInputs = ({ email, setEmail, pass, setPass, errorMessage, onForgotPassword }) => {

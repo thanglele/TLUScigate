@@ -8,7 +8,7 @@ const Link = ({ children, onClick, className }) => {
         e.preventDefault();
         onClick();
       }}
-      className={`text-xs md:text-sm text-blue-600 hover:underline ${className}`}
+      className={`text-xs md:text-sm text-blue-600 hover:underline ml-auto ${className}`}
     >
       {children}
     </a>

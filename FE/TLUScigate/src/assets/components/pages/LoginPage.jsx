@@ -1,7 +1,7 @@
 import React from 'react';
 import WelcomeSection from '../organisms/WelcomeSection';
 import LoginForm from '../organisms/LoginForm';
-import '/Users/leduc/QLKHTLU/src/index.css';
+import "/Users/leduc/QLKHTLU/src/index.css"
 
 const LoginPage = () => {
   return (
