@@ -33,16 +33,6 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 180,
-          "SelectedChildIndex": -1,
-          "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            }
-          ]
-        },
-        {
           "DockedWidth": 220,
           "SelectedChildIndex": 2,
           "Children": [
@@ -56,8 +46,7 @@
               "RelativeToolTip": "Controllers\\AuthController.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAgwKQAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-03T08:48:01.079Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-03T08:48:01.079Z"
             },
             {
               "$type": "Document",
@@ -69,8 +58,7 @@
               "RelativeToolTip": "Services\\IAuthenticationService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-03T09:18:38.692Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-03T09:18:38.692Z"
             },
             {
               "$type": "Document",
@@ -78,9 +66,9 @@
               "Title": "AuthenticationService.cs",
               "DocumentMoniker": "D:\\TLUScience\\BE\\Services\\AuthenticationService.cs",
               "RelativeDocumentMoniker": "Services\\AuthenticationService.cs",
-              "ToolTip": "D:\\TLUScience\\BE\\Services\\AuthenticationService.cs \u2B24",
-              "RelativeToolTip": "Services\\AuthenticationService.cs \u2B24",
-              "ViewState": "AgIAACoAAAAAAAAAAAAAAEgAAAAbAAAAAAAAAA==",
+              "ToolTip": "D:\\TLUScience\\BE\\Services\\AuthenticationService.cs",
+              "RelativeToolTip": "Services\\AuthenticationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-11T05:40:05.206Z",
               "EditorCaption": ""
@@ -95,8 +83,7 @@
               "RelativeToolTip": "Repository\\IUserRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-04T15:43:49.303Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-04T15:43:49.303Z"
             },
             {
               "$type": "Document",
@@ -108,8 +95,7 @@
               "RelativeToolTip": "Repository\\UserRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0BAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T20:40:14.561Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-02T20:40:14.561Z"
             },
             {
               "$type": "Document",
@@ -121,8 +107,7 @@
               "RelativeToolTip": "Models\\TaiKhoan.cs",
               "ViewState": "AgIAACMAAAAAAAAAAAA5wDoAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-11T05:07:57.42Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-11T05:07:57.42Z"
             }
           ]
         }
