@@ -57,30 +57,53 @@ namespace TLUScience.Services
         }
 
         #region LOGIN SERVICES
-        public int ValidateInput(LoginRequest request)
+        public int ValidateInput(LoginRequest request, bool skip)
         {
-            //Kiểm tra Chuỗi trống trong loggin
-            if (string.IsNullOrEmpty(request.Password) == true || string.IsNullOrEmpty(request.Email) == true)
+            if (skip == true)
             {
-                return 400;
-            }
+                //Chỉ kiểm tra Email
 
-            ////Kiểm tra chuỗi thực thi, SQL Injection trong string
-            string valueRegrex = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
-            if (Regex.IsMatch(request.Email, valueRegrex) == false)
+                //Kiểm tra Chuỗi trống trong loggin
+                if (string.IsNullOrEmpty(request.Email) == true || request.Email.Length > 255)
+                {
+                    return 400;
+                }
+
+                string valueRegrex = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+                if (Regex.IsMatch(request.Email, valueRegrex) == false)
+                {
+                    return 400;
+                }
+
+                //Kiểm tra thoát thành công
+                return 200;
+            }
+            else
             {
-                return 400;
-            }
+                //Kiểm tra Email và Password
 
-            ////Kiểm tra chuỗi mật khẩu có đạt đủ điều kiện mật khẩu mạnh hay không
-            valueRegrex = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$";
-            if (Regex.IsMatch(request.Password, valueRegrex) == false)
-            {
-                return 400;
-            }
+                //Kiểm tra Chuỗi trống trong loggin
+                if (string.IsNullOrEmpty(request.Password) == true || string.IsNullOrEmpty(request.Email) == true || request.Password.Length > 255 || request.Email.Length > 255)
+                {
+                    return 400;
+                }
 
-            //Kiểm tra thoát thành công
-            return 200;
+                string valueRegrex = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+                if (Regex.IsMatch(request.Email, valueRegrex) == false)
+                {
+                    return 400;
+                }
+
+                ////Kiểm tra chuỗi mật khẩu có đạt đủ điều kiện mật khẩu mạnh hay không
+                valueRegrex = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$";
+                if (Regex.IsMatch(request.Password, valueRegrex) == false)
+                {
+                    return 400;
+                }
+
+                //Kiểm tra thoát thành công
+                return 200;
+            }
         }
 
         public TaiKhoan CheckLoginWithCache(LoginRequest request)

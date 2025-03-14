@@ -21,5 +21,6 @@
         public TaiKhoan TaiKhoan { get; set; }
 
         public ICollection<TapChiAnPham> tapChiAnPhams { get; set; }
+        //public ICollection<GiangVien_LinhVuc> giangVien_LinhVucs { get; set; }
     }
 }

@@ -22,7 +22,7 @@ namespace TLUScience.Controllers
         [HttpPost("[controller]/login")]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
-            if(authenService.ValidateInput(request) == 400)
+            if(authenService.ValidateInput(request, false) == 400)
             {
                 //Trả trạng thái không thành công do lỗi kí tự
                 return StatusCode(400, new ResponseToken()
@@ -74,7 +74,7 @@ namespace TLUScience.Controllers
         [HttpPost("[controller]/NewPassword")]
         public IActionResult NewPassword([FromBody] LoginRequest RequestPassword)
         {
-            if (authenService.ValidateInput(RequestPassword) == 400)
+            if (authenService.ValidateInput(RequestPassword, false) == 400)
             {
                 //Trả trạng thái không thành công do lỗi kí tự
                 return StatusCode(400, new ResponseToken()
@@ -117,7 +117,7 @@ namespace TLUScience.Controllers
         [HttpPost("[controller]/forgetpassword")]
         public async Task<IActionResult> ForgetPassword([FromBody] LoginRequest request)
         {
-            if (authenService.ValidateInput(request) == 400)
+            if (authenService.ValidateInput(request, true) == 400)
             {
                 //Trả trạng thái không thành công do lỗi kí tự
                 return StatusCode(400, new ResponseToken()

@@ -7,7 +7,7 @@ namespace TLUScience.Services
         public List<TaiKhoan> ListUsers();
         #region LOGIN
         public void RenewCache();
-        public int ValidateInput(LoginRequest request);
+        public int ValidateInput(LoginRequest request, bool skip);
         public TaiKhoan CheckLoginWithCache(LoginRequest request);
         public Task<TaiKhoan> CheckLoginWithDb(LoginRequest request);
         public ResponseToken SaveTokenWithDb(TaiKhoan user);

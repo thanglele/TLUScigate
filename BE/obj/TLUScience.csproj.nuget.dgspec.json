@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\TLUScience\\BE\\TLUScience.csproj": {}
+    "D:\\OneDrive - Thanglele\\DATA-LEARNING\\Phân tích dự án phần mềm\\TEAM 3 - Code\\TLUScigate\\BE\\TLUScience.csproj": {}
   },
   "projects": {
-    "D:\\TLUScience\\BE\\TLUScience.csproj": {
+    "D:\\OneDrive - Thanglele\\DATA-LEARNING\\Phân tích dự án phần mềm\\TEAM 3 - Code\\TLUScigate\\BE\\TLUScience.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\TLUScience\\BE\\TLUScience.csproj",
+        "projectUniqueName": "D:\\OneDrive - Thanglele\\DATA-LEARNING\\Phân tích dự án phần mềm\\TEAM 3 - Code\\TLUScigate\\BE\\TLUScience.csproj",
         "projectName": "TLUScience",
-        "projectPath": "D:\\TLUScience\\BE\\TLUScience.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "D:\\TLUScience\\BE\\obj\\",
+        "projectPath": "D:\\OneDrive - Thanglele\\DATA-LEARNING\\Phân tích dự án phần mềm\\TEAM 3 - Code\\TLUScigate\\BE\\TLUScience.csproj",
+        "packagesPath": "C:\\Users\\lesyt\\.nuget\\packages\\",
+        "outputPath": "D:\\OneDrive - Thanglele\\DATA-LEARNING\\Phân tích dự án phần mềm\\TEAM 3 - Code\\TLUScigate\\BE\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "D:\\VS2022\\Share\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\lesyt\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -101,7 +101,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
