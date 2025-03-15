@@ -3,14 +3,15 @@ using TLUScience.Data;
 using System;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
+using TLUScience.Entities;
 
 namespace TLUScience.Repository
 {
     public class UserRepository : IUserRepository
     {
-        private readonly ApplicationDbContext SciGate_Auth;
+        private readonly AppDbContext SciGate_Auth;
         
-        public UserRepository(ApplicationDbContext Scigate_Auth)
+        public UserRepository(AppDbContext Scigate_Auth)
         {
             this.SciGate_Auth = Scigate_Auth;
         }
@@ -22,7 +23,7 @@ namespace TLUScience.Repository
             try
             {
                 Console.WriteLine("GET CACHE USERS");
-                List<TaiKhoan> listAccount = SciGate_Auth.Taikhoan.ToList();
+                List<TaiKhoan> listAccount = SciGate_Auth.TaiKhoans.ToList();
                 return listAccount;
             }
             catch (Exception ex)
@@ -78,7 +79,7 @@ namespace TLUScience.Repository
                 }
                 else
                 {
-                    List<TaiKhoan> listAccount = await SciGate_Auth.Taikhoan.ToListAsync();
+                    List<TaiKhoan> listAccount = await SciGate_Auth.TaiKhoans.ToListAsync();
                     foreach (TaiKhoan account in listAccount)
                     {
                         if (account.Email == request.Email && VerifyPassword(request.Password, account.MatKhau) == true)
@@ -100,7 +101,7 @@ namespace TLUScience.Repository
         {
             try
             {
-                SciGate_Auth.Taikhoan.Update(taiKhoan);
+                SciGate_Auth.TaiKhoans.Update(taiKhoan);
 
                 await SciGate_Auth.SaveChangesAsync();
                 return taiKhoan;

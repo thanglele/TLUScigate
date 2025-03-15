@@ -1,4 +1,5 @@
-﻿using TLUScience.Models;
+﻿using TLUScience.Entities;
+using TLUScience.Models;
 
 namespace TLUScience.Repository
 {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TLUScience.Models;
+using TLUScience.Entities;
 using TLUScience.Services;
 using System.Text.Json;
 using Org.BouncyCastle.Crypto.Utilities;

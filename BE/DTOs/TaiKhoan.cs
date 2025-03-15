@@ -1,12 +1,12 @@
 ﻿namespace TLUScience.Models
 {
-    public class TaiKhoan
-    {
-        public int Id { get; set; }
-        public string Email { get; set; }
-        public string? MatKhau { get; set; }
-        public string VaiTro { get; set; }
-    }
+    //public class TaiKhoan
+    //{
+    //    public int Id { get; set; }
+    //    public string Email { get; set; }
+    //    public string? MatKhau { get; set; }
+    //    public string VaiTro { get; set; }
+    //}
 
     public class UserReturn
     {
@@ -35,14 +35,14 @@
         public DateTime? ExpiresAt { get; set; }
     }
 
-    public class UserOTP
-    {
-        public int Id { get; set; }
-        public short OTP { get; set; }
-        public DateTime CreateAt { get; set; }
-        public DateTime UpdateAt { get; set; } = DateTime.Now;
-        public DateTime ExpireAt { get; set; } = DateTime.Now.AddMinutes(5);
-    }
+    //public class UserOTP
+    //{
+    //    public int Id { get; set; }
+    //    public short OTP { get; set; }
+    //    public DateTime CreateAt { get; set; }
+    //    public DateTime UpdateAt { get; set; } = DateTime.Now;
+    //    public DateTime ExpireAt { get; set; } = DateTime.Now.AddMinutes(5);
+    //}
 
     public class LoginRequest
     {

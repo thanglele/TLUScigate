@@ -1,5 +1,6 @@
 ﻿using Microsoft.IdentityModel.Tokens;
-using OAuthv2.Models;
+//using OAuthv2.Models;
+using TLUScience.Entities;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -91,7 +92,7 @@ namespace TLUScience.Services
 
             return new Token()
             {
-                UserId = taiKhoan.Id,
+                UserId = taiKhoan.ID,
                 AccessToken = "Bearer " + accessToken,
                 RefeshToken = "Bearer " + refreshToken,
                 ExpiresAt = DateTime.Now.AddHours(4)

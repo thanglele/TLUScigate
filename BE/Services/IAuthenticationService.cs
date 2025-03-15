@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
 using TLUScience.Models;
+using TLUScience.Entities;
 
 namespace TLUScience.Services
 {

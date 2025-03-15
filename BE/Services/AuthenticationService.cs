@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
 using TLUScience.Models;
+using TLUScience.Entities;
 using TLUScience.Repository;
 using System.Net.Mail;
 using System.Text;
@@ -150,7 +151,7 @@ namespace TLUScience.Services
                 return new ResponseToken()
                 {
                     staticID = 500,
-                    Id = user.Id,
+                    Id = user.ID,
                     Messages = "Có lỗi xảy ra trong quá trình đăng nhập, vui lòng thử lại sau.",
                     AccessToken = null,
                     RefreshToken = null,
