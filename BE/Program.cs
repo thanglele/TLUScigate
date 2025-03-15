@@ -8,6 +8,8 @@ using TLUScience.Repository;
 using System.Net.NetworkInformation;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.HttpOverrides;
+using TLUScience.Interface;
+using TLUScience.Entities;
 
 Console.WriteLine("Starting Identity OAuth2");
 
@@ -50,7 +52,9 @@ try
     //Chuyển 1 phần dữ liệu từ DB -> Cache : Giảm tải cho hệ thống SQL
     builder.Services.AddMemoryCache();
 
-    builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") 
+                           ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+    builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
 
     builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
     {
@@ -168,7 +172,11 @@ try
     // Add services to the container.
     builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
     builder.Services.AddScoped<IUserRepository, UserRepository>();
+    builder.Services.AddScoped<IGiangVienRepository, GiangVienRepository>();
     builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+
+    // Đăng ký các service
+    builder.Services.AddScoped<IGiangVienService, GiangVienService>();
 
     // Đăng ký TokenService
     builder.Services.AddSingleton<TokenService>();
