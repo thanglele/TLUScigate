@@ -175,6 +175,15 @@ try
     builder.Services.AddScoped<IGiangVienRepository, GiangVienRepository>();
     builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 
+    builder.Services.AddScoped<ITapChiAnPhamRepository, TapChiAnPhamRepository>();
+    builder.Services.AddScoped<ITapChiAnPhamService, TapChiAnPhamService>();
+
+    builder.Services.AddScoped<IBaoCaoThongKeRepository, BaoCaoThongKeRepository>();
+    builder.Services.AddScoped<IBaoCaoThongKeService, BaoCaoThongKeService>();
+
+    builder.Services.AddScoped<ICongBoKhoaHocRepository, CongBoKhoaHocRepository>();
+    builder.Services.AddScoped<ICongBoKhoaHocService, CongBoKhoaHocService>();
+
     // Đăng ký các service
     builder.Services.AddScoped<IGiangVienService, GiangVienService>();
 
