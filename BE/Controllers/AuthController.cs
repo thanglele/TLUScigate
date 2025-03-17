@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TLUScience.Models;
-using TLUScience.Entities;
 using TLUScience.Services;
 using System.Text.Json;
 using Org.BouncyCastle.Crypto.Utilities;
 using System.Runtime.InteropServices;
 using Azure;
+using TLUScience.Entities;
 
 namespace TLUScience.Controllers
 {
@@ -14,22 +14,16 @@ namespace TLUScience.Controllers
     {
         private readonly IAuthenticationService authenService;
 
-        public AuthController(IAuthenticationService authenticationService) 
+        public AuthController(IAuthenticationService authenticationService)
         {
             authenService = authenticationService;
-        }
-
-        // GET: AuthController
-        public ActionResult Index()
-        {
-            return View();
         }
 
         [AllowAnonymous]
         [HttpPost("[controller]/login")]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
-            if(authenService.ValidateInput(request) == 400)
+            if (authenService.ValidateInput(request, false) == 400)
             {
                 //Trả trạng thái không thành công do lỗi kí tự
                 return StatusCode(400, new ResponseToken()
@@ -42,10 +36,10 @@ namespace TLUScience.Controllers
             ResponseToken response = new ResponseToken();
             //Temp User đã nhận hash
             TaiKhoan temp_User = authenService.CheckLoginWithCache(request);
-            if(temp_User == null)
+            if (temp_User == null)
             {
                 temp_User = await authenService.CheckLoginWithDb(request);
-                if(temp_User == null)
+                if (temp_User == null)
                 {
                     //Trả trạng thái không thành công do không tồn tại tài khoản
                     return StatusCode(400, new ResponseToken()
@@ -54,14 +48,14 @@ namespace TLUScience.Controllers
                         Id = null,
                         Messages = "Đăng nhập thất bại, vui lòng kiểm tra lại!"
                     });
-                }    
+                }
                 else
                 {
                     Console.WriteLine(temp_User);
                     authenService.RenewCache();
                     response = authenService.SaveTokenWithDb(temp_User);
                     return Ok(response);
-                }    
+                }
             }
             response = authenService.SaveTokenWithDb(temp_User);
 
@@ -81,7 +75,7 @@ namespace TLUScience.Controllers
         [HttpPost("[controller]/NewPassword")]
         public IActionResult NewPassword([FromBody] LoginRequest RequestPassword)
         {
-            if (authenService.ValidateInput(RequestPassword) == 400)
+            if (authenService.ValidateInput(RequestPassword, false) == 400)
             {
                 //Trả trạng thái không thành công do lỗi kí tự
                 return StatusCode(400, new ResponseToken()
@@ -94,7 +88,7 @@ namespace TLUScience.Controllers
             else
             {
                 ResponseToken responseToken = authenService.NewPassword(RequestPassword);
-                if(responseToken == null)
+                if (responseToken == null)
                 {
                     return BadRequest(new ResponseToken()
                     {
@@ -103,7 +97,7 @@ namespace TLUScience.Controllers
                         Messages = "Có lỗi trong quá trình cập nhật mật khẩu, hãy kiểm tra lại.",
                         Email = RequestPassword.Email
                     });
-                }   
+                }
                 else
                 {
                     Response.Cookies.Append("TokenInfor", JsonSerializer.Serialize(responseToken), new CookieOptions
@@ -116,20 +110,97 @@ namespace TLUScience.Controllers
                         SameSite = SameSiteMode.None
                     });
                     return Ok(responseToken);
-                }    
+                }
             }
         }
 
-        //[AllowAnonymous]
-        //[HttpPost("[controller]/forgetpassword")]
-        //public IActionResult ForgetPassword([FromBody] LoginRequest request)
-        //{
-        //    return View();
-        //}
+        [AllowAnonymous]
+        [HttpPost("[controller]/forgetpassword")]
+        public async Task<IActionResult> ForgetPassword([FromBody] LoginRequest request)
+        {
+            if (authenService.ValidateInput(request, true) == 400)
+            {
+                //Trả trạng thái không thành công do lỗi kí tự
+                return StatusCode(400, new ResponseToken()
+                {
+                    staticID = 400,
+                    Id = null,
+                    Messages = "Thông tin yêu cầu không hợp lệ, vui lòng kiểm tra lại!"
+                });
+            }
+
+            if (await authenService.CheckStatusOTPAccount(request))
+            {
+                if (await authenService.SendMail(request) == true)
+                {
+                    return Ok(new ResponseToken()
+                    {
+                        staticID = 200,
+                        Email = request.Email,
+                        Messages = "Gửi Mail OTP thành công!"
+                    });
+                }
+                else
+                {
+                    return StatusCode(500, new ResponseToken()
+                    {
+                        staticID = 500,
+                        Email = request.Email,
+                        Messages = "Lỗi không thể gửi mail, vui lòng thao tác lại!"
+                    });
+                }
+            }
+            else
+            {
+                //Trả trạng thái không thành công do gửi quá nhiều yêu cầu OTP
+                return StatusCode(400, new ResponseToken()
+                {
+                    staticID = 400,
+                    Email = request.Email,
+                    Messages = "Thao tác bị chặn do gửi quá nhiều yêu cầu OTP!"
+                });
+            }
+        }
+
+        [AllowAnonymous]
+        [HttpPost("[controller]/CheckOTP")]
+        public async Task<IActionResult> CheckOTP([FromBody] OTPRequest OTPRequest)
+        {
+            if (await authenService.CheckOTP(OTPRequest) == true)
+            {
+                if (await authenService.RemovePassword(OTPRequest.Email) == null)
+                {
+                    return StatusCode(500, new ResponseToken()
+                    {
+                        staticID = 500,
+                        Email = OTPRequest.Email,
+                        Messages = "Lỗi hệ thống máy chủ, vui lòng thao tác lại!"
+                    });
+                }
+                else
+                {
+                    return Ok(new ResponseToken()
+                    {
+                        staticID = 200,
+                        Email = OTPRequest.Email,
+                        Messages = "Xóa mật khẩu cũ thành công!"
+                    });
+                }
+            }
+            else
+            {
+                return StatusCode(400, new ResponseToken()
+                {
+                    staticID = 400,
+                    Email = OTPRequest.Email,
+                    Messages = "Sai mã OTP!"
+                });
+            }
+        }
 
         [AllowAnonymous]
         [HttpGet("[controller]/logout")]
-        public IActionResult Logout() 
+        public IActionResult Logout()
         {
             // Thiết lập cookie với thời gian hết hạn trong quá khứ
             Response.Cookies.Append("TokenInfor", string.Empty, new CookieOptions

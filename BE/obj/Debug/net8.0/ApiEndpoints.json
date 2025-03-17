@@ -1,5 +1,137 @@
 [
   {
+    "ContainingType": "TLUScience.Controllers.BaoCaoThongKeController",
+    "Method": "AddBaoCaoThongKeAsync",
+    "RelativePath": "api/BaoCaoThongKe",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "baoCaoThongKe",
+        "Type": "TLUScience.DTOs.BaoCaoThongKeCRUD",
+        "IsRequired": true
+      },
+      {
+        "Name": "idNguoiLap",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TLUScience.Controllers.BaoCaoThongKeController",
+    "Method": "ExportBaoCaoToExcel",
+    "RelativePath": "api/BaoCaoThongKe/export-excel/{idBaoCao}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idBaoCao",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TLUScience.Controllers.BaoCaoThongKeController",
+    "Method": "ExportBaoCaoToPdf",
+    "RelativePath": "api/BaoCaoThongKe/export-pdf/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TLUScience.Controllers.CongBoKhoaHocController",
+    "Method": "GetFullCongBoKhoaHocAsync",
+    "RelativePath": "api/CongBoKhoaHoc",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TLUScience.Controllers.CongBoKhoaHocController",
+    "Method": "AddCongBoKhoaHocAsync",
+    "RelativePath": "api/CongBoKhoaHoc",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "congBoKhoaHoc",
+        "Type": "TLUScience.DTOs.CongBoKhoaHocCRUD",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TLUScience.Controllers.CongBoKhoaHocController",
+    "Method": "GetCongBoKhoaHocAsync",
+    "RelativePath": "api/CongBoKhoaHoc/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TLUScience.Controllers.CongBoKhoaHocController",
+    "Method": "UpdateCongBoKhoaHocAsync",
+    "RelativePath": "api/CongBoKhoaHoc/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "congBoKhoaHoc",
+        "Type": "TLUScience.DTOs.CongBoKhoaHocCRUD",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TLUScience.Controllers.CongBoKhoaHocController",
+    "Method": "DeleteCongBoKhoaHocAsync",
+    "RelativePath": "api/CongBoKhoaHoc/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "TLUScience.Controllers.GiangVienController",
     "Method": "GetFullGiangVienAsync",
     "RelativePath": "api/GiangVien",
@@ -18,6 +150,127 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "TLUScience.Controllers.TapChiAnPhamController",
+    "Method": "GetFullTapChiAnPhamAsync",
+    "RelativePath": "api/TapChiAnPham",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TLUScience.Controllers.TapChiAnPhamController",
+    "Method": "AddTapChiAnPhamAsync",
+    "RelativePath": "api/TapChiAnPham",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tapChiAnPham",
+        "Type": "TLUScience.DTOs.TapChiAnPhamCRUD",
+        "IsRequired": true
+      },
+      {
+        "Name": "maGiangVien",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TLUScience.Controllers.TapChiAnPhamController",
+    "Method": "GetTapChiAnPhamAsync",
+    "RelativePath": "api/TapChiAnPham/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TLUScience.Controllers.TapChiAnPhamController",
+    "Method": "UpdateTapChiAnPhamAsync",
+    "RelativePath": "api/TapChiAnPham/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "tapChiAnPham",
+        "Type": "TLUScience.DTOs.TapChiAnPhamCRUD",
+        "IsRequired": true
+      },
+      {
+        "Name": "maGiangVien",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TLUScience.Controllers.TapChiAnPhamController",
+    "Method": "DeleteTapChiAnPhamAsync",
+    "RelativePath": "api/TapChiAnPham/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TLUScience.Controllers.AuthController",
+    "Method": "CheckOTP",
+    "RelativePath": "Auth/CheckOTP",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "OTPRequest",
+        "Type": "TLUScience.Models.OTPRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TLUScience.Controllers.AuthController",
+    "Method": "ForgetPassword",
+    "RelativePath": "Auth/forgetpassword",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "TLUScience.Models.LoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "TLUScience.Controllers.AuthController",

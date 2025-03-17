@@ -11,11 +11,11 @@ public partial class OTP
 
     public string MaOTP { get; set; } = null!;
 
-    public DateTime ThoiGianTao { get; set; }
+    public DateTime ThoiGianTao { get; set; } = DateTime.Now;
 
-    public DateTime ThoiGianHetHan { get; set; }
+    public DateTime ThoiGianHetHan { get; set; } = DateTime.Now.AddMinutes(5);
 
-    public string? TrangThai { get; set; }
+    public string? TrangThai { get; set; } = "ChuaSuDung";
 
     public virtual TaiKhoan TaiKhoan { get; set; } = null!;
 }

@@ -1,6 +1,5 @@
-﻿using Microsoft.Extensions.Caching.Memory;
+﻿using TLUScience.Entities;
 using TLUScience.Models;
-using TLUScience.Entities;
 
 namespace TLUScience.Services
 {
@@ -9,7 +8,7 @@ namespace TLUScience.Services
         public List<TaiKhoan> ListUsers();
         #region LOGIN
         public void RenewCache();
-        public int ValidateInput(LoginRequest request);
+        public int ValidateInput(LoginRequest request, bool skip);
         public TaiKhoan CheckLoginWithCache(LoginRequest request);
         public Task<TaiKhoan> CheckLoginWithDb(LoginRequest request);
         public ResponseToken SaveTokenWithDb(TaiKhoan user);
@@ -22,8 +21,14 @@ namespace TLUScience.Services
         //public Task<ResponseToken> AddNewUsersToDb(User NewUser);
         #endregion
 
+        #region RESETSERVICES
+        public Task<bool> CheckOTP(OTPRequest OTPRequest);
+        public Task<TaiKhoan> RemovePassword(string Email);
+        #endregion
+
         #region MAILSERVICES
-        public Task<string> SendMail(string to, string subject, string body);
+        public Task<bool> CheckStatusOTPAccount(LoginRequest loginRequest);
+        public Task<bool> SendMail(LoginRequest loginRequest);
         #endregion
     }
 }

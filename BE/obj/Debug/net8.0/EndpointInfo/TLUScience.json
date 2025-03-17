@@ -67,10 +67,284 @@
         }
       }
     },
+    "/Auth/forgetpassword": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Auth/CheckOTP": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OTPRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OTPRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/OTPRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/Auth/logout": {
       "get": {
         "tags": [
           "Auth"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/BaoCaoThongKe": {
+      "post": {
+        "tags": [
+          "BaoCaoThongKe"
+        ],
+        "parameters": [
+          {
+            "name": "idNguoiLap",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BaoCaoThongKeCRUD"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BaoCaoThongKeCRUD"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BaoCaoThongKeCRUD"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/BaoCaoThongKe/export-pdf/{id}": {
+      "get": {
+        "tags": [
+          "BaoCaoThongKe"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/BaoCaoThongKe/export-excel/{idBaoCao}": {
+      "get": {
+        "tags": [
+          "BaoCaoThongKe"
+        ],
+        "parameters": [
+          {
+            "name": "idBaoCao",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/CongBoKhoaHoc": {
+      "get": {
+        "tags": [
+          "CongBoKhoaHoc"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "CongBoKhoaHoc"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CongBoKhoaHocCRUD"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CongBoKhoaHocCRUD"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CongBoKhoaHocCRUD"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/CongBoKhoaHoc/{id}": {
+      "get": {
+        "tags": [
+          "CongBoKhoaHoc"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "CongBoKhoaHoc"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CongBoKhoaHocCRUD"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CongBoKhoaHocCRUD"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CongBoKhoaHocCRUD"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "CongBoKhoaHoc"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -116,10 +390,252 @@
           }
         }
       }
+    },
+    "/api/TapChiAnPham": {
+      "get": {
+        "tags": [
+          "TapChiAnPham"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "TapChiAnPham"
+        ],
+        "parameters": [
+          {
+            "name": "maGiangVien",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TapChiAnPhamCRUD"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TapChiAnPhamCRUD"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TapChiAnPhamCRUD"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/TapChiAnPham/{id}": {
+      "get": {
+        "tags": [
+          "TapChiAnPham"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "TapChiAnPham"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "maGiangVien",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TapChiAnPhamCRUD"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TapChiAnPhamCRUD"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TapChiAnPhamCRUD"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "TapChiAnPham"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
+      "BaoCaoThongKeCRUD": {
+        "type": "object",
+        "properties": {
+          "maBaoCao": {
+            "type": "string",
+            "nullable": true
+          },
+          "tenBaoCao": {
+            "type": "string",
+            "nullable": true
+          },
+          "loaiBaoCao": {
+            "type": "string",
+            "nullable": true
+          },
+          "thoiGianBatDau": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "thoiGianKetThuc": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "noiDung": {
+            "type": "string",
+            "nullable": true
+          },
+          "duongDanFile": {
+            "type": "string",
+            "nullable": true
+          },
+          "trangThai": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CongBoKhoaHocCRUD": {
+        "type": "object",
+        "properties": {
+          "maCongBo": {
+            "type": "string",
+            "nullable": true
+          },
+          "tieuDe": {
+            "type": "string",
+            "nullable": true
+          },
+          "tomTat": {
+            "type": "string",
+            "nullable": true
+          },
+          "tuKhoa": {
+            "type": "string",
+            "nullable": true
+          },
+          "ngonNgu": {
+            "type": "string",
+            "nullable": true
+          },
+          "loaiCongBo": {
+            "type": "string",
+            "nullable": true
+          },
+          "issN_ISBN": {
+            "type": "string",
+            "nullable": true
+          },
+          "chiMucKhoaHoc": {
+            "type": "string",
+            "nullable": true
+          },
+          "impactFactor": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "doi": {
+            "type": "string",
+            "nullable": true
+          },
+          "namCongBo": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "soTrang": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "fileDinhKem": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "GiangVienDTO": {
         "type": "object",
         "properties": {
@@ -191,6 +707,63 @@
             "nullable": true
           },
           "password": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OTPRequest": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "otp": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TapChiAnPhamCRUD": {
+        "type": "object",
+        "properties": {
+          "maAnPham": {
+            "type": "string",
+            "nullable": true
+          },
+          "tenAnPham": {
+            "type": "string",
+            "nullable": true
+          },
+          "loaiAnPham": {
+            "type": "string",
+            "nullable": true
+          },
+          "namXuatBan": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "nhaXuatBan": {
+            "type": "string",
+            "nullable": true
+          },
+          "trangThai": {
+            "type": "string",
+            "nullable": true
+          },
+          "quocGia": {
+            "type": "string",
+            "nullable": true
+          },
+          "ngonNgu": {
+            "type": "string",
+            "nullable": true
+          },
+          "issN_ISBN": {
             "type": "string",
             "nullable": true
           }

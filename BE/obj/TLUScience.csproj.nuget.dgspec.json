@@ -1,25 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "/Users/admin/Documents/ForLearning/TLUScigate/BE/TLUScience.csproj": {}
+    "D:\\OneDrive - Thanglele\\DATA-LEARNING\\Phân tích dự án phần mềm\\TEAM 3 - Code\\TLUScigate\\BE\\TLUScience.csproj": {}
   },
   "projects": {
-    "/Users/admin/Documents/ForLearning/TLUScigate/BE/TLUScience.csproj": {
+    "D:\\OneDrive - Thanglele\\DATA-LEARNING\\Phân tích dự án phần mềm\\TEAM 3 - Code\\TLUScigate\\BE\\TLUScience.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/admin/Documents/ForLearning/TLUScigate/BE/TLUScience.csproj",
+        "projectUniqueName": "D:\\OneDrive - Thanglele\\DATA-LEARNING\\Phân tích dự án phần mềm\\TEAM 3 - Code\\TLUScigate\\BE\\TLUScience.csproj",
         "projectName": "TLUScience",
-        "projectPath": "/Users/admin/Documents/ForLearning/TLUScigate/BE/TLUScience.csproj",
-        "packagesPath": "/Users/admin/.nuget/packages/",
-        "outputPath": "/Users/admin/Documents/ForLearning/TLUScigate/BE/obj/",
+        "projectPath": "D:\\OneDrive - Thanglele\\DATA-LEARNING\\Phân tích dự án phần mềm\\TEAM 3 - Code\\TLUScigate\\BE\\TLUScience.csproj",
+        "packagesPath": "C:\\Users\\lesyt\\.nuget\\packages\\",
+        "outputPath": "D:\\OneDrive - Thanglele\\DATA-LEARNING\\Phân tích dự án phần mềm\\TEAM 3 - Code\\TLUScigate\\BE\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\VS2022\\Share\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/admin/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\lesyt\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -37,7 +44,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net8.0": {
@@ -101,7 +109,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.406/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

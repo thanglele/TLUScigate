@@ -1,10 +1,10 @@
 ﻿using Microsoft.IdentityModel.Tokens;
-//using OAuthv2.Models;
-using TLUScience.Entities;
+using OAuthv2.Models;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+using TLUScience.Entities;
 using TLUScience.Models;
 
 namespace TLUScience.Services
