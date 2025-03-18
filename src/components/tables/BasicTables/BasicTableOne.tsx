@@ -7,107 +7,79 @@ import {
 } from "../../ui/table";
 
 import Badge from "../../ui/badge/Badge";
+import { FiEye, FiEdit, FiTrash2 } from "react-icons/fi";
 
-interface Order {
+interface Faculty {
   id: number;
-  user: {
-    image: string;
-    name: string;
-    role: string;
-  };
-  projectName: string;
-  team: {
-    images: string[];
-  };
+  name: string;
+  email: string;
   status: string;
-  budget: string;
+  faculty: string;
+  major: string;
+  joinedDate: string;
 }
 
 // Define the table data using the interface
-const tableData: Order[] = [
+const tableData: Faculty[] = [
   {
     id: 1,
-    user: {
-      image: "/images/user/user-17.jpg",
-      name: "Lindsey Curtis",
-      role: "Web Designer",
-    },
-    projectName: "Agency Website",
-    team: {
-      images: [
-        "/images/user/user-22.jpg",
-        "/images/user/user-23.jpg",
-        "/images/user/user-24.jpg",
-      ],
-    },
-    budget: "3.9K",
-    status: "Active",
+    name: "Ngô Minh Trung",
+    email: "ngominhtrung@tlu.edu.vn",
+    status: "Đang làm việc",
+    faculty: "Công nghệ Thông tin",
+    major: "Khoa học Máy tính",
+    joinedDate: "15/08/2020"
   },
   {
     id: 2,
-    user: {
-      image: "/images/user/user-18.jpg",
-      name: "Kaiya George",
-      role: "Project Manager",
-    },
-    projectName: "Technology",
-    team: {
-      images: ["/images/user/user-25.jpg", "/images/user/user-26.jpg"],
-    },
-    budget: "24.9K",
-    status: "Pending",
+    name: "Nguyễn Lê Đức",
+    email: "nguyenleduc@tlu.edu.vn",
+    status: "Nghỉ hưu",
+    faculty: "Kinh tế",
+    major: "Quản trị Kinh doanh",
+    joinedDate: "20/05/2022"
   },
   {
     id: 3,
-    user: {
-      image: "/images/user/user-17.jpg",
-      name: "Zain Geidt",
-      role: "Content Writing",
-    },
-    projectName: "Blog Writing",
-    team: {
-      images: ["/images/user/user-27.jpg"],
-    },
-    budget: "12.7K",
-    status: "Active",
+    name: "Ngô Bá Trường",
+    email: "ngominhtrung@tlu.edu.vn",
+    status: "Đang làm việc",
+    faculty: "Công nghệ Thông tin",
+    major: "Khoa học Máy tính",
+    joinedDate: "15/08/2020"
   },
   {
     id: 4,
-    user: {
-      image: "/images/user/user-20.jpg",
-      name: "Abram Schleifer",
-      role: "Digital Marketer",
-    },
-    projectName: "Social Media",
-    team: {
-      images: [
-        "/images/user/user-28.jpg",
-        "/images/user/user-29.jpg",
-        "/images/user/user-30.jpg",
-      ],
-    },
-    budget: "2.8K",
-    status: "Cancel",
+    name: "Nguyễn Văn Đạt",
+    email: "nguyenleduc@tlu.edu.vn",
+    status: "Nghỉ hưu",
+    faculty: "Kinh tế",
+    major: "Quản trị Kinh doanh",
+    joinedDate: "20/05/2022"
   },
   {
     id: 5,
-    user: {
-      image: "/images/user/user-21.jpg",
-      name: "Carla George",
-      role: "Front-end Developer",
-    },
-    projectName: "Website",
-    team: {
-      images: [
-        "/images/user/user-31.jpg",
-        "/images/user/user-32.jpg",
-        "/images/user/user-33.jpg",
-      ],
-    },
-    budget: "4.5K",
-    status: "Active",
+    name: "Ngô Bá Minh",
+    email: "ngominhtrung@tlu.edu.vn",
+    status: "Đang làm việc",
+    faculty: "Công nghệ Thông tin",
+    major: "Khoa học Máy tính",
+    joinedDate: "15/08/2020"
   },
 ];
+
+// VIET CHI TIET SAU
+const handleViewDetail = (id: number) => {
+  console.log('Xem chi tiết giảng viên:', id);
+};
+
+const handleEdit = (id: number) => {
+  console.log('Sửa thông tin giảng viên:', id);
+};
+
+const handleDelete = (id: number) => {
+  console.log('Xóa giảng viên:', id);
+};
 
 export default function BasicTableOne() {
   return (
@@ -115,103 +87,121 @@ export default function BasicTableOne() {
       <div className="max-w-full overflow-x-auto">
         <div className="min-w-[1102px]">
           <Table>
-            {/* Table Header */}
             <TableHeader className="border-b border-gray-100 dark:border-white/[0.05]">
               <TableRow>
                 <TableCell
                   isHeader
                   className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
                 >
-                  User
+                  ID
                 </TableCell>
                 <TableCell
                   isHeader
                   className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
                 >
-                  Project Name
+                  HỌ VÀ TÊN
                 </TableCell>
                 <TableCell
                   isHeader
                   className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
                 >
-                  Team
+                  EMAIL
                 </TableCell>
                 <TableCell
                   isHeader
                   className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
                 >
-                  Status
+                  TRẠNG THÁI
                 </TableCell>
                 <TableCell
                   isHeader
                   className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
                 >
-                  Budget
+                  KHOA
+                </TableCell>
+                <TableCell
+                  isHeader
+                  className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                >
+                  CHUYÊN NGÀNH
+                </TableCell>
+                <TableCell
+                  isHeader
+                  className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                >
+                  NGÀY VÀO
+                </TableCell>
+                <TableCell
+                  isHeader
+                  className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                >
+                  HÀNH ĐỘNG
                 </TableCell>
               </TableRow>
             </TableHeader>
 
             {/* Table Body */}
             <TableBody className="divide-y divide-gray-100 dark:divide-white/[0.05]">
-              {tableData.map((order) => (
-                <TableRow key={order.id}>
-                  <TableCell className="px-5 py-4 sm:px-6 text-start">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 overflow-hidden rounded-full">
-                        <img
-                          width={40}
-                          height={40}
-                          src={order.user.image}
-                          alt={order.user.name}
-                        />
-                      </div>
-                      <div>
-                        <span className="block font-medium text-gray-800 text-theme-sm dark:text-white/90">
-                          {order.user.name}
-                        </span>
-                        <span className="block text-gray-500 text-theme-xs dark:text-gray-400">
-                          {order.user.role}
-                        </span>
-                      </div>
-                    </div>
+              {tableData.map((faculty) => (
+                <TableRow key={faculty.id}>
+                  <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                    {faculty.id}
                   </TableCell>
                   <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                    {order.projectName}
+                    {faculty.name}
                   </TableCell>
                   <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                    <div className="flex -space-x-2">
-                      {order.team.images.map((teamImage, index) => (
-                        <div
-                          key={index}
-                          className="w-6 h-6 overflow-hidden border-2 border-white rounded-full dark:border-gray-900"
-                        >
-                          <img
-                            width={24}
-                            height={24}
-                            src={teamImage}
-                            alt={`Team member ${index + 1}`}
-                            className="w-full size-6"
-                          />
-                        </div>
-                      ))}
-                    </div>
+                    {faculty.email}
                   </TableCell>
                   <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
                     <Badge
                       size="sm"
                       color={
-                        order.status === "Active"
+                        faculty.status === "Đang làm việc"
                           ? "success"
-                          : order.status === "Pending"
-                          ? "warning"
-                          : "error"
+                          : faculty.status === "Nghỉ hưu"
+                            ? "warning"
+                            : "error"
                       }
                     >
-                      {order.status}
+                      {faculty.status}
                     </Badge>
                   </TableCell>
                   <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
-                    {order.budget}
+                    {faculty.faculty}
+                  </TableCell>
+                  <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
+                    {faculty.major}
+                  </TableCell>
+                  <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
+                    {faculty.joinedDate}
+                  </TableCell>
+                  <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
+                    <div className="flex items-center gap-2">
+                      {/* Nút Xem chi tiết */}
+                      <button
+                        className="text-blue-600 hover:text-blue-900 transition-colors"
+                        onClick={() => handleViewDetail(faculty.id)}
+                      >
+                        <FiEye className="w-4 h-4" />
+                      </button>
+
+                      {/* Nút Sửa */}
+                      <button
+                        className="text-green-600 hover:text-green-900 transition-colors"
+                        onClick={() => handleEdit(faculty.id)}
+                      >
+                        <FiEdit className="w-4 h-4" />
+                      </button>
+
+                      {/* Nút Xóa */}
+                      <button
+                        className="text-red-600 hover:text-red-900 transition-colors"
+                        onClick={() => handleDelete(faculty.id)}
+                      >
+                        <FiTrash2 className="w-4 h-4" />
+                      </button>
+                    </div>
                   </TableCell>
                 </TableRow>
               ))}

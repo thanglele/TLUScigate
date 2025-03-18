@@ -18,7 +18,8 @@ import Blank from "./pages/Blank";
 import AppLayout from "./layout/AppLayout";
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
-
+// import FacultyList from './pages/FacultyList';
+import AddFaculty from './pages/Faculty/AddFaculty';
 export default function App() {
   return (
     <>
@@ -51,6 +52,10 @@ export default function App() {
             {/* Charts */}
             <Route path="/line-chart" element={<LineChart />} />
             <Route path="/bar-chart" element={<BarChart />} />
+
+            {/* Faculty */}
+            <Route path="/giang-vien" element={<BasicTables />} />
+            <Route path="/them-giang-vien" element={<AddFaculty />} />
           </Route>
 
           {/* Auth Layout */}

@@ -1,22 +1,16 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router";
-
-// Assume these icons are imported from an icon library
 import {
-  BoxCubeIcon,
-  CalenderIcon,
+  Home,
+  Faculty,
+  TaskIcon,
   ChevronDownIcon,
-  GridIcon,
   HorizontaLDots,
   ListIcon,
   PageIcon,
-  PieChartIcon,
-  PlugInIcon,
   TableIcon,
-  UserCircleIcon,
 } from "../icons";
 import { useSidebar } from "../context/SidebarContext";
-import SidebarWidget from "./SidebarWidget";
 
 type NavItem = {
   name: string;
@@ -25,71 +19,76 @@ type NavItem = {
   subItems?: { name: string; path: string; pro?: boolean; new?: boolean }[];
 };
 
+// ĐÂY BẠN YÊU ƠI
 const navItems: NavItem[] = [
   {
-    icon: <GridIcon />,
-    name: "Dashboard",
-    subItems: [{ name: "Ecommerce", path: "/", pro: false }],
+    icon: <Home />,
+    name: "Trang chủ",
+    path: "/"
   },
   {
-    icon: <CalenderIcon />,
-    name: "Calendar",
-    path: "/calendar",
+    icon: <Faculty />,
+    name: "Giảng viên",
+    path: "/basic-tables",
   },
   {
-    icon: <UserCircleIcon />,
-    name: "User Profile",
-    path: "/profile",
-  },
-  {
-    name: "Forms",
+    name: "Đề tài nghiên cứu",
     icon: <ListIcon />,
-    subItems: [{ name: "Form Elements", path: "/form-elements", pro: false }],
+    path: " "
+    
   },
   {
-    name: "Tables",
+    name: "Công bố khoa học",
     icon: <TableIcon />,
-    subItems: [{ name: "Basic Tables", path: "/basic-tables", pro: false }],
+    subItems: [{ name: "Danh sách", path: "", pro: false },
+      { name: "Đăng ký", path: "", pro: false },
+      { name: "Cập nhật", path: "", pro: false },
+    ],
   },
   {
-    name: "Pages",
+    name: "Tạp chí-ấn phẩm",
     icon: <PageIcon />,
-    subItems: [
-      { name: "Blank Page", path: "/blank", pro: false },
-      { name: "404 Error", path: "/error-404", pro: false },
+    subItems: [{ name: "Danh sách", path: "", pro: false },
+      { name: "Đăng ký", path: "", pro: false },
+      { name: "Cập nhật", path: "", pro: false },
     ],
+  },
+  {
+    name: "Báo cáo thống kê",
+    icon: <TaskIcon />,
+    path: " ",
   },
 ];
 
 const othersItems: NavItem[] = [
-  {
-    icon: <PieChartIcon />,
-    name: "Charts",
-    subItems: [
-      { name: "Line Chart", path: "/line-chart", pro: false },
-      { name: "Bar Chart", path: "/bar-chart", pro: false },
-    ],
-  },
-  {
-    icon: <BoxCubeIcon />,
-    name: "UI Elements",
-    subItems: [
-      { name: "Alerts", path: "/alerts", pro: false },
-      { name: "Avatar", path: "/avatars", pro: false },
-      { name: "Badge", path: "/badge", pro: false },
-      { name: "Buttons", path: "/buttons", pro: false },
-      { name: "Images", path: "/images", pro: false },
-      { name: "Videos", path: "/videos", pro: false },
-    ],
-  },
-  {
-    icon: <PlugInIcon />,
-    name: "Authentication",
-    subItems: [
-      { name: "Sign In", path: "/signin", pro: false },
-      { name: "Sign Up", path: "/signup", pro: false },
-    ],
-  },
+  // {
+  //   icon: <PieChartIcon />,
+  //   name: "Charts",
+  //   subItems: [
+  //     { name: "Line Chart", path: "/line-chart", pro: false },
+  //     { name: "Bar Chart", path: "/bar-chart", pro: false },
+  //   ],
+  // },
+  // {
+  //   icon: <BoxCubeIcon />,
+  //   name: "UI Elements",
+  //   subItems: [
+  //     { name: "Alerts", path: "/alerts", pro: false },
+  //     { name: "Avatar", path: "/avatars", pro: false },
+  //     { name: "Badge", path: "/badge", pro: false },
+  //     { name: "Buttons", path: "/buttons", pro: false },
+  //     { name: "Images", path: "/images", pro: false },
+  //     { name: "Videos", path: "/videos", pro: false },
+  //   ],
+  // },
+  // {
+  //   icon: <PlugInIcon />,
+  //   name: "Authentication",
+  //   subItems: [
+  //     { name: "Sign In", path: "/signin", pro: false },
+  //     { name: "Sign Up", path: "/signup", pro: false },
+  //   ],
+  // },
 ];
 
 const AppSidebar: React.FC = () => {
@@ -308,22 +307,22 @@ const AppSidebar: React.FC = () => {
             <>
               <img
                 className="dark:hidden"
-                src="/images/logo/logo.svg"
+                src="/images/logo/logotlu.png"
                 alt="Logo"
-                width={150}
+                width={200}
                 height={40}
               />
-              <img
+              {/* <img
                 className="hidden dark:block"
                 src="/images/logo/logo-dark.svg"
                 alt="Logo"
                 width={150}
                 height={40}
-              />
+              /> */}
             </>
           ) : (
             <img
-              src="/images/logo/logo-icon.svg"
+              src="/images/logo/logo-tlu.svg"
               alt="Logo"
               width={32}
               height={32}
@@ -343,7 +342,7 @@ const AppSidebar: React.FC = () => {
                 }`}
               >
                 {isExpanded || isHovered || isMobileOpen ? (
-                  "Menu"
+                  ""
                 ) : (
                   <HorizontaLDots className="size-6" />
                 )}
@@ -359,7 +358,7 @@ const AppSidebar: React.FC = () => {
                 }`}
               >
                 {isExpanded || isHovered || isMobileOpen ? (
-                  "Others"
+                  ""
                 ) : (
                   <HorizontaLDots />
                 )}
@@ -368,7 +367,7 @@ const AppSidebar: React.FC = () => {
             </div>
           </div>
         </nav>
-        {isExpanded || isHovered || isMobileOpen ? <SidebarWidget /> : null}
+        {isExpanded || isHovered || isMobileOpen}
       </div>
     </aside>
   );
