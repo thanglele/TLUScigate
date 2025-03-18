@@ -9,7 +9,7 @@ const AddScience = () => {
     return (
         <div className="p-6 bg-white rounded-lg shadow-sm dark:bg-gray-800">
             <h1 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white">
-                Đăng ký bài công bố khoa học
+                Cập nhật bài công bố khoa học
             </h1>
             <div className="pb-4">
                 <span className="text-xl font-bold mb-6 text-gray-800 dark:text-white">
@@ -189,7 +189,7 @@ const AddScience = () => {
                         Hủy
                     </button>
                     <button className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800">
-                        Đăng Ký
+                        Cập nhật
                     </button>
                 </div>
             </div>

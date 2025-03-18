@@ -22,6 +22,7 @@ import Home from "./pages/Dashboard/Home";
 // import FacultyList from './pages/FacultyList';
 import AddFaculty from './pages/Faculty/AddFaculty';
 import AddScience from './pages/Science/AddScience';
+import UpdateScience from './pages/Science/UpdateScience';
 export default function App() {
   return (
     <>
@@ -62,6 +63,7 @@ export default function App() {
 
           {/* Science */}
           <Route path="/dang-ki-khoa-hoc" element={<AddScience />} />
+          <Route path="/cap-nhat-khoa-hoc" element={<UpdateScience />} />
           </Route>
 
           {/* Auth Layout */}

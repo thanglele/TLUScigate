@@ -34,7 +34,10 @@ const navItems: NavItem[] = [
   {
     name: "Đề tài nghiên cứu",
     icon: <ListIcon />,
-    path: " "
+    subItems: [{ name: "NCKH của giảng viên", path: "", pro: false },
+      { name: "NCKH của sinh viên", path: "", pro: false }
+      
+    ],
     
   },
   {
@@ -42,7 +45,7 @@ const navItems: NavItem[] = [
     icon: <TableIcon />,
     subItems: [{ name: "Danh sách", path: "/science-tables", pro: false },
       { name: "Đăng ký", path: "/dang-ki-khoa-hoc", pro: false },
-      { name: "Cập nhật", path: "", pro: false },
+      { name: "Cập nhật", path: "/cap-nhat-khoa-hoc", pro: false },
     ],
   },
   {
