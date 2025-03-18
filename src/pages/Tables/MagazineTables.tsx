@@ -1,24 +1,24 @@
 
 import ComponentCard from "../../components/common/ComponentCard";
-import FacultyTablesOne from "../../components/tables/Faculty/FacultyTablesOne";
+import MagazineTablesOne from "../../components/tables/Magazine/MagazineTablesOne";
 
 import { useNavigate } from "react-router-dom";
 
-export default function FacultyTables() {
-    const navigate = useNavigate();
+export default function MagazineTables() {
+    // const navigate = useNavigate();
 
-    const handleAddClick = () => {
-        const isConfirmed = window.confirm("Bạn có chắc chắn muốn thêm không?");
-        if (isConfirmed) {
-            navigate('/giang-vien-nckh');
-        } else {
-            alert("Hành động đã được hủy bỏ.");
-        }
-    };
+    // const handleAddClick = () => {
+    //     const isConfirmed = window.confirm("Bạn có chắc chắn muốn thêm không?");
+    //     if (isConfirmed) {
+    //         navigate(' ');
+    //     } else {
+    //         alert("Hành động đã được hủy bỏ.");
+    //     }
+    // };
 
     return (
         <>
-            <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
+            {/* <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
                 <div></div>
                 <div className="action">
                     <button
@@ -29,10 +29,10 @@ export default function FacultyTables() {
                         Thêm
                     </button>
                 </div>
-            </div>
+            </div> */}
             <div className="space-y-6">
                 <ComponentCard title="Danh sách">
-                    <FacultyTablesOne />
+                    <MagazineTablesOne />
                 </ComponentCard>
             </div>
         </>

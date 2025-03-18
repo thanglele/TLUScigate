@@ -49,9 +49,9 @@ const navItems: NavItem[] = [
   {
     name: "Tạp chí-ấn phẩm",
     icon: <PageIcon />,
-    subItems: [{ name: "Danh sách", path: "", pro: false },
-      { name: "Đăng ký", path: "", pro: false },
-      { name: "Cập nhật", path: "", pro: false },
+    subItems: [{ name: "Danh sách", path: "/an-pham", pro: false },
+      { name: "Đăng ký", path: "/dang-ki-an-pham", pro: false },
+      { name: "Cập nhật", path: "/cap-nhat-an-pham", pro: false },
     ],
   },
   {

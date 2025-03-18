@@ -8,9 +8,9 @@ export default function ScienceTables() {
     <>
       {/* HEADER TABLE NẾU MUỐN CÓ NÚT THÊM */}
       {/* <ScienceTabalesHeader pageTitle="Công bố khoa học" /> */}
-      <PageBreadcrumb pageTitle="Giảng Viên" />
+      <PageBreadcrumb pageTitle="Công bố khoa học" />
       <div className="space-y-6">
-        <ComponentCard title="Công bố khoa học">
+        <ComponentCard title="Danh sách">
            <ScienceTablesOne />
         </ComponentCard>
       </div>

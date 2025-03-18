@@ -22,9 +22,12 @@ import Home from "./pages/Dashboard/Home";
 // import FacultyList from './pages/FacultyList';
 import AddFaculty from './pages/Faculty/AddFaculty';
 import AddScience from './pages/Science/AddScience';
+import AddMagazine from './pages/Magazine/AddMagazine';
+import UdateMagazine from './pages/Magazine/UdateMagazine';
 import UpdateScience from './pages/Science/UpdateScience';
 import StudentTables from './pages/Tables/StudentTables';
 import FacultyTables from './pages/Tables/FacultyTables';
+import MagazineTables from './pages/Tables/MagazineTables';
 import NewTopicFormStudent from "./pages/Student/NewTopicFormStudent";
 import NewTopicFormFaculty from "./pages/Faculty/NewTopicFormFaculty";
 export default function App() {
@@ -74,6 +77,11 @@ export default function App() {
           <Route path="/giang-vien-nghien-cuu" element={<FacultyTables />} />
           <Route path="/sinh-vien-nckh" element={<NewTopicFormStudent />} />
           <Route path="/giang-vien-nckh" element={<NewTopicFormFaculty />} />
+
+          {/* Tạp chí ấn phẩm */}
+          <Route path="/an-pham" element={<MagazineTables />} />
+          <Route path="/dang-ki-an-pham" element={<AddMagazine/>} />
+          <Route path="/cap-nhat-an-pham" element={<UdateMagazine/>} />
           </Route>
 
           {/* Auth Layout */}

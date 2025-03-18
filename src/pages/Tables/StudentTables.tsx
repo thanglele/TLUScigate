@@ -31,7 +31,7 @@ export default function StudentTable() {
         </div>
       </div>
       <div className="space-y-6">
-        <ComponentCard title="Công bố khoa học">
+        <ComponentCard title="Danh sách">
           <StudentTablesOne />
         </ComponentCard>
       </div>
