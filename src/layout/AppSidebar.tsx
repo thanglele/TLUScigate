@@ -40,8 +40,8 @@ const navItems: NavItem[] = [
   {
     name: "Công bố khoa học",
     icon: <TableIcon />,
-    subItems: [{ name: "Danh sách", path: "", pro: false },
-      { name: "Đăng ký", path: "", pro: false },
+    subItems: [{ name: "Danh sách", path: "/science-tables", pro: false },
+      { name: "Đăng ký", path: "/dang-ki-khoa-hoc", pro: false },
       { name: "Cập nhật", path: "", pro: false },
     ],
   },

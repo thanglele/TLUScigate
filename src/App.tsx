@@ -13,6 +13,7 @@ import LineChart from "./pages/Charts/LineChart";
 import BarChart from "./pages/Charts/BarChart";
 import Calendar from "./pages/Calendar";
 import BasicTables from "./pages/Tables/BasicTables";
+import ScienceTables from "./pages/Tables/ScienceTables";
 import FormElements from "./pages/Forms/FormElements";
 import Blank from "./pages/Blank";
 import AppLayout from "./layout/AppLayout";
@@ -20,6 +21,7 @@ import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
 // import FacultyList from './pages/FacultyList';
 import AddFaculty from './pages/Faculty/AddFaculty';
+import AddScience from './pages/Science/AddScience';
 export default function App() {
   return (
     <>
@@ -40,6 +42,7 @@ export default function App() {
 
             {/* Tables */}
             <Route path="/basic-tables" element={<BasicTables />} />
+            <Route path="/science-tables" element={<ScienceTables />} />
 
             {/* Ui Elements */}
             <Route path="/alerts" element={<Alerts />} />
@@ -56,6 +59,9 @@ export default function App() {
             {/* Faculty */}
             <Route path="/giang-vien" element={<BasicTables />} />
             <Route path="/them-giang-vien" element={<AddFaculty />} />
+
+          {/* Science */}
+          <Route path="/dang-ki-khoa-hoc" element={<AddScience />} />
           </Route>
 
           {/* Auth Layout */}

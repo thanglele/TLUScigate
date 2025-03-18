@@ -70,7 +70,7 @@ const tableData: Faculty[] = [
 
 // VIET CHI TIET SAU
 const handleViewDetail = (id: number) => {
-  console.log('Xem chi tiết giảng viên:', id);
+  
 };
 
 const handleEdit = (id: number) => {
