@@ -23,6 +23,10 @@ import Home from "./pages/Dashboard/Home";
 import AddFaculty from './pages/Faculty/AddFaculty';
 import AddScience from './pages/Science/AddScience';
 import UpdateScience from './pages/Science/UpdateScience';
+import StudentTables from './pages/Tables/StudentTables';
+import FacultyTables from './pages/Tables/FacultyTables';
+import NewTopicFormStudent from "./pages/Student/NewTopicFormStudent";
+import NewTopicFormFaculty from "./pages/Faculty/NewTopicFormFaculty";
 export default function App() {
   return (
     <>
@@ -64,6 +68,12 @@ export default function App() {
           {/* Science */}
           <Route path="/dang-ki-khoa-hoc" element={<AddScience />} />
           <Route path="/cap-nhat-khoa-hoc" element={<UpdateScience />} />
+
+          {/* Đề tài nghiên cứu */}
+          <Route path="/sinh-vien-nghien-cuu" element={<StudentTables />} />
+          <Route path="/giang-vien-nghien-cuu" element={<FacultyTables />} />
+          <Route path="/sinh-vien-nckh" element={<NewTopicFormStudent />} />
+          <Route path="/giang-vien-nckh" element={<NewTopicFormFaculty />} />
           </Route>
 
           {/* Auth Layout */}

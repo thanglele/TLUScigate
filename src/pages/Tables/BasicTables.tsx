@@ -7,7 +7,7 @@ export default function BasicTables() {
     <>
       <PageBreadcrumb pageTitle="Giảng Viên" />
       <div className="space-y-6">
-        <ComponentCard title="Giảng Viên">
+        <ComponentCard title="">
           <BasicTableOne />
         </ComponentCard>
       </div>

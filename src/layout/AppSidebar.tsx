@@ -34,11 +34,9 @@ const navItems: NavItem[] = [
   {
     name: "Đề tài nghiên cứu",
     icon: <ListIcon />,
-    subItems: [{ name: "NCKH của giảng viên", path: "", pro: false },
-      { name: "NCKH của sinh viên", path: "", pro: false }
-      
+    subItems: [{ name: "NCKH của giảng viên", path: "/giang-vien-nghien-cuu", pro: false },
+      { name: "NCKH của sinh viên", path: "/sinh-vien-nghien-cuu", pro: false },
     ],
-    
   },
   {
     name: "Công bố khoa học",
