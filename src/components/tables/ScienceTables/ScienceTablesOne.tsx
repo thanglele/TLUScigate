@@ -7,7 +7,7 @@ import {
   TableHeader,
   TableRow,
 } from "../../ui/table";
-import { fetchScienceData } from "../../../api/scienceAPI.js";
+import { fetchScienceData } from "../../../api/scienceApi.js";
 
 
 
@@ -22,7 +22,6 @@ interface Science {
 
 const handleViewDetail = (id: number) => {
   console.log(`View detail for ID: ${id}`);
-  // Thêm logic xem chi tiết ở đây
 };
 
 export default function ScienceTablesOne() {
@@ -78,13 +77,13 @@ export default function ScienceTablesOne() {
                   isHeader
                   className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
                 >
-                  TRẠNG THÁI
+                  TÁC GIẢ
                 </TableCell>
                 <TableCell
                   isHeader
                   className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
                 >
-                 TÁC GIẢ
+                  TRẠNG THÁI
                 </TableCell>
                 <TableCell
                   isHeader
@@ -127,10 +126,10 @@ export default function ScienceTablesOne() {
                     {science.indexScience}
                   </TableCell>
                   <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
-                    {science.publicDate}
+                    {science.chiMucKhoaHoc}
                   </TableCell>
                   <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
-                    {science.publicDate}
+                    {science.namCongBo}
                   </TableCell>
                   <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
                     <div className="flex items-center gap-2">

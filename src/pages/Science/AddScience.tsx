@@ -1,7 +1,7 @@
 // src/components/AddScience.jsx
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { createScience } from '../../api/scienceAPI.js';
+import { createScience } from '../../api/scienceApi.js';
 
 const AddScience = () => {
   const navigate = useNavigate();
@@ -11,7 +11,7 @@ const AddScience = () => {
     maCongBo: '',
     tieuDe: '',
     tomTat: '',
-    tukhoa: '',
+    tuKhoa: '',
     ngonNgu: '',
     loaiCongBo: 'Tạp chí trong nước',
     issnIsbn: '',
