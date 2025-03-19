@@ -184,6 +184,16 @@ try
     builder.Services.AddScoped<ICongBoKhoaHocRepository, CongBoKhoaHocRepository>();
     builder.Services.AddScoped<ICongBoKhoaHocService, CongBoKhoaHocService>();
 
+    builder.Services.AddScoped<INCKHSinhVienRepository, NCKHSinhVienRepository>();
+    builder.Services.AddScoped<INCKHSinhVienService, NCKHSinhVienService>();
+
+    builder.Services.AddScoped<ISinhVienNCKHRepository, SinhVienNCKHRepository>();
+    builder.Services.AddScoped<ITienDoRepository, TienDoRepository>();
+    builder.Services.AddScoped<IDeTaiNghienCuuRepository, DeTaiNghienCuuRepository>();
+    builder.Services.AddScoped<ISinhVienRepository, SinhVienRepository>();
+
+
+
     // Đăng ký các service
     builder.Services.AddScoped<IGiangVienService, GiangVienService>();
 
