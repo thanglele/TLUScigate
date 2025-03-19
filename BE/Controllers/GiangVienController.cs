@@ -21,6 +21,12 @@ namespace TLUScience.Controllers
         {
             return await _giangVienService.GetFullGiangVienAsync();
         }
+
+        [HttpPost]
+        public async Task<ActionResult> addGiangvienAsync()
+        {
+
+        }
     }
 
 }

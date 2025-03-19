@@ -46,7 +46,7 @@ namespace TLUScience.Controllers
                     {
                         staticID = 400,
                         Id = null,
-                        Messages = "Đăng nhập thất bại, vui lòng kiểm tra lại!"
+                        Messages = "Email hoặc mật khẩu không chính xác"
                     });
                 }
                 else
