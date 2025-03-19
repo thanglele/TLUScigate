@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Logo from '../../../public/images/logo/logo.svg';
 
 const LoginPage: React.FC = () => {
     const [email, setEmail] = useState('');
@@ -8,10 +9,10 @@ const LoginPage: React.FC = () => {
 
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();
-        // Thêm logic xử lý đăng nhập ở đây
+     
         setIsLoading(true);
         console.log({ email, password });
-        // Giả lập API call
+        
         setTimeout(() => {
             setIsLoading(false);
         }, 2000);
@@ -36,8 +37,10 @@ const LoginPage: React.FC = () => {
                 </div>
 
                 <form onSubmit={handleLogin} className="w-full md:w-1/2 bg-white p-8 rounded-lg shadow-lg">
-                    <h2 className="text-3xl font-bold text-center mb-8">ĐĂNG NHẬP</h2>
-                    <img src="../" alt="" />
+                   <div className="card-header flex items-center justify-between">
+                        <h2 className="text-3xl font-bold text-center mb-8">ĐĂNG NHẬP</h2>
+                        <img src="{Logo}" alt="TLU" />
+                   </div>
                     
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-medium mb-2">
