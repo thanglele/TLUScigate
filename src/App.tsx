@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router";
 import SignIn from "./pages/AuthPages/SignIn";
 import SignUp from "./pages/AuthPages/SignUp";
+// import SignUp from "./pages/AuthPages/SignInPage";
 import NotFound from "./pages/OtherPage/NotFound";
 import UserProfiles from "./pages/UserProfiles";
 import Videos from "./pages/UiElements/Videos";
@@ -38,7 +39,7 @@ export default function App() {
         <Routes>
           {/* Dashboard Layout */}
           <Route element={<AppLayout />}>
-            <Route index path="/" element={<Home />} />
+            <Route index path="" element={<Home />} />
 
             {/* Others Page */}
             <Route path="/profile" element={<UserProfiles />} />
@@ -68,20 +69,20 @@ export default function App() {
             <Route path="/giang-vien" element={<BasicTables />} />
             <Route path="/them-giang-vien" element={<AddFaculty />} />
 
-          {/* Science */}
-          <Route path="/dang-ki-khoa-hoc" element={<AddScience />} />
-          <Route path="/cap-nhat-khoa-hoc" element={<UpdateScience />} />
+            {/* Science */}
+            <Route path="/dang-ki-khoa-hoc" element={<AddScience />} />
+            <Route path="/cap-nhat-khoa-hoc" element={<UpdateScience />} />
 
-          {/* Đề tài nghiên cứu */}
-          <Route path="/sinh-vien-nghien-cuu" element={<StudentTables />} />
-          <Route path="/giang-vien-nghien-cuu" element={<FacultyTables />} />
-          <Route path="/sinh-vien-nckh" element={<NewTopicFormStudent />} />
-          <Route path="/giang-vien-nckh" element={<NewTopicFormFaculty />} />
+            {/* Đề tài nghiên cứu */}
+            <Route path="/sinh-vien-nghien-cuu" element={<StudentTables />} />
+            <Route path="/giang-vien-nghien-cuu" element={<FacultyTables />} />
+            <Route path="/sinh-vien-nckh" element={<NewTopicFormStudent />} />
+            <Route path="/giang-vien-nckh" element={<NewTopicFormFaculty />} />
 
-          {/* Tạp chí ấn phẩm */}
-          <Route path="/an-pham" element={<MagazineTables />} />
-          <Route path="/dang-ki-an-pham" element={<AddMagazine/>} />
-          <Route path="/cap-nhat-an-pham" element={<UdateMagazine/>} />
+            {/* Tạp chí ấn phẩm */}
+            <Route path="/an-pham" element={<MagazineTables />} />
+            <Route path="/dang-ki-an-pham" element={<AddMagazine />} />
+            <Route path="/cap-nhat-an-pham" element={<UdateMagazine />} />
           </Route>
 
           {/* Auth Layout */}
