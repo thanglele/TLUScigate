@@ -392,54 +392,56 @@ namespace TLUScience.Services
         {
             try
             {
-                //if(loginRequest.Email.IsNullOrEmpty() == true)
-                //{
-                //    return false;
-                //}
-
-                _userRepository.CleanOldOTP();
-                RenewCache();
-
-                if (!_cache.TryGetValue(_cacheKey, out List<TaiKhoan> users))
+                if(ValidateInput(loginRequest, true) == 400)
                 {
+                    _userRepository.CleanOldOTP();
                     RenewCache();
-                    users = _cache.Get<List<TaiKhoan>>(_cacheKey);
-                }
-                var otps = _cache.Get<List<OTP>>(_cacheOTP);
-                int CountSent = 0;
 
-                for (int i = 0; i < users.Count(); i++)
-                {
-                    // Kiểm tra tài khoản xuất hiện
-                    if (users[i].Email == loginRequest.Email)
+                    if (!_cache.TryGetValue(_cacheKey, out List<TaiKhoan> users))
                     {
-                        for (int j = 0; j < otps.Count(); j++)
+                        RenewCache();
+                        users = _cache.Get<List<TaiKhoan>>(_cacheKey);
+                    }
+                    var otps = _cache.Get<List<OTP>>(_cacheOTP);
+                    int CountSent = 0;
+
+                    for (int i = 0; i < users.Count(); i++)
+                    {
+                        // Kiểm tra tài khoản xuất hiện
+                        if (users[i].Email == loginRequest.Email)
                         {
-                            // Đếm số OTP còn hoạt động
-                            if (otps[j].TaiKhoanID == users[i].ID && (otps[j].ThoiGianHetHan - DateTime.Now).TotalSeconds > 0)
+                            for (int j = 0; j < otps.Count(); j++)
                             {
-                                CountSent++;
-                                if (CountSent > 3)
+                                // Đếm số OTP còn hoạt động
+                                if (otps[j].TaiKhoanID == users[i].ID && (otps[j].ThoiGianHetHan - DateTime.Now).TotalSeconds > 0)
                                 {
-                                    break;
+                                    CountSent++;
+                                    if (CountSent > 3)
+                                    {
+                                        break;
+                                    }
                                 }
+                                Console.WriteLine("EMAIL: " + users[i].Email + "Count: " + CountSent + " //// " + "TIME: " + (DateTime.Now - otps[j].ThoiGianHetHan).TotalSeconds.ToString());
                             }
-                            Console.WriteLine("EMAIL: " + users[i].Email + "Count: " + CountSent + " //// " + "TIME: " + (DateTime.Now - otps[j].ThoiGianHetHan).TotalSeconds.ToString());
-                        }
-                        if (CountSent > 3)
-                        {
-                            //Dừng logic nếu có trên 3 OTP hoạt động
-                            break;
-                        }
-                        else
-                        {
-                            //Check OK
-                            return true;
+                            if (CountSent > 3)
+                            {
+                                //Dừng logic nếu có trên 3 OTP hoạt động
+                                break;
+                            }
+                            else
+                            {
+                                //Check OK
+                                return true;
+                            }
                         }
                     }
+                    //Không có tài khoản trong hệ thống, trả lỗi về
+                    return false;
                 }
-                //Không có tài khoản trong hệ thống, trả lỗi về
-                return false;
+                else
+                {
+                    return false;
+                }    
             }
             catch (Exception ex)
             {

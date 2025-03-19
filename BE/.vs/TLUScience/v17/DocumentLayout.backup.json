@@ -1,38 +1,58 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\OneDrive - Thanglele\\DATA-LEARNING\\Ph\u00E2n t\u00EDch d\u1EF1 \u00E1n ph\u1EA7n m\u1EC1m\\TEAM 3 - Code\\TLUScigate\\BE\\",
+  "WorkspaceRootPath": "D:\\TLUScience\\BE\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\onedrive - thanglele\\data-learning\\ph\u00E2n t\u00EDch d\u1EF1 \u00E1n ph\u1EA7n m\u1EC1m\\team 3 - code\\tluscigate\\be\\dtos\\taikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:dtos\\taikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\onedrive - thanglele\\data-learning\\ph\u00E2n t\u00EDch d\u1EF1 \u00E1n ph\u1EA7n m\u1EC1m\\team 3 - code\\tluscigate\\be\\services\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:services\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\controllers\\giangviencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:controllers\\giangviencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\onedrive - thanglele\\data-learning\\ph\u00E2n t\u00EDch d\u1EF1 \u00E1n ph\u1EA7n m\u1EC1m\\team 3 - code\\tluscigate\\be\\services\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\controllers\\congbokhoahoccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:controllers\\congbokhoahoccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\services\\giangvienservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:services\\giangvienservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\dtos\\giangviendto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:dtos\\giangviendto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\services\\congbokhoahocservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:services\\congbokhoahocservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\entities\\giangvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:entities\\giangvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\entities\\nganh.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:entities\\nganh.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\entities\\lop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:entities\\lop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\repository\\giangvienrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:repository\\giangvienrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\services\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:services\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\onedrive - thanglele\\data-learning\\ph\u00E2n t\u00EDch d\u1EF1 \u00E1n ph\u1EA7n m\u1EC1m\\team 3 - code\\tluscigate\\be\\repository\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:repository\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\onedrive - thanglele\\data-learning\\ph\u00E2n t\u00EDch d\u1EF1 \u00E1n ph\u1EA7n m\u1EC1m\\team 3 - code\\tluscigate\\be\\repository\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:repository\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\onedrive - thanglele\\data-learning\\ph\u00E2n t\u00EDch d\u1EF1 \u00E1n ph\u1EA7n m\u1EC1m\\team 3 - code\\tluscigate\\be\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\onedrive - thanglele\\data-learning\\ph\u00E2n t\u00EDch d\u1EF1 \u00E1n ph\u1EA7n m\u1EC1m\\team 3 - code\\tluscigate\\be\\entities\\otp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:entities\\otp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\onedrive - thanglele\\data-learning\\ph\u00E2n t\u00EDch d\u1EF1 \u00E1n ph\u1EA7n m\u1EC1m\\team 3 - code\\tluscigate\\be\\services\\iauthenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:services\\iauthenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\repository\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:repository\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,110 +62,180 @@
       "DocumentGroups": [
         {
           "DockedWidth": 220,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\TLUScience\\BE\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\TLUScience\\BE\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAGkAAAAAAAAAAAAAAHsAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-19T08:42:17.521Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "TokenService.cs",
-              "DocumentMoniker": "D:\\OneDrive - Thanglele\\DATA-LEARNING\\Ph\u00E2n t\u00EDch d\u1EF1 \u00E1n ph\u1EA7n m\u1EC1m\\TEAM 3 - Code\\TLUScigate\\BE\\Services\\TokenService.cs",
-              "RelativeDocumentMoniker": "Services\\TokenService.cs",
-              "ToolTip": "D:\\OneDrive - Thanglele\\DATA-LEARNING\\Ph\u00E2n t\u00EDch d\u1EF1 \u00E1n ph\u1EA7n m\u1EC1m\\TEAM 3 - Code\\TLUScigate\\BE\\Services\\TokenService.cs",
-              "RelativeToolTip": "Services\\TokenService.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAArwF4AAAAlAAAAAAAAAA==",
+              "Title": "GiangVienController.cs",
+              "DocumentMoniker": "D:\\TLUScience\\BE\\Controllers\\GiangVienController.cs",
+              "RelativeDocumentMoniker": "Controllers\\GiangVienController.cs",
+              "ToolTip": "D:\\TLUScience\\BE\\Controllers\\GiangVienController.cs",
+              "RelativeToolTip": "Controllers\\GiangVienController.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwDwAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-17T10:09:31.069Z",
+              "WhenOpened": "2025-03-18T16:26:39.331Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "IAuthenticationService.cs",
-              "DocumentMoniker": "D:\\OneDrive - Thanglele\\DATA-LEARNING\\Ph\u00E2n t\u00EDch d\u1EF1 \u00E1n ph\u1EA7n m\u1EC1m\\TEAM 3 - Code\\TLUScigate\\BE\\Services\\IAuthenticationService.cs",
-              "RelativeDocumentMoniker": "Services\\IAuthenticationService.cs",
-              "ToolTip": "D:\\OneDrive - Thanglele\\DATA-LEARNING\\Ph\u00E2n t\u00EDch d\u1EF1 \u00E1n ph\u1EA7n m\u1EC1m\\TEAM 3 - Code\\TLUScigate\\BE\\Services\\IAuthenticationService.cs",
-              "RelativeToolTip": "Services\\IAuthenticationService.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAA1wBcAAAAdAAAAAAAAAA==",
+              "DocumentIndex": 10,
+              "Title": "AuthenticationService.cs",
+              "DocumentMoniker": "D:\\TLUScience\\BE\\Services\\AuthenticationService.cs",
+              "RelativeDocumentMoniker": "Services\\AuthenticationService.cs",
+              "ToolTip": "D:\\TLUScience\\BE\\Services\\AuthenticationService.cs",
+              "RelativeToolTip": "Services\\AuthenticationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJMBAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-17T10:08:13.22Z",
+              "WhenOpened": "2025-03-18T15:38:43.885Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "OTP.cs",
-              "DocumentMoniker": "D:\\OneDrive - Thanglele\\DATA-LEARNING\\Ph\u00E2n t\u00EDch d\u1EF1 \u00E1n ph\u1EA7n m\u1EC1m\\TEAM 3 - Code\\TLUScigate\\BE\\Entities\\OTP.cs",
-              "RelativeDocumentMoniker": "Entities\\OTP.cs",
-              "ToolTip": "D:\\OneDrive - Thanglele\\DATA-LEARNING\\Ph\u00E2n t\u00EDch d\u1EF1 \u00E1n ph\u1EA7n m\u1EC1m\\TEAM 3 - Code\\TLUScigate\\BE\\Entities\\OTP.cs",
-              "RelativeToolTip": "Entities\\OTP.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-17T09:59:04.635Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 11,
               "Title": "AuthController.cs",
-              "DocumentMoniker": "D:\\OneDrive - Thanglele\\DATA-LEARNING\\Ph\u00E2n t\u00EDch d\u1EF1 \u00E1n ph\u1EA7n m\u1EC1m\\TEAM 3 - Code\\TLUScigate\\BE\\Controllers\\AuthController.cs",
+              "DocumentMoniker": "D:\\TLUScience\\BE\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
-              "ToolTip": "D:\\OneDrive - Thanglele\\DATA-LEARNING\\Ph\u00E2n t\u00EDch d\u1EF1 \u00E1n ph\u1EA7n m\u1EC1m\\TEAM 3 - Code\\TLUScigate\\BE\\Controllers\\AuthController.cs",
+              "ToolTip": "D:\\TLUScience\\BE\\Controllers\\AuthController.cs",
               "RelativeToolTip": "Controllers\\AuthController.cs",
-              "ViewState": "AgIAAGUAAAAAAAAAAAAwwEABAAABAAAAAAAAAA==",
+              "ViewState": "AgIAANgAAAAAAAAAAAAmwBcAAABPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-03T08:48:01.079Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "TaiKhoan.cs",
-              "DocumentMoniker": "D:\\OneDrive - Thanglele\\DATA-LEARNING\\Ph\u00E2n t\u00EDch d\u1EF1 \u00E1n ph\u1EA7n m\u1EC1m\\TEAM 3 - Code\\TLUScigate\\BE\\DTOs\\TaiKhoan.cs",
-              "RelativeDocumentMoniker": "DTOs\\TaiKhoan.cs",
-              "ToolTip": "D:\\OneDrive - Thanglele\\DATA-LEARNING\\Ph\u00E2n t\u00EDch d\u1EF1 \u00E1n ph\u1EA7n m\u1EC1m\\TEAM 3 - Code\\TLUScigate\\BE\\DTOs\\TaiKhoan.cs",
-              "RelativeToolTip": "DTOs\\TaiKhoan.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABEAAAArAAAAAAAAAA==",
+              "DocumentIndex": 12,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "D:\\TLUScience\\BE\\Repository\\UserRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\UserRepository.cs",
+              "ToolTip": "D:\\TLUScience\\BE\\Repository\\UserRepository.cs",
+              "RelativeToolTip": "Repository\\UserRepository.cs",
+              "ViewState": "AgIAAPgAAAAAAAAAAAAgwAkAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-15T14:40:54.341Z",
+              "WhenOpened": "2025-03-02T20:40:14.561Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 220,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Lop.cs",
+              "DocumentMoniker": "D:\\TLUScience\\BE\\Entities\\Lop.cs",
+              "RelativeDocumentMoniker": "Entities\\Lop.cs",
+              "ToolTip": "D:\\TLUScience\\BE\\Entities\\Lop.cs",
+              "RelativeToolTip": "Entities\\Lop.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-19T07:48:02.527Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AuthenticationService.cs",
-              "DocumentMoniker": "D:\\OneDrive - Thanglele\\DATA-LEARNING\\Ph\u00E2n t\u00EDch d\u1EF1 \u00E1n ph\u1EA7n m\u1EC1m\\TEAM 3 - Code\\TLUScigate\\BE\\Services\\AuthenticationService.cs",
-              "RelativeDocumentMoniker": "Services\\AuthenticationService.cs",
-              "ToolTip": "D:\\OneDrive - Thanglele\\DATA-LEARNING\\Ph\u00E2n t\u00EDch d\u1EF1 \u00E1n ph\u1EA7n m\u1EC1m\\TEAM 3 - Code\\TLUScigate\\BE\\Services\\AuthenticationService.cs",
-              "RelativeToolTip": "Services\\AuthenticationService.cs",
-              "ViewState": "AgIAAF4CAAAAAAAAAAApwNMBAAA0AAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "Nganh.cs",
+              "DocumentMoniker": "D:\\TLUScience\\BE\\Entities\\Nganh.cs",
+              "RelativeDocumentMoniker": "Entities\\Nganh.cs",
+              "ToolTip": "D:\\TLUScience\\BE\\Entities\\Nganh.cs",
+              "RelativeToolTip": "Entities\\Nganh.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-11T05:40:05.206Z",
+              "WhenOpened": "2025-03-19T07:41:31.914Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "GiangVien.cs",
+              "DocumentMoniker": "D:\\TLUScience\\BE\\Entities\\GiangVien.cs",
+              "RelativeDocumentMoniker": "Entities\\GiangVien.cs",
+              "ToolTip": "D:\\TLUScience\\BE\\Entities\\GiangVien.cs",
+              "RelativeToolTip": "Entities\\GiangVien.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-19T07:33:34.87Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CongBoKhoaHocService.cs",
+              "DocumentMoniker": "D:\\TLUScience\\BE\\Services\\CongBoKhoaHocService.cs",
+              "RelativeDocumentMoniker": "Services\\CongBoKhoaHocService.cs",
+              "ToolTip": "D:\\TLUScience\\BE\\Services\\CongBoKhoaHocService.cs",
+              "RelativeToolTip": "Services\\CongBoKhoaHocService.cs",
+              "ViewState": "AgIAAFgAAAAAAAAAAAA7wAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-19T07:30:43.104Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "IUserRepository.cs",
-              "DocumentMoniker": "D:\\OneDrive - Thanglele\\DATA-LEARNING\\Ph\u00E2n t\u00EDch d\u1EF1 \u00E1n ph\u1EA7n m\u1EC1m\\TEAM 3 - Code\\TLUScigate\\BE\\Repository\\IUserRepository.cs",
-              "RelativeDocumentMoniker": "Repository\\IUserRepository.cs",
-              "ToolTip": "D:\\OneDrive - Thanglele\\DATA-LEARNING\\Ph\u00E2n t\u00EDch d\u1EF1 \u00E1n ph\u1EA7n m\u1EC1m\\TEAM 3 - Code\\TLUScigate\\BE\\Repository\\IUserRepository.cs",
-              "RelativeToolTip": "Repository\\IUserRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAoAAAAsAAAAAAAAAA==",
+              "Title": "GiangVienDTO.cs",
+              "DocumentMoniker": "D:\\TLUScience\\BE\\DTOs\\GiangVienDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\GiangVienDTO.cs",
+              "ToolTip": "D:\\TLUScience\\BE\\DTOs\\GiangVienDTO.cs",
+              "RelativeToolTip": "DTOs\\GiangVienDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-04T15:43:49.303Z",
+              "WhenOpened": "2025-03-19T07:05:47.829Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "GiangVienRepository.cs",
+              "DocumentMoniker": "D:\\TLUScience\\BE\\Repository\\GiangVienRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\GiangVienRepository.cs",
+              "ToolTip": "D:\\TLUScience\\BE\\Repository\\GiangVienRepository.cs",
+              "RelativeToolTip": "Repository\\GiangVienRepository.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAmwCAAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-19T07:06:30.715Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "UserRepository.cs",
-              "DocumentMoniker": "D:\\OneDrive - Thanglele\\DATA-LEARNING\\Ph\u00E2n t\u00EDch d\u1EF1 \u00E1n ph\u1EA7n m\u1EC1m\\TEAM 3 - Code\\TLUScigate\\BE\\Repository\\UserRepository.cs",
-              "RelativeDocumentMoniker": "Repository\\UserRepository.cs",
-              "ToolTip": "D:\\OneDrive - Thanglele\\DATA-LEARNING\\Ph\u00E2n t\u00EDch d\u1EF1 \u00E1n ph\u1EA7n m\u1EC1m\\TEAM 3 - Code\\TLUScigate\\BE\\Repository\\UserRepository.cs",
-              "RelativeToolTip": "Repository\\UserRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAxAAAAAAAAAA==",
+              "Title": "GiangVienService.cs",
+              "DocumentMoniker": "D:\\TLUScience\\BE\\Services\\GiangVienService.cs",
+              "RelativeDocumentMoniker": "Services\\GiangVienService.cs",
+              "ToolTip": "D:\\TLUScience\\BE\\Services\\GiangVienService.cs",
+              "RelativeToolTip": "Services\\GiangVienService.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAcwGwAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T20:40:14.561Z",
+              "WhenOpened": "2025-03-19T07:06:20.156Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CongBoKhoaHocController.cs",
+              "DocumentMoniker": "D:\\TLUScience\\BE\\Controllers\\CongBoKhoaHocController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CongBoKhoaHocController.cs",
+              "ToolTip": "D:\\TLUScience\\BE\\Controllers\\CongBoKhoaHocController.cs",
+              "RelativeToolTip": "Controllers\\CongBoKhoaHocController.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAIwDUAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-18T16:27:50.305Z",
               "EditorCaption": ""
             }
           ]

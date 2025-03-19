@@ -111,58 +111,34 @@ try
 
                 logger.LogWarning("Authentication challenge triggered.");
 
-                var loginUrl = "/login";
-                var returnUrl = context.Request.Path;
-                var redirectUrl = $"{loginUrl}?returnUrl={Uri.EscapeDataString(returnUrl)}";
+                context.Response.ContentType = "application/json";
+                context.Response.StatusCode = StatusCodes.Status401Unauthorized;
 
-                var html = $@"
-            <html>
-                <head>
-                    <title>Redirecting...</title>
-                </head>
-                <body>
-                    <script>
-                        window.location.href = '{redirectUrl}';
-                    </script>
-                    <noscript>
-                        <meta http-equiv='refresh' content='0;url={redirectUrl}' />
-                    </noscript>
-                    <p>Please wait while you're redirecting to the login page...</p>
-                </body>
-            </html>";
+                var response = new
+                {
+                    status = 401,
+                    message = "Authentication required. Please log in to access this resource."
+                };
 
-                context.Response.ContentType = "text/html";
-                context.Response.StatusCode = 401;
-                await context.Response.WriteAsync(html);
+                await context.Response.WriteAsJsonAsync(response);
             },
 
             // Log khi bị từ chối truy cập
             OnForbidden = async context =>
             {
                 var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<Program>>();
-
                 logger.LogWarning("Access forbidden. User does not have the required permissions.");
 
-                var loginUrl = "/login";
-                var html = $@"
-            <html>
-                <head>
-                    <title>Access Denied</title>
-                </head>
-                <body>
-                    <script>
-                        window.location.href = '{loginUrl}';
-                    </script>
-                    <noscript>
-                        <meta http-equiv='refresh' content='0;url={loginUrl}' />
-                    </noscript>
-                    <p>Access denied. Redirecting to login page...</p>
-                </body>
-            </html>";
+                context.Response.ContentType = "application/json";
+                context.Response.StatusCode = StatusCodes.Status403Forbidden;
 
-                context.Response.ContentType = "text/html";
-                context.Response.StatusCode = 403;
-                await context.Response.WriteAsync(html);
+                var response = new
+                {
+                    status = 403,
+                    message = "Access denied. You do not have the required permissions."
+                };
+
+                await context.Response.WriteAsJsonAsync(response);
             }
         };
     });
