@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Logo from '../../../public/images/logo/logo.svg';
+import Logo from '/images/logo/logo-tlu.svg'; 
 
 const LoginPage: React.FC = () => {
     const [email, setEmail] = useState('');
@@ -39,7 +39,7 @@ const LoginPage: React.FC = () => {
                 <form onSubmit={handleLogin} className="w-full md:w-1/2 bg-white p-8 rounded-lg shadow-lg">
                    <div className="card-header flex items-center justify-between">
                         <h2 className="text-3xl font-bold text-center mb-8">ĐĂNG NHẬP</h2>
-                        <img src="{Logo}" alt="TLU" />
+                        <img src={Logo} alt="TLU" className="h-20 w-auto" />
                    </div>
                     
                     <div className="mb-4">
