@@ -1,7 +1,7 @@
 // src/components/AddScience.jsx
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { createScience } from '../../api/scienceApi.js';
+import { createScience } from '../../api/scienceAPI.js';
 
 const AddScience = () => {
   const navigate = useNavigate();

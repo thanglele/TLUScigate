@@ -776,3 +776,19 @@ span.flatpickr-weekday,
 .simplebar-scrollbar.simplebar-visible:before {
   @apply opacity-100;
 }
+
+.custom-gradient {
+  background-image: linear-gradient(
+    to bottom left,
+    #22169f,
+    #231a85 2%,
+    #0d183d 30%,
+    #0d183d 70%,
+    #231a85 98%,
+    #22169f
+  );
+}
+
+.font-vt323 {
+  font-family: 'VT323', monospace;
+}

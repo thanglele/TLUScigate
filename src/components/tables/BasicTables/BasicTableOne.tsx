@@ -9,7 +9,7 @@ import {
 } from "../../ui/table";
 import Badge from "../../ui/badge/Badge";
 import { FiEye, FiEdit, FiTrash2 } from "react-icons/fi";
-import { fetchLectureData } from "../../../api/LectureApi";
+import { fetchLectureData } from "../../../api/LectureAPI";
 
 interface Faculty {
   maGV: string;
@@ -51,7 +51,7 @@ export default function BasicTableOne() {
         const data = await fetchLectureData();
         setFacultyData(data);
       } catch (err) {
-        
+
         setError(
           err.message || "Không thể tải dữ liệu từ API. Vui lòng thử lại sau!"
         );

@@ -7,7 +7,7 @@ import {
   TableHeader,
   TableRow,
 } from "../../ui/table";
-import { fetchScienceData } from "../../../api/scienceApi.js";
+import { fetchScienceData } from "../../../api/scienceAPI.js";
 
 
 

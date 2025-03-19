@@ -1,4 +1,3 @@
-// src/App.tsx
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignIn from "./pages/AuthPages/SignIn";
 import SignUp from "./pages/AuthPages/SignUp";
@@ -20,82 +19,81 @@ import Blank from "./pages/Blank";
 import AppLayout from "./layout/AppLayout";
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
-import AddFaculty from './pages/Faculty/AddFaculty';
-import AddScience from './pages/Science/AddScience';
-import AddMagazine from './pages/Magazine/AddMagazine';
-import UdateMagazine from './pages/Magazine/UdateMagazine';
-import UpdateScience from './pages/Science/UpdateScience';
-import StudentTables from './pages/Tables/StudentTables';
-import FacultyTables from './pages/Tables/FacultyTables';
-import MagazineTables from './pages/Tables/MagazineTables';
+import AddFaculty from "./pages/Faculty/AddFaculty";
+import AddScience from "./pages/Science/AddScience";
+import AddMagazine from "./pages/Magazine/AddMagazine";
+import UdateMagazine from "./pages/Magazine/UdateMagazine";
+import UpdateScience from "./pages/Science/UpdateScience";
+import StudentTables from "./pages/Tables/StudentTables";
+import FacultyTables from "./pages/Tables/FacultyTables";
+import MagazineTables from "./pages/Tables/MagazineTables";
 import NewTopicFormStudent from "./pages/Student/NewTopicFormStudent";
 import NewTopicFormFaculty from "./pages/Faculty/NewTopicFormFaculty";
-import PrivateRoute from "./components/auth/PrivateRoute";
+import SignInForm from "./components/auth/SignInForm";
+import OTPPage from "./components/auth/OTPPage";
 
 export default function App() {
   return (
-    <>
-      <Router>
-        <ScrollToTop />
-        <Routes>
-          {/* Auth Routes (không cần đăng nhập) */}
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
+    <Router>
+      <ScrollToTop />
+      <Routes>
+        {/* Auth Routes (không cần đăng nhập) */}
+        <Route path="/signin" element={<SignInForm />} />
+        <Route path="/signup" element={<SignUp />} />
 
-          {/* Protected Routes (yêu cầu đăng nhập) */}
-          <Route element={<PrivateRoute />}>
-            <Route element={<AppLayout />}>
-              <Route path="/" element={<Home />} />
+        {/* Protected Routes (yêu cầu đăng nhập) */}
+        <Route element={<AppLayout />}>
+          <Route path="/" element={<Home />} />
 
-              {/* Others Page */}
-              <Route path="/profile" element={<UserProfiles />} />
-              <Route path="/calendar" element={<Calendar />} />
-              <Route path="/blank" element={<Blank />} />
+          {/* Others Page */}
+          <Route path="/profile" element={<UserProfiles />} />
+          <Route path="/calendar" element={<Calendar />} />
+          <Route path="/blank" element={<Blank />} />
+          <Route path="/otp" element={<OTPPage />} />
 
-              {/* Forms */}
-              <Route path="/form-elements" element={<FormElements />} />
 
-              {/* Tables */}
-              <Route path="/basic-tables" element={<BasicTables />} />
-              <Route path="/science-tables" element={<ScienceTables />} />
+          {/* Forms */}
+          <Route path="/form-elements" element={<FormElements />} />
 
-              {/* Ui Elements */}
-              <Route path="/alerts" element={<Alerts />} />
-              <Route path="/avatars" element={<Avatars />} />
-              <Route path="/badge" element={<Badges />} />
-              <Route path="/buttons" element={<Buttons />} />
-              <Route path="/images" element={<Images />} />
-              <Route path="/videos" element={<Videos />} />
+          {/* Tables */}
+          <Route path="/basic-tables" element={<BasicTables />} />
+          <Route path="/science-tables" element={<ScienceTables />} />
 
-              {/* Charts */}
-              <Route path="/line-chart" element={<LineChart />} />
-              <Route path="/bar-chart" element={<BarChart />} />
+          {/* Ui Elements */}
+          <Route path="/alerts" element={<Alerts />} />
+          <Route path="/avatars" element={<Avatars />} />
+          <Route path="/badge" element={<Badges />} />
+          <Route path="/buttons" element={<Buttons />} />
+          <Route path="/images" element={<Images />} />
+          <Route path="/videos" element={<Videos />} />
 
-              {/* Faculty */}
-              <Route path="/giang-vien" element={<BasicTables />} />
-              <Route path="/them-giang-vien" element={<AddFaculty />} />
+          {/* Charts */}
+          <Route path="/line-chart" element={<LineChart />} />
+          <Route path="/bar-chart" element={<BarChart />} />
 
-              {/* Science */}
-              <Route path="/dang-ki-khoa-hoc" element={<AddScience />} />
-              <Route path="/cap-nhat-khoa-hoc" element={<UpdateScience />} />
+          {/* Faculty */}
+          <Route path="/giang-vien" element={<BasicTables />} />
+          <Route path="/them-giang-vien" element={<AddFaculty />} />
 
-              {/* Đề tài nghiên cứu */}
-              <Route path="/sinh-vien-nghien-cuu" element={<StudentTables />} />
-              <Route path="/giang-vien-nghien-cuu" element={<FacultyTables />} />
-              <Route path="/sinh-vien-nckh" element={<NewTopicFormStudent />} />
-              <Route path="/giang-vien-nckh" element={<NewTopicFormFaculty />} />
+          {/* Science */}
+          <Route path="/dang-ki-khoa-hoc" element={<AddScience />} />
+          <Route path="/cap-nhat-khoa-hoc" element={<UpdateScience />} />
 
-              {/* Tạp chí ấn phẩm */}
-              <Route path="/an-pham" element={<MagazineTables />} />
-              <Route path="/dang-ki-an-pham" element={<AddMagazine />} />
-              <Route path="/cap-nhat-an-pham" element={<UdateMagazine />} />
-            </Route>
-          </Route>
+          {/* Đề tài nghiên cứu */}
+          <Route path="/sinh-vien-nghien-cuu" element={<StudentTables />} />
+          <Route path="/giang-vien-nghien-cuu" element={<FacultyTables />} />
+          <Route path="/sinh-vien-nckh" element={<NewTopicFormStudent />} />
+          <Route path="/giang-vien-nckh" element={<NewTopicFormFaculty />} />
 
-          {/* Fallback Route */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Router>
-    </>
+          {/* Tạp chí ấn phẩm */}
+          <Route path="/an-pham" element={<MagazineTables />} />
+          <Route path="/dang-ki-an-pham" element={<AddMagazine />} />
+          <Route path="/cap-nhat-an-pham" element={<UdateMagazine />} />
+        </Route>
+
+        {/* Fallback Route */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Router>
   );
 }
