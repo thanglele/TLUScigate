@@ -19,18 +19,15 @@ import Blank from "./pages/Blank";
 import AppLayout from "./layout/AppLayout";
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
-import AddFaculty from "./pages/Faculty/AddFaculty";
-import AddScience from "./pages/Science/AddScience";
-import AddMagazine from "./pages/Magazine/AddMagazine";
-import UdateMagazine from "./pages/Magazine/UdateMagazine";
-import UpdateScience from "./pages/Science/UpdateScience";
-import StudentTables from "./pages/Tables/StudentTables";
-import FacultyTables from "./pages/Tables/FacultyTables";
-import MagazineTables from "./pages/Tables/MagazineTables";
+import AddFaculty from './pages/Faculty/AddFaculty';
+import AddScience from './pages/Science/AddScience';
+import AddMagazine from './pages/Magazine/AddMagazine';
+import MagazineTables from './pages/Tables/MagazineTables';
+import StudentTables from './pages/Tables/StudentTables';
+import FacultyTables from './pages/Tables/FacultyTables';
 import NewTopicFormStudent from "./pages/Student/NewTopicFormStudent";
 import NewTopicFormFaculty from "./pages/Faculty/NewTopicFormFaculty";
 import SignInForm from "./components/auth/SignInForm";
-import OTPPage from "./components/auth/OTPPage";
 
 export default function App() {
   return (
@@ -49,8 +46,6 @@ export default function App() {
           <Route path="/profile" element={<UserProfiles />} />
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/blank" element={<Blank />} />
-          <Route path="/otp" element={<OTPPage />} />
-
 
           {/* Forms */}
           <Route path="/form-elements" element={<FormElements />} />
@@ -77,7 +72,6 @@ export default function App() {
 
           {/* Science */}
           <Route path="/dang-ki-khoa-hoc" element={<AddScience />} />
-          <Route path="/cap-nhat-khoa-hoc" element={<UpdateScience />} />
 
           {/* Đề tài nghiên cứu */}
           <Route path="/sinh-vien-nghien-cuu" element={<StudentTables />} />
@@ -88,7 +82,6 @@ export default function App() {
           {/* Tạp chí ấn phẩm */}
           <Route path="/an-pham" element={<MagazineTables />} />
           <Route path="/dang-ki-an-pham" element={<AddMagazine />} />
-          <Route path="/cap-nhat-an-pham" element={<UdateMagazine />} />
         </Route>
 
         {/* Fallback Route */}
