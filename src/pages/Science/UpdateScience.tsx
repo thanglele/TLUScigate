@@ -13,7 +13,7 @@ const AddScience = () => {
             </h1>
             <div className="pb-4">
                 <span className="text-xl font-bold mb-6 text-gray-800 dark:text-white">
-                    1. Thông tin bài công bố
+                    1. Thông tin bài cng bố
                 </span>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
