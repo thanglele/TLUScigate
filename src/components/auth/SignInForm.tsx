@@ -1,4 +1,3 @@
-// src/pages/AuthPages/SignInForm.tsx
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Form from "../../components/auth/Form";
@@ -17,49 +16,73 @@ const SignInForm: React.FC = () => {
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [borderClass, setBorderClass] = useState<string>("border-gray-300");
+  const [emailBorderClass, setEmailBorderClass] = useState<string>("border-gray-300");
+  const [passBorderClass, setPassBorderClass] = useState<string>("border-gray-300");
 
   const isValidEmail = (email: string): boolean =>
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    /^[^\s@]+@[^\s@]+\.(com|org|net|edu|gov|mil|biz|info|io|co\.uk|co\.jp)$/.test(email);
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setEmail(value);
+    if (!value) {
+      setEmailBorderClass("border-red-800");
+    } else if (!isValidEmail(value)) {
+      setEmailBorderClass("border-red-800");
+    } else {
+      setEmailBorderClass("border-green-500");
+    }
+  };
+
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setPassword(value);
+    if (!value || value.length < 8) {
+      setPassBorderClass("border-red-800");
+    } else {
+      setPassBorderClass("border-green-500");
+    }
+  };
 
   const handleLogin = async () => {
     setIsLoading(true);
     setError("");
-    setBorderClass("border-gray-300");
 
     if (!email) {
       setError("Vui lòng nhập email!");
+      setEmailBorderClass("border-red-800");
       setIsLoading(false);
-      setBorderClass("border-red-800");
       return;
     }
     if (!isValidEmail(email)) {
       setError("Email không hợp lệ!");
+      setEmailBorderClass("border-red-800");
       setIsLoading(false);
-      setBorderClass("border-red-800");
       return;
     }
     if (!password) {
       setError("Vui lòng nhập mật khẩu!");
+      setPassBorderClass("border-red-800");
       setIsLoading(false);
-      setBorderClass("border-red-800");
       return;
     }
     if (password.length < 8) {
       setError("Mật khẩu phải có ít nhất 8 ký tự!");
+      setPassBorderClass("border-red-800");
       setIsLoading(false);
-      setBorderClass("border-red-800");
       return;
     }
 
     try {
       await login({ email, password });
       setError("");
-      setBorderClass("border-green-500");
+      setEmailBorderClass("border-green-500");
+      setPassBorderClass("border-green-500");
       navigate("/dashboard");
     } catch (error: any) {
-      setError(error.message); // Hiển thị chính xác thông điệp từ API
-      setBorderClass("border-red-800");
+      setError(error.message);
+      setEmailBorderClass("border-red-800");
+      setPassBorderClass("border-red-800");
     } finally {
       setIsLoading(false);
     }
@@ -89,11 +112,9 @@ const SignInForm: React.FC = () => {
                 type="email"
                 placeHolder="Nhập email"
                 value={email}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                  setEmail(e.target.value)
-                }
+                onChange={handleEmailChange}
                 onKeyDown={handleKeyDown}
-                borderClass={borderClass}
+                borderClass={emailBorderClass}
               />
               <InputField
                 fontLabel="font-medium"
@@ -101,11 +122,9 @@ const SignInForm: React.FC = () => {
                 type="password"
                 placeHolder="Nhập mật khẩu"
                 value={password}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                  setPassword(e.target.value)
-                }
+                onChange={handlePasswordChange}
                 onKeyDown={handleKeyDown}
-                borderClass={borderClass}
+                borderClass={passBorderClass}
               />
               <div className="flex justify-between w-full mt-2">
                 {error && <p className="text-red-500 text-sm">{error}</p>}

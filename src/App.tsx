@@ -82,7 +82,7 @@ export default function App() {
 
           {/* Tạp chí ấn phẩm */}
           <Route path="/an-pham" element={<MagazineTables />} />
-          <Route path="cap-nhat-an-pham" element={<UdateMagazine />} />
+          <Route path="/cap-nhat-an-pham" element={<UdateMagazine />} />
           <Route path="/dang-ki-an-pham" element={<AddMagazine />} />
         </Route>
 

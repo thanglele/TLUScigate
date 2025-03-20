@@ -11,7 +11,7 @@ const FormHeader: React.FC<FormHeaderProps> = ({ value, className }) => {
     <div className="flex justify-between items-center mb-3">
       <h3 className={className}>{value}</h3>
       <img
-        src="src/img/logo-dai-hoc-thuy-loi-inkythuatso.svg"
+        src="src/icons/logo-dai-hoc-thuy-loi-inkythuatso.svg"
         alt="Logo"
         className="w-20 h-20"
       />
