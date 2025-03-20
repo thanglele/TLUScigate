@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\TLUScience\\BE\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\controllers\\nckhgiangviencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:controllers\\nckhgiangviencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\services\\nckhgiangvienservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:services\\nckhgiangvienservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\controllers\\nckhgiangviencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:controllers\\nckhgiangviencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\repository\\nckhgiangvienrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -74,24 +74,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 250,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "NCKHGiangVienService.cs",
               "DocumentMoniker": "D:\\TLUScience\\BE\\Services\\NCKHGiangVienService.cs",
               "RelativeDocumentMoniker": "Services\\NCKHGiangVienService.cs",
-              "ToolTip": "D:\\TLUScience\\BE\\Services\\NCKHGiangVienService.cs",
-              "RelativeToolTip": "Services\\NCKHGiangVienService.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "ToolTip": "D:\\TLUScience\\BE\\Services\\NCKHGiangVienService.cs \u2B24",
+              "RelativeToolTip": "Services\\NCKHGiangVienService.cs \u2B24",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGEAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-19T15:10:32.138Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "NCKHGiangVienController.cs",
               "DocumentMoniker": "D:\\TLUScience\\BE\\Controllers\\NCKHGiangVienController.cs",
               "RelativeDocumentMoniker": "Controllers\\NCKHGiangVienController.cs",
@@ -112,8 +112,7 @@
               "RelativeToolTip": "Controllers\\GiangVienController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAADwAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-18T16:26:39.331Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-18T16:26:39.331Z"
             }
           ]
         },
@@ -131,8 +130,7 @@
               "RelativeToolTip": "Entities\\BoMon.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T02:53:49.049Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-20T02:53:49.049Z"
             },
             {
               "$type": "Document",
@@ -144,8 +142,7 @@
               "RelativeToolTip": "Services\\NCKHSinhVienService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T02:24:35.593Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-20T02:24:35.593Z"
             },
             {
               "$type": "Document",
@@ -169,8 +166,7 @@
               "RelativeToolTip": "Entities\\Nganh.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T07:41:31.914Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-19T07:41:31.914Z"
             },
             {
               "$type": "Document",
@@ -182,8 +178,7 @@
               "RelativeToolTip": "Entities\\GiangVien.cs",
               "ViewState": "AgIAACAAAAAAAAAAAADwvwUAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T07:33:34.87Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-19T07:33:34.87Z"
             },
             {
               "$type": "Document",
@@ -207,7 +202,8 @@
               "RelativeToolTip": "DTOs\\GiangVienDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T07:05:47.829Z"
+              "WhenOpened": "2025-03-19T07:05:47.829Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -232,7 +228,8 @@
               "RelativeToolTip": "Services\\GiangVienService.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAcwGwAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T07:06:20.156Z"
+              "WhenOpened": "2025-03-19T07:06:20.156Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -244,8 +241,7 @@
               "RelativeToolTip": "Entities\\DeTaiNghienCuu.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAIwCEAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T16:12:41.269Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-19T16:12:41.269Z"
             },
             {
               "$type": "Document",
@@ -270,8 +266,7 @@
               "RelativeToolTip": "DTOs\\NCKHGiangVienDTO.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAA0wBYAAABYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T15:17:49.267Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-19T15:17:49.267Z"
             },
             {
               "$type": "Document",
@@ -283,8 +278,7 @@
               "RelativeToolTip": "Entities\\ThanhVienDeTai.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwA0AAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T02:02:54.078Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-20T02:02:54.078Z"
             }
           ]
         }
