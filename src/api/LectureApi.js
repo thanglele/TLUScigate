@@ -10,7 +10,15 @@ const api = axios.create({
 
 export const fetchLectureData = async () => {
     try {
-      const response = await api.get("/api/GiangVien");
+      // Lấy accessToken từ localStorage
+      const token = localStorage.getItem("accessToken");
+  
+      const response = await api.get("/api/GiangVien", {
+        headers: {
+          Authorization: token, // Thêm token vào header
+        },
+      });
+  
       return response.data;
     } catch (error) {
       console.error("Error fetching lecture data:", {
@@ -22,6 +30,7 @@ export const fetchLectureData = async () => {
       throw new Error(errorMessage);
     }
   };
+  
 
 export const createLecture = async (lectureData) => {
   try {

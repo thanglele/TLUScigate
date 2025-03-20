@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Form from "../../components/auth/Form";
 import FormHeader from "../../components/auth/FormHeader";
-import InputField from "../../components/auth/InputField";  
+import InputField from "../../components/auth/InputField";
 import Button from "../../components/auth/Button";
 import Link from "../../components/auth/Link";
 import WelcomeContent from "../../components/auth/WelcomeContent";
@@ -19,7 +19,8 @@ const SignInForm: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [borderClass, setBorderClass] = useState<string>("border-gray-300");
 
-  const isValidEmail = (email: string): boolean => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const isValidEmail = (email: string): boolean =>
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
   const handleLogin = async () => {
     setIsLoading(true);
@@ -54,11 +55,10 @@ const SignInForm: React.FC = () => {
     try {
       await login({ email, password });
       setError("");
-      setBorderClass("border-green-500"); 
-      navigate("/");
+      setBorderClass("border-green-500");
+      navigate("/dashboard");
     } catch (error: any) {
-      const apiErrorMessage = error.messages || "Đăng nhập thất bại";
-      setError(apiErrorMessage);
+      setError(error.message); // Hiển thị chính xác thông điệp từ API
       setBorderClass("border-red-800");
     } finally {
       setIsLoading(false);
@@ -89,7 +89,9 @@ const SignInForm: React.FC = () => {
                 type="email"
                 placeHolder="Nhập email"
                 value={email}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setEmail(e.target.value)
+                }
                 onKeyDown={handleKeyDown}
                 borderClass={borderClass}
               />
@@ -99,7 +101,9 @@ const SignInForm: React.FC = () => {
                 type="password"
                 placeHolder="Nhập mật khẩu"
                 value={password}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setPassword(e.target.value)
+                }
                 onKeyDown={handleKeyDown}
                 borderClass={borderClass}
               />

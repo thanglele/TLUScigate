@@ -24,7 +24,7 @@ const navItems: NavItem[] = [
   {
     icon: <Home />,
     name: "Trang chủ",
-    path: "/"
+    path: "/dashboard"
   },
   {
     icon: <Faculty />,

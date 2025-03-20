@@ -28,6 +28,7 @@ import FacultyTables from './pages/Tables/FacultyTables';
 import NewTopicFormStudent from "./pages/Student/NewTopicFormStudent";
 import NewTopicFormFaculty from "./pages/Faculty/NewTopicFormFaculty";
 import SignInForm from "./components/auth/SignInForm";
+import UdateMagazine from "./pages/Magazine/UdateMagazine";
 
 export default function App() {
   return (
@@ -35,12 +36,12 @@ export default function App() {
       <ScrollToTop />
       <Routes>
         {/* Auth Routes (không cần đăng nhập) */}
-        <Route path="/signin" element={<SignInForm />} />
+        <Route path="/" element={<SignInForm />} />
         <Route path="/signup" element={<SignUp />} />
 
         {/* Protected Routes (yêu cầu đăng nhập) */}
         <Route element={<AppLayout />}>
-          <Route path="/" element={<Home />} />
+          <Route path="/dashboard" element={<Home />} />
 
           {/* Others Page */}
           <Route path="/profile" element={<UserProfiles />} />
@@ -81,6 +82,7 @@ export default function App() {
 
           {/* Tạp chí ấn phẩm */}
           <Route path="/an-pham" element={<MagazineTables />} />
+          <Route path="cap-nhat-an-pham" element={<UdateMagazine />} />
           <Route path="/dang-ki-an-pham" element={<AddMagazine />} />
         </Route>
 
