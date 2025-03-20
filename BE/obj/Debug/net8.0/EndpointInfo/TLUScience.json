@@ -497,6 +497,256 @@
         }
       }
     },
+    "/api/NCKHGiangVien": {
+      "get": {
+        "tags": [
+          "NCKHGiangVien"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "NCKHGiangVien"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NCKHGiangVienDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NCKHGiangVienDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/NCKHGiangVienDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/NCKHGiangVien/{id}": {
+      "get": {
+        "tags": [
+          "NCKHGiangVien"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "NCKHGiangVien"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NCKHGiangVienDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NCKHGiangVienDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/NCKHGiangVienDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "NCKHGiangVien"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/NCKHSinhVien": {
+      "get": {
+        "tags": [
+          "NCKHSinhVien"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "NCKHSinhVien"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NCKHSinhVienCRUD"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NCKHSinhVienCRUD"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/NCKHSinhVienCRUD"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/NCKHSinhVien/{id}": {
+      "get": {
+        "tags": [
+          "NCKHSinhVien"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "NCKHSinhVien"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NCKHSinhVienCRUD"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NCKHSinhVienCRUD"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/NCKHSinhVienCRUD"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "NCKHSinhVien"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/TapChiAnPham": {
       "get": {
         "tags": [
@@ -819,6 +1069,142 @@
         },
         "additionalProperties": false
       },
+      "NCKHGiangVienDTO": {
+        "type": "object",
+        "properties": {
+          "maDeTai": {
+            "type": "string",
+            "nullable": true
+          },
+          "tenDeTai": {
+            "type": "string",
+            "nullable": true
+          },
+          "linhVucNghienCuu": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "chuNhiemDeTai": {
+            "type": "string",
+            "nullable": true
+          },
+          "nganh": {
+            "type": "string",
+            "nullable": true
+          },
+          "khoa": {
+            "type": "string",
+            "nullable": true
+          },
+          "maChuNhiem": {
+            "type": "string",
+            "nullable": true
+          },
+          "hocVi": {
+            "type": "string",
+            "nullable": true
+          },
+          "hocHam": {
+            "type": "string",
+            "nullable": true
+          },
+          "ngayBatDau": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "ngayKetThuc": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "thanhvienthamgia": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ThanhVien"
+            },
+            "nullable": true
+          },
+          "kinhPhi": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "trangThai": {
+            "type": "string",
+            "nullable": true
+          },
+          "nguonKinhPhi": {
+            "type": "string",
+            "nullable": true
+          },
+          "mucTieu": {
+            "type": "string",
+            "nullable": true
+          },
+          "ketQuaDuKien": {
+            "type": "string",
+            "nullable": true
+          },
+          "fileHoanThanh": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "NCKHSinhVienCRUD": {
+        "type": "object",
+        "properties": {
+          "maNCKH": {
+            "type": "string",
+            "nullable": true
+          },
+          "tenHoatDong": {
+            "type": "string",
+            "nullable": true
+          },
+          "tenGiangVien": {
+            "type": "string",
+            "nullable": true
+          },
+          "ngayBatDau": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "ngayKetThuc": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "ketQua": {
+            "type": "string",
+            "nullable": true
+          },
+          "trangThai": {
+            "type": "string",
+            "nullable": true
+          },
+          "kinhPhiHd": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "diaDiem": {
+            "type": "string",
+            "nullable": true
+          },
+          "fileHoanThanh": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "OTPRequest": {
         "type": "object",
         "properties": {
@@ -870,6 +1256,36 @@
             "nullable": true
           },
           "issN_ISBN": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ThanhVien": {
+        "type": "object",
+        "properties": {
+          "tenThanhVien": {
+            "type": "string",
+            "nullable": true
+          },
+          "maThanhVien": {
+            "type": "string",
+            "nullable": true
+          },
+          "hocVi": {
+            "type": "string",
+            "nullable": true
+          },
+          "hocHam": {
+            "type": "string",
+            "nullable": true
+          },
+          "nganh": {
+            "type": "string",
+            "nullable": true
+          },
+          "khoa": {
             "type": "string",
             "nullable": true
           }

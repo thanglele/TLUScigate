@@ -216,6 +216,164 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "TLUScience.Controllers.NCKHGiangVienController",
+    "Method": "GetAll",
+    "RelativePath": "api/NCKHGiangVien",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TLUScience.Controllers.NCKHGiangVienController",
+    "Method": "Create",
+    "RelativePath": "api/NCKHGiangVien",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "TLUScience.DTOs.NCKHGiangVienDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TLUScience.Controllers.NCKHGiangVienController",
+    "Method": "GetById",
+    "RelativePath": "api/NCKHGiangVien/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TLUScience.Controllers.NCKHGiangVienController",
+    "Method": "Update",
+    "RelativePath": "api/NCKHGiangVien/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "TLUScience.DTOs.NCKHGiangVienDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TLUScience.Controllers.NCKHGiangVienController",
+    "Method": "Delete",
+    "RelativePath": "api/NCKHGiangVien/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TLUScience.Controllers.NCKHSinhVienController",
+    "Method": "GetFullNCKHSinhVienAsync",
+    "RelativePath": "api/NCKHSinhVien",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TLUScience.Controllers.NCKHSinhVienController",
+    "Method": "AddNCKHSinhVienAsync",
+    "RelativePath": "api/NCKHSinhVien",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nCKHSinhVien",
+        "Type": "TLUScience.DTOs.NCKHSinhVienCRUD",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TLUScience.Controllers.NCKHSinhVienController",
+    "Method": "GetNCKHSinhVienAsync",
+    "RelativePath": "api/NCKHSinhVien/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TLUScience.Controllers.NCKHSinhVienController",
+    "Method": "UpdateNCKHSinhVienAsync",
+    "RelativePath": "api/NCKHSinhVien/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "nCKHSinhVien",
+        "Type": "TLUScience.DTOs.NCKHSinhVienCRUD",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TLUScience.Controllers.NCKHSinhVienController",
+    "Method": "DeleteNCKHSinhVienAsync",
+    "RelativePath": "api/NCKHSinhVien/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "TLUScience.Controllers.TapChiAnPhamController",
     "Method": "GetFullTapChiAnPhamAsync",
     "RelativePath": "api/TapChiAnPham",
