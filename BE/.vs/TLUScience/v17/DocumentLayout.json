@@ -3,68 +3,12 @@
   "WorkspaceRootPath": "D:\\TLUScience\\BE\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\services\\nckhgiangvienservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:services\\nckhgiangvienservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\repository\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:repository\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\controllers\\nckhgiangviencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:controllers\\nckhgiangviencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\repository\\nckhgiangvienrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:repository\\nckhgiangvienrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\dtos\\nckhgiangviendto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:dtos\\nckhgiangviendto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\entities\\thanhviendetai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:entities\\thanhviendetai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\entities\\detainghiencuu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:entities\\detainghiencuu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\entities\\bomon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:entities\\bomon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\entities\\nganh.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:entities\\nganh.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\entities\\giangvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:entities\\giangvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\controllers\\giangviencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:controllers\\giangviencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\services\\nckhsinhvienservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:services\\nckhsinhvienservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\repository\\giangvienrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:repository\\giangvienrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\services\\giangvienservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:services\\giangvienservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\dtos\\giangviendto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:dtos\\giangviendto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\services\\congbokhoahocservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:services\\congbokhoahocservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\entities\\lop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:entities\\lop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\services\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:services\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -79,206 +23,28 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "NCKHGiangVienService.cs",
-              "DocumentMoniker": "D:\\TLUScience\\BE\\Services\\NCKHGiangVienService.cs",
-              "RelativeDocumentMoniker": "Services\\NCKHGiangVienService.cs",
-              "ToolTip": "D:\\TLUScience\\BE\\Services\\NCKHGiangVienService.cs",
-              "RelativeToolTip": "Services\\NCKHGiangVienService.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAAwGEAAAAWAAAAAAAAAA==",
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "D:\\TLUScience\\BE\\Repository\\UserRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\UserRepository.cs",
+              "ToolTip": "D:\\TLUScience\\BE\\Repository\\UserRepository.cs",
+              "RelativeToolTip": "Repository\\UserRepository.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAA9wDQBAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T15:10:32.138Z",
+              "WhenOpened": "2025-03-22T11:41:47.168Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "NCKHGiangVienController.cs",
-              "DocumentMoniker": "D:\\TLUScience\\BE\\Controllers\\NCKHGiangVienController.cs",
-              "RelativeDocumentMoniker": "Controllers\\NCKHGiangVienController.cs",
-              "ToolTip": "D:\\TLUScience\\BE\\Controllers\\NCKHGiangVienController.cs",
-              "RelativeToolTip": "Controllers\\NCKHGiangVienController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAF4AAAAJAAAAAAAAAA==",
+              "Title": "AuthenticationService.cs",
+              "DocumentMoniker": "D:\\TLUScience\\BE\\Services\\AuthenticationService.cs",
+              "RelativeDocumentMoniker": "Services\\AuthenticationService.cs",
+              "ToolTip": "D:\\TLUScience\\BE\\Services\\AuthenticationService.cs",
+              "RelativeToolTip": "Services\\AuthenticationService.cs",
+              "ViewState": "AgIAAAsBAAAAAAAAAAAAAAsBAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T15:08:23.526Z",
+              "WhenOpened": "2025-03-22T11:39:53.74Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "GiangVienController.cs",
-              "DocumentMoniker": "D:\\TLUScience\\BE\\Controllers\\GiangVienController.cs",
-              "RelativeDocumentMoniker": "Controllers\\GiangVienController.cs",
-              "ToolTip": "D:\\TLUScience\\BE\\Controllers\\GiangVienController.cs",
-              "RelativeToolTip": "Controllers\\GiangVienController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADwAAABKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-18T16:26:39.331Z"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 190,
-          "SelectedChildIndex": 10,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "BoMon.cs",
-              "DocumentMoniker": "D:\\TLUScience\\BE\\Entities\\BoMon.cs",
-              "RelativeDocumentMoniker": "Entities\\BoMon.cs",
-              "ToolTip": "D:\\TLUScience\\BE\\Entities\\BoMon.cs",
-              "RelativeToolTip": "Entities\\BoMon.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T02:53:49.049Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "NCKHSinhVienService.cs",
-              "DocumentMoniker": "D:\\TLUScience\\BE\\Services\\NCKHSinhVienService.cs",
-              "RelativeDocumentMoniker": "Services\\NCKHSinhVienService.cs",
-              "ToolTip": "D:\\TLUScience\\BE\\Services\\NCKHSinhVienService.cs",
-              "RelativeToolTip": "Services\\NCKHSinhVienService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T02:24:35.593Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Lop.cs",
-              "DocumentMoniker": "D:\\TLUScience\\BE\\Entities\\Lop.cs",
-              "RelativeDocumentMoniker": "Entities\\Lop.cs",
-              "ToolTip": "D:\\TLUScience\\BE\\Entities\\Lop.cs",
-              "RelativeToolTip": "Entities\\Lop.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T07:48:02.527Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Nganh.cs",
-              "DocumentMoniker": "D:\\TLUScience\\BE\\Entities\\Nganh.cs",
-              "RelativeDocumentMoniker": "Entities\\Nganh.cs",
-              "ToolTip": "D:\\TLUScience\\BE\\Entities\\Nganh.cs",
-              "RelativeToolTip": "Entities\\Nganh.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T07:41:31.914Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "GiangVien.cs",
-              "DocumentMoniker": "D:\\TLUScience\\BE\\Entities\\GiangVien.cs",
-              "RelativeDocumentMoniker": "Entities\\GiangVien.cs",
-              "ToolTip": "D:\\TLUScience\\BE\\Entities\\GiangVien.cs",
-              "RelativeToolTip": "Entities\\GiangVien.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAADwvwUAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T07:33:34.87Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "CongBoKhoaHocService.cs",
-              "DocumentMoniker": "D:\\TLUScience\\BE\\Services\\CongBoKhoaHocService.cs",
-              "RelativeDocumentMoniker": "Services\\CongBoKhoaHocService.cs",
-              "ToolTip": "D:\\TLUScience\\BE\\Services\\CongBoKhoaHocService.cs",
-              "RelativeToolTip": "Services\\CongBoKhoaHocService.cs",
-              "ViewState": "AgIAAFgAAAAAAAAAAAA7wAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T07:30:43.104Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "GiangVienDTO.cs",
-              "DocumentMoniker": "D:\\TLUScience\\BE\\DTOs\\GiangVienDTO.cs",
-              "RelativeDocumentMoniker": "DTOs\\GiangVienDTO.cs",
-              "ToolTip": "D:\\TLUScience\\BE\\DTOs\\GiangVienDTO.cs",
-              "RelativeToolTip": "DTOs\\GiangVienDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T07:05:47.829Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "GiangVienRepository.cs",
-              "DocumentMoniker": "D:\\TLUScience\\BE\\Repository\\GiangVienRepository.cs",
-              "RelativeDocumentMoniker": "Repository\\GiangVienRepository.cs",
-              "ToolTip": "D:\\TLUScience\\BE\\Repository\\GiangVienRepository.cs",
-              "RelativeToolTip": "Repository\\GiangVienRepository.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAA4wCAAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T07:06:30.715Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "GiangVienService.cs",
-              "DocumentMoniker": "D:\\TLUScience\\BE\\Services\\GiangVienService.cs",
-              "RelativeDocumentMoniker": "Services\\GiangVienService.cs",
-              "ToolTip": "D:\\TLUScience\\BE\\Services\\GiangVienService.cs",
-              "RelativeToolTip": "Services\\GiangVienService.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAcwGwAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T07:06:20.156Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "DeTaiNghienCuu.cs",
-              "DocumentMoniker": "D:\\TLUScience\\BE\\Entities\\DeTaiNghienCuu.cs",
-              "RelativeDocumentMoniker": "Entities\\DeTaiNghienCuu.cs",
-              "ToolTip": "D:\\TLUScience\\BE\\Entities\\DeTaiNghienCuu.cs",
-              "RelativeToolTip": "Entities\\DeTaiNghienCuu.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAIwCEAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T16:12:41.269Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "NCKHGiangVienRepository.cs",
-              "DocumentMoniker": "D:\\TLUScience\\BE\\Repository\\NCKHGiangVienRepository.cs",
-              "RelativeDocumentMoniker": "Repository\\NCKHGiangVienRepository.cs",
-              "ToolTip": "D:\\TLUScience\\BE\\Repository\\NCKHGiangVienRepository.cs",
-              "RelativeToolTip": "Repository\\NCKHGiangVienRepository.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAYwDUAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T15:11:45.256Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "NCKHGiangVienDTO.cs",
-              "DocumentMoniker": "D:\\TLUScience\\BE\\DTOs\\NCKHGiangVienDTO.cs",
-              "RelativeDocumentMoniker": "DTOs\\NCKHGiangVienDTO.cs",
-              "ToolTip": "D:\\TLUScience\\BE\\DTOs\\NCKHGiangVienDTO.cs",
-              "RelativeToolTip": "DTOs\\NCKHGiangVienDTO.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAA0wBYAAABYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T15:17:49.267Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ThanhVienDeTai.cs",
-              "DocumentMoniker": "D:\\TLUScience\\BE\\Entities\\ThanhVienDeTai.cs",
-              "RelativeDocumentMoniker": "Entities\\ThanhVienDeTai.cs",
-              "ToolTip": "D:\\TLUScience\\BE\\Entities\\ThanhVienDeTai.cs",
-              "RelativeToolTip": "Entities\\ThanhVienDeTai.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwA0AAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T02:02:54.078Z"
             }
           ]
         }

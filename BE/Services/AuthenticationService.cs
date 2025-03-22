@@ -8,6 +8,34 @@ using TLUScience.Entities;
 
 namespace TLUScience.Services
 {
+    public interface IAuthenticationService
+    {
+        public List<TaiKhoan> ListUsers();
+        #region LOGIN
+        public void RenewCache();
+        public int ValidateInput(LoginRequest request, bool skip);
+        public TaiKhoan CheckLoginWithCache(LoginRequest request);
+        public Task<TaiKhoan> CheckLoginWithDb(LoginRequest request);
+        public ResponseToken SaveTokenWithDb(TaiKhoan user);
+        public ResponseToken NewPassword(LoginRequest request);
+        #endregion
+
+        #region REGISTER
+        //public int ValidateInputRegister(Registerform request);
+        //public bool CheckUserAvailable(string username);
+        //public Task<ResponseToken> AddNewUsersToDb(User NewUser);
+        #endregion
+
+        #region RESETSERVICES
+        public Task<bool> CheckOTP(OTPRequest OTPRequest);
+        public Task<TaiKhoan> RemovePassword(string Email);
+        #endregion
+
+        #region MAILSERVICES
+        public Task<bool> CheckStatusOTPAccount(LoginRequest loginRequest);
+        public Task<bool> SendMail(LoginRequest loginRequest);
+        #endregion
+    }
     public class AuthenticationService : IAuthenticationService
     {
         private readonly IMemoryCache _cache;
@@ -237,7 +265,15 @@ namespace TLUScience.Services
         {
             try
             {
-                //if(string.IsNullOrEmpty(OTPRequest.Email) == true) return false;
+                if (string.IsNullOrEmpty(OTPRequest.Email) == true || 
+                    string.IsNullOrEmpty(OTPRequest.OTP) == true ||
+                    OTPRequest.OTP.Length != 6 ||
+                    OTPRequest.Email.Length > 255 || 
+                    Regex.IsMatch(OTPRequest.Email, @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$") == false || 
+                    Regex.IsMatch(OTPRequest.OTP, @"^\d+$") == false)
+                {
+                    return false;
+                }
 
                 RenewCache();
 
@@ -254,9 +290,11 @@ namespace TLUScience.Services
                     {
                         for (int j = 0; j < otps.Count(); j++)
                         {
-                            if (otps[j].MaOTP == OTPRequest.OTP && otps[j].TrangThai == "ChuaSuDung" && (otps[j].ThoiGianHetHan - DateTime.Now).TotalSeconds > 0)
+                            if (otps[j].MaOTP == OTPRequest.OTP && otps[j].TrangThai == "ChuaSuDung" && 
+                                (otps[j].ThoiGianHetHan - DateTime.Now).TotalSeconds > 0 && 
+                                otps[j].TaiKhoanID == users[i].ID)
                             {
-                                return true;
+                                return await _userRepository.ChangeStaticOTP(otps[j]);
                             }
                             Console.WriteLine("TIME: " + (DateTime.Now - otps[j].ThoiGianHetHan).TotalSeconds.ToString());
                         }
@@ -392,7 +430,7 @@ namespace TLUScience.Services
         {
             try
             {
-                if(ValidateInput(loginRequest, true) == 400)
+                if(ValidateInput(loginRequest, true) == 200)
                 {
                     _userRepository.CleanOldOTP();
                     RenewCache();

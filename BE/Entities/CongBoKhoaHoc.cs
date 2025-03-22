@@ -34,4 +34,6 @@ public partial class CongBoKhoaHoc
     public string? FileDinhKem { get; set; }
 
     public virtual ICollection<TacGiaCongBo> TacGiaCongBos { get; set; } = new List<TacGiaCongBo>();
+
+    public string? TrangThai {  get; set; }
 }

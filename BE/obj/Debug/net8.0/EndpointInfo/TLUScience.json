@@ -353,6 +353,48 @@
         }
       }
     },
+    "/api/CongBoKhoaHoc/update-status/{id}": {
+      "put": {
+        "tags": [
+          "CongBoKhoaHoc"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CBKHStatus"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CBKHStatus"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CBKHStatus"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/GiangVien": {
       "get": {
         "tags": [
@@ -747,6 +789,48 @@
         }
       }
     },
+    "/api/NCKHSinhVien/update-status/{id}": {
+      "put": {
+        "tags": [
+          "NCKHSinhVien"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Status"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Status"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Status"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/TapChiAnPham": {
       "get": {
         "tags": [
@@ -887,6 +971,48 @@
           }
         }
       }
+    },
+    "/api/TapChiAnPham/update-status/{id}": {
+      "put": {
+        "tags": [
+          "TapChiAnPham"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TCAPStatus"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TCAPStatus"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TCAPStatus"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -931,9 +1057,23 @@
         },
         "additionalProperties": false
       },
+      "CBKHStatus": {
+        "type": "object",
+        "properties": {
+          "trangThai": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "CongBoKhoaHocCRUD": {
         "type": "object",
         "properties": {
+          "trangThai": {
+            "type": "string",
+            "nullable": true
+          },
           "maCongBo": {
             "type": "string",
             "nullable": true
@@ -1159,6 +1299,10 @@
       "NCKHSinhVienCRUD": {
         "type": "object",
         "properties": {
+          "trangThai": {
+            "type": "string",
+            "nullable": true
+          },
           "maNCKH": {
             "type": "string",
             "nullable": true
@@ -1182,10 +1326,6 @@
             "nullable": true
           },
           "ketQua": {
-            "type": "string",
-            "nullable": true
-          },
-          "trangThai": {
             "type": "string",
             "nullable": true
           },
@@ -1219,9 +1359,33 @@
         },
         "additionalProperties": false
       },
+      "Status": {
+        "type": "object",
+        "properties": {
+          "trangThai": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TCAPStatus": {
+        "type": "object",
+        "properties": {
+          "trangThai": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "TapChiAnPhamCRUD": {
         "type": "object",
         "properties": {
+          "trangThai": {
+            "type": "string",
+            "nullable": true
+          },
           "maAnPham": {
             "type": "string",
             "nullable": true
@@ -1240,10 +1404,6 @@
             "nullable": true
           },
           "nhaXuatBan": {
-            "type": "string",
-            "nullable": true
-          },
-          "trangThai": {
             "type": "string",
             "nullable": true
           },
