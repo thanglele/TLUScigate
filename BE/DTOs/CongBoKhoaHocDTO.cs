@@ -1,6 +1,11 @@
 namespace TLUScience.DTOs;
 
-public class CongBoKhoaHocCRUD
+public class CBKHStatus
+{
+    public string TrangThai { get; set; } = null!;
+}
+
+public class CongBoKhoaHocCRUD:CBKHStatus
 {
     public string MaCongBo { get; set; } = null!;
 
@@ -29,7 +34,10 @@ public class CongBoKhoaHocCRUD
     public string? FileDinhKem { get; set; }
 }
 
+
+
 public class CongBoKhoaHocDTO : CongBoKhoaHocCRUD
 {
+    public string? TacGia { get; set; }
     public int ID { get; set; }
 }

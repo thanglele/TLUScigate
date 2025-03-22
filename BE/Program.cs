@@ -192,6 +192,8 @@ try
     builder.Services.AddScoped<IDeTaiNghienCuuRepository, DeTaiNghienCuuRepository>();
     builder.Services.AddScoped<ISinhVienRepository, SinhVienRepository>();
 
+    builder.Services.AddScoped<ITacGiaCongBoRepository, TacGiaCongBoRepository>();
+
 
 
     // Đăng ký các service
