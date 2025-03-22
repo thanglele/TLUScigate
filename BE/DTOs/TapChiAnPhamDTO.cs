@@ -1,6 +1,11 @@
 namespace TLUScience.DTOs
 {
-    public class TapChiAnPhamCRUD
+    public class TCAPStatus
+    {
+        public string TrangThai { get; set; } = null!;
+    }
+
+    public class TapChiAnPhamCRUD:TCAPStatus
     {
         public string MaAnPham { get; set; } = null!;
 
@@ -11,8 +16,6 @@ namespace TLUScience.DTOs
         public int? NamXuatBan { get; set; }
 
         public string? NhaXuatBan { get; set; }
-
-        public string? TrangThai { get; set; }
 
         public string? QuocGia { get; set; }
 

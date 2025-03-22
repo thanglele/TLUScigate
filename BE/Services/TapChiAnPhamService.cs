@@ -9,6 +9,7 @@ public interface ITapChiAnPhamService
     public Task<bool> AddTapChiAnPhamAsync(TapChiAnPhamCRUD tapChiAnPham, string maGiangVien);
     public Task<bool> UpdateTapChiAnPhamAsync(int id, TapChiAnPhamCRUD tapChiAnPham, string maGiangVien);
     public Task<bool> DeleteTapChiAnPhamAsync(int id);
+    public Task<bool> UpdateStatus(int id, TCAPStatus status);
 }
 
 public class TapChiAnPhamService : ITapChiAnPhamService
@@ -98,6 +99,20 @@ public class TapChiAnPhamService : ITapChiAnPhamService
         tapChiAnPhamEntity.NgonNgu = tapChiAnPham.NgonNgu;
         tapChiAnPhamEntity.ISSN_ISBN = tapChiAnPham.ISSN_ISBN;
         tapChiAnPhamEntity.MaGiangVien = maGiangVien;
+
+        await _tapChiAnPhamRepository.UpdateTapChiAnPhamAsync(tapChiAnPhamEntity);
+        return true;
+    }
+
+    public async Task<bool> UpdateStatus(int id, TCAPStatus status)
+    {
+        var tapChiAnPhamEntity = await _tapChiAnPhamRepository.GetTapChiAnPhamAsync(id);
+        if (tapChiAnPhamEntity == null)
+        {
+            throw new InvalidOperationException("Không tìm thấy tạp chí ấn phẩm này!");
+        }
+
+        tapChiAnPhamEntity.TrangThai = status.TrangThai;
 
         await _tapChiAnPhamRepository.UpdateTapChiAnPhamAsync(tapChiAnPhamEntity);
         return true;

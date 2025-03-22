@@ -1,9 +1,12 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TLUScience.DTOs;
+
 
 namespace TLUScience.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class BaoCaoThongKeController : ControllerBase
     {
@@ -14,6 +17,7 @@ namespace TLUScience.Controllers
             _baoCaoThongKeService = baoCaoThongKeService;
         }
 
+        [Authorize(Roles = "Ban quan ly")]
         [HttpPost]
         public async Task<IActionResult> AddBaoCaoThongKeAsync([FromBody] BaoCaoThongKeCRUD baoCaoThongKe, int idNguoiLap)
         {
@@ -27,6 +31,7 @@ namespace TLUScience.Controllers
             return BadRequest(new { message = "Thêm báo cáo thất bại, vui lòng thử lại!" });
         }
 
+        [Authorize(Roles = "Ban quan ly")]
         [HttpGet("export-pdf/{id}")]
         public async Task<IActionResult> ExportBaoCaoToPdf(int id)
         {
@@ -38,6 +43,7 @@ namespace TLUScience.Controllers
             return File(fileContents, "application/pdf", "BaoCaoThongKe.pdf");
         }
 
+        [Authorize(Roles = "Ban quan ly")]
         [HttpGet("export-excel/{idBaoCao}")]
         public async Task<IActionResult> ExportBaoCaoToExcel(int idBaoCao)
         {

@@ -9,6 +9,7 @@ public interface INCKHSinhVienService
     public Task<bool> AddNCKHSinhVienAsync(NCKHSinhVienCRUD nCKHSinhVien);
     public Task<bool> UpdateNCKHSinhVienAsync(int id, NCKHSinhVienCRUD nCKHSinhVien);
     public Task<bool> DeleteNCKHSinhVienAsync(int id);
+    public Task<bool> UpdateStatus(int id, Status status);
 }
 
 public class NCKHSinhVienService : INCKHSinhVienService
@@ -106,6 +107,20 @@ public class NCKHSinhVienService : INCKHSinhVienService
         };
 
         await _CKHSinhVienRepository.AddNCKHSinhVienAsync(nCKHSinhVienEntity);
+        return true;
+    }
+
+    public async Task<bool> UpdateStatus(int id, Status status)
+    {
+        var nCKHSinhVienEntity = await _CKHSinhVienRepository.GetNCKHSinhVienAsync(id);
+        if (nCKHSinhVienEntity == null)
+        {
+            return false;
+        }
+
+        nCKHSinhVienEntity.TrangThai = status.TrangThai;
+
+        await _CKHSinhVienRepository.UpdateNCKHSinhVienAsync(nCKHSinhVienEntity);
         return true;
     }
 

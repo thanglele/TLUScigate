@@ -1,11 +1,12 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TLUScience.DTOs;
 
 namespace TLUScience.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-
+    [ApiController] 
+    [Authorize]
     public class CongBoKhoaHocController : ControllerBase
     {
         private readonly ICongBoKhoaHocService _congBoKhoaHocService;
@@ -15,6 +16,7 @@ namespace TLUScience.Controllers
             _congBoKhoaHocService = congBoKhoaHocService;
         }
 
+        [Authorize(Roles = "Ban quan ly, Giang vien")]
         [HttpGet]
         public async Task<ActionResult> GetFullCongBoKhoaHocAsync()
         {
@@ -22,6 +24,7 @@ namespace TLUScience.Controllers
             return Ok(congbo);
         }
 
+        [Authorize(Roles = "Ban quan ly, Giang vien")]
         [HttpGet("{id}")]
         public async Task<ActionResult> GetCongBoKhoaHocAsync(int id)
         {
@@ -29,6 +32,7 @@ namespace TLUScience.Controllers
             return Ok(congbo);
         }
 
+        [Authorize(Roles = "Giang vien")]
         [HttpPost]
         public async Task<ActionResult> AddCongBoKhoaHocAsync([FromBody] CongBoKhoaHocCRUD congBoKhoaHoc)
         {
@@ -40,6 +44,7 @@ namespace TLUScience.Controllers
             return BadRequest(new { message = "Thêm công bố khoa học thất bại, vui lòng thử lại!" });
         }
 
+        [Authorize(Roles = "Giang vien")]
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateCongBoKhoaHocAsync(int id, [FromBody] CongBoKhoaHocCRUD congBoKhoaHoc)
         {
@@ -51,6 +56,19 @@ namespace TLUScience.Controllers
             return BadRequest(new { message = "Cập nhật công bố khoa học thất bại, vui lòng thử lại!" });
         }
 
+        [Authorize(Roles = "Ban quan ly")]
+        [HttpPut("update-status/{id}")]
+        public async Task<ActionResult> UpdateStatusCongBoKhoaHocAsync(int id, [FromBody] CBKHStatus status)
+        {
+            var result = await _congBoKhoaHocService.UpdateStatus(id, status);
+            if (result)
+            {
+                return Ok(new { message = "Cập nhật trạng thái công bố khoa học thành công!" });
+            }
+            return BadRequest(new { message = "Cập nhật trạng thái công bố khoa học thất bại, vui lòng thử lại!" });
+        }
+
+        [Authorize(Roles = "Ban quan ly")]
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteCongBoKhoaHocAsync(int id)
         {
