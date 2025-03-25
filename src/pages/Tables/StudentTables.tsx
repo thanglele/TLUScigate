@@ -1,11 +1,13 @@
-
 import ComponentCard from "../../components/common/ComponentCard";
 import StudentTablesOne from "../../components/tables/StudentTables/StudentTablesOne";
 
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function StudentTable() {
   const navigate = useNavigate();
+
+  const [selectedOption, setSelectedOption] = useState("oke");
 
   const handleAddClick = () => {
     const isConfirmed = window.confirm("Bạn có chắc chắn muốn thêm không?");
@@ -16,10 +18,26 @@ export default function StudentTable() {
     }
   };
 
+  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedOption(e.target.value);
+  };
+
   return (
     <>
       <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
-        <div></div>
+        <div className="flex items-center gap-4">
+          <label htmlFor="status" className="">Đề tài nghiên cứu sinh viên:</label>
+          <select
+            id="status"
+            value={selectedOption}
+            onChange={handleSelectChange}
+            className="border outline-none"
+          >
+            <option value="oke">Đã duyệt</option>
+            <option value="pending">Chờ xử lý</option>
+            <option value="done">Đã hoàn thành</option>
+          </select>
+        </div>
         <div className="action">
           <button
             onClick={handleAddClick}
@@ -30,8 +48,9 @@ export default function StudentTable() {
           </button>
         </div>
       </div>
+
       <div className="space-y-6">
-        <ComponentCard title="Danh sách">
+        <ComponentCard title="">
           <StudentTablesOne />
         </ComponentCard>
       </div>
