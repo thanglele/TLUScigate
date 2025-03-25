@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom"; // Import useNavigate hook
 import {
     Table,
     TableBody,
@@ -5,7 +6,6 @@ import {
     TableHeader,
     TableRow,
 } from "../../ui/table";
-
 import Badge from "../../ui/badge/Badge";
 import { FiEye, FiEdit, FiTrash2 } from "react-icons/fi";
 
@@ -19,7 +19,6 @@ interface Faculty {
     endDate: string;
 }
 
-// Define the table data using the interface
 const tableData: Faculty[] = [
     {
         id: 1,
@@ -39,50 +38,27 @@ const tableData: Faculty[] = [
         startDate: "08/01/2005",
         endDate: "08/05/2005",
     },
-    {
-        id: 3,
-        nameProject: "ỨNG DỤNG AI DỰ BÁO THỜI TIẾT",
-        facultyName: "PSG. TS Nguyễn Văn An",
-        status: "Đang thực hiện",
-        science: "CNTT",
-        startDate: "08/01/2005",
-        endDate: "08/05/2005",
-    },
-    {
-        id: 4,
-        nameProject: "ỨNG DỤNG AI DỰ BÁO THỜI TIẾT",
-        facultyName: "PSG. TS Nguyễn Văn An",
-        status: "Đã hoàn thành",
-        science: "CNTT",
-        startDate: "08/01/2005",
-        endDate: "08/05/2005",
-    },
-    {
-        id: 5,
-        nameProject: "ỨNG DỤNG AI DỰ BÁO THỜI TIẾT",
-        facultyName: "PSG. TS Nguyễn Văn An",
-        status: "Đã hoàn thành",
-        science: "CNTT",
-        startDate: "08/01/2005",
-        endDate: "08/05/2005",
-    },
+   
 ];
 
-// VIET CHI TIET SAU
-const handleViewDetail = (id: number) => {
-
-};
-
-const handleEdit = (id: number) => {
-    console.log('Sửa thông tin giảng viên:', id);
-};
-
-const handleDelete = (id: number) => {
-    console.log('Xóa giảng viên:', id);
-};
-
-
 export default function FacultyTablesOne() {
+    const navigate = useNavigate(); 
+
+    const handleViewDetail = (id: number) => {
+        navigate(`/xem-chi-tiet-giang-vien`); 
+    };
+    const handleEdit = (id: number) => {
+        console.log('Sửa thông tin giảng viên:', id);
+    };
+
+    const handleDelete = (id: number) => {
+        const confirmDelete = window.confirm("Bạn có muốn xóa giảng viên này không?");
+        if (confirmDelete) {
+            console.log("Đã xóa giảng viên với ID:", id);
+        } else {
+            console.log("Hủy bỏ xóa giảng viên với ID:", id);
+        }
+    };
     return (
         <div className="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
             <div className="max-w-full overflow-x-auto">
@@ -90,55 +66,31 @@ export default function FacultyTablesOne() {
                     <Table>
                         <TableHeader className="border-b border-gray-100 dark:border-white/[0.05]">
                             <TableRow>
-                                <TableCell
-                                    isHeader
-                                    className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
-                                >
+                                {/* Table Headers */}
+                                <TableCell isHeader className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400">
                                     ID
                                 </TableCell>
-                                <TableCell
-                                    isHeader
-                                    className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
-                                >
+                                <TableCell isHeader className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400">
                                     TÊN ĐỀ TÀI
                                 </TableCell>
-                                <TableCell
-                                    isHeader
-                                    className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
-                                >
+                                <TableCell isHeader className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400">
                                     CHỦ NHIỆM
                                 </TableCell>
-                                <TableCell
-                                    isHeader
-                                    className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
-                                >
+                                <TableCell isHeader className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400">
                                     TIẾN ĐỘ
                                 </TableCell>
-                                <TableCell
-                                    isHeader
-                                    className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
-                                >
+                                <TableCell isHeader className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400">
                                     KHOA
                                 </TableCell>
-                                <TableCell
-                                    isHeader
-                                    className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
-                                >
+                                <TableCell isHeader className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400">
                                     NGÀY BẮT ĐẦU
                                 </TableCell>
-                                <TableCell
-                                    isHeader
-                                    className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
-                                >
+                                <TableCell isHeader className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400">
                                     NGÀY KẾT THÚC
                                 </TableCell>
-                                <TableCell
-                                    isHeader
-                                    className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
-                                >
+                                <TableCell isHeader className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400">
                                     HÀNH ĐỘNG
                                 </TableCell>
-
                             </TableRow>
                         </TableHeader>
 
@@ -162,8 +114,8 @@ export default function FacultyTablesOne() {
                                                 Faculty.status === "Đã hoàn thành"
                                                     ? "success"
                                                     : Faculty.status === "Đang Thực Hiện"
-                                                        ? "warning"
-                                                        : "error"
+                                                    ? "warning"
+                                                    : "error"
                                             }
                                         >
                                             {Faculty.status}

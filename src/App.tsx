@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import SignIn from "./pages/AuthPages/SignIn";
 import SignUp from "./pages/AuthPages/SignUp";
 import NotFound from "./pages/OtherPage/NotFound";
 import UserProfiles from "./pages/UserProfiles";
@@ -20,6 +19,7 @@ import AppLayout from "./layout/AppLayout";
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
 import AddFaculty from './pages/Faculty/AddFaculty';
+import ViewsFaculty from './pages/Faculty/ViewsFaculty';
 import AddScience from './pages/Science/AddScience';
 import AddMagazine from './pages/Magazine/AddMagazine';
 import MagazineTables from './pages/Tables/MagazineTables';
@@ -29,6 +29,7 @@ import NewTopicFormStudent from "./pages/Student/NewTopicFormStudent";
 import NewTopicFormFaculty from "./pages/Faculty/NewTopicFormFaculty";
 import SignInForm from "./components/auth/SignInForm";
 import UdateMagazine from "./pages/Magazine/UdateMagazine";
+import ViewsSudent from "./pages/Student/ViewsStudent";
 
 export default function App() {
   return (
@@ -70,6 +71,10 @@ export default function App() {
           {/* Faculty */}
           <Route path="/giang-vien" element={<BasicTables />} />
           <Route path="/them-giang-vien" element={<AddFaculty />} />
+          <Route path="/xem-chi-tiet-giang-vien" element={<ViewsFaculty />} />
+          
+          {/* Student */}
+          <Route path="/xem-chi-tiet-sinh-vien" element={<ViewsSudent />} />
 
           {/* Science */}
           <Route path="/dang-ki-khoa-hoc" element={<AddScience />} />

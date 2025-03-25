@@ -1,3 +1,6 @@
+import { useNavigate } from "react-router-dom"; 
+import { confirmAlert } from "react-confirm-alert";
+import 'react-confirm-alert/src/react-confirm-alert.css';
 import {
     Table,
     TableBody,
@@ -90,21 +93,26 @@ const tableData: Student[] = [
     }
 ];
 
-// VIET CHI TIET SAU
-// VIET CHI TIET SAU
-const handleViewDetail = (id: number) => {
-
-};
-
-const handleEdit = (id: number) => {
-    console.log('Sửa thông tin giảng viên:', id);
-};
-
-const handleDelete = (id: number) => {
-    console.log('Xóa giảng viên:', id);
-};
-
 export default function StudentTablesOne() {
+    const navigate = useNavigate(); 
+
+    
+    const handleViewDetail = (id: number) => {
+        navigate(`/xem-chi-tiet-sinh-vien`); 
+    };
+
+    const handleEdit = (id: number) => {
+        console.log('Sửa thông tin giảng viên:', id);
+    };
+
+    const handleDelete = (id: number) => {
+        const confirmDelete = window.confirm("Bạn có muốn xóa giảng viên này không?");
+        if (confirmDelete) {
+            console.log("Đã xóa giảng viên với ID:", id);
+        } else {
+            console.log("Hủy bỏ xóa giảng viên với ID:", id);
+        }
+    };
     return (
         <div className="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
             <div className="max-w-full overflow-x-auto">
