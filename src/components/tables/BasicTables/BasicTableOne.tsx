@@ -1,4 +1,3 @@
-// src/components/tables/FacultyTables/BasicTableOne.tsx
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
@@ -10,7 +9,8 @@ import {
 } from "../../ui/table";
 import Badge from "../../ui/badge/Badge";
 import { FiEye, FiEdit, FiTrash2 } from "react-icons/fi";
-import { fetchLectureData } from "../../../api/LectureAPI";
+import { fetchLectureData, deleteLecture, viewDetail } from "../../../api/LectureAPI";
+import { toast } from "react-toastify";
 
 interface Faculty {
   maGV: string;
@@ -28,38 +28,65 @@ interface Faculty {
   id: number;
 }
 
-
-
 export default function BasicTableOne() {
   const navigate = useNavigate();
-  const handleViewDetail = (id: number) => {
-    navigate(`/info-gv`)
-  };
+
+  const handleViewDetail = async (maGV: number) => {
+        navigate('/info-gv'); 
+    }
   
-  const handleEdit = (id: number) => {
-    navigate(`/chinh-sua-gv`)
+
+  const handleEdit = async (maGV: number) => {
+    navigate('/chinh-sua-gv');
   };
-  
-  const handleDelete = (id: number) => {
+
+  const handleDelete = async (maGV: number) => {
     const confirmDelete = window.confirm("Bạn có muốn xóa giảng viên này không?");
     if (confirmDelete) {
-        console.log("Đã xóa giảng viên với ID:", id);
+      try {
+        toast.info("Đang xóa giảng viên...", {
+          position: "top-right",
+          autoClose: false,
+          toastId: "delete-lecture",
+        });
+
+        await deleteLecture(maGV);
+
+        toast.update("delete-lecture", {
+          render: "Xóa giảng viên thành công!",
+          type: "success",
+          autoClose: 3000,
+        });
+
+        // Cập nhật lại danh sách sau khi xóa
+        const updatedData = await fetchLectureData();
+        setFacultyData(updatedData);
+      } catch (error) {
+        console.error("Lỗi khi xóa giảng viên:", error.message);
+        toast.update("delete-lecture", {
+          render: error.message || "Xóa giảng viên không thành công!",
+          type: "error",
+          autoClose: 5000,
+        });
+      }
     } else {
-        console.log("Hủy bỏ xóa giảng viên với ID:", id);
+      toast.warn("Hủy xóa giảng viên.", {
+        position: "top-right",
+        autoClose: 3000,
+      });
     }
   };
+
   const [facultyData, setFacultyData] = useState<Faculty[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Thêm từ khóa async vào đây
     const loadFacultyData = async () => {
       try {
         const data = await fetchLectureData();
         setFacultyData(data);
       } catch (err) {
-
         setError(
           err.message || "Không thể tải dữ liệu từ API. Vui lòng thử lại sau!"
         );

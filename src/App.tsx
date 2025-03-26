@@ -36,6 +36,7 @@ import SignInForm from "./components/auth/SignInForm";
 import UdateMagazine from "./pages/Magazine/UdateMagazine";
 import ViewsSudent from "./pages/Student/ViewsStudent";
 import ProgressUpdatesStudent from "./pages/Student/ProgressUpdates";
+import BasicTableOne from "./components/tables/BasicTables/BasicTableOne";
 
 export default function App() {
   return (
@@ -76,6 +77,7 @@ export default function App() {
 
           {/* Faculty */}
           <Route path="/giang-vien" element={<BasicTables />} />
+          <Route path="/danh-sach-giang-vien" element={<BasicTableOne />} />
           <Route path="/them-giang-vien" element={<AddFaculty />} />
           <Route path="/chinh-sua-gv" element={<FacuktyEdit />} />
           <Route path="/xem-chi-tiet-giang-vien" element={<ViewsFaculty />} />

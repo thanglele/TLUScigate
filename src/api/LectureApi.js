@@ -8,6 +8,7 @@ const api = axios.create({
   },
 });
 
+
 export const fetchLectureData = async () => {
     try {
       // Lấy accessToken từ localStorage
@@ -82,7 +83,14 @@ export const updateLecture = async (lectureId, lectureData) => {
 
 export const deleteLecture = async (lectureId) => {
   try {
-    const response = await api.delete(`/api/GiangVien/${lectureId}`);
+    const token = localStorage.getItem("accessToken");
+
+    const response = await api.delete(`/api/GiangVien/${lectureId}`, {
+      headers: {
+        Authorization: token, 
+      },
+    });
+
     return response.data;
   } catch (error) {
     console.error("Error deleting lecture data:", {
@@ -91,7 +99,30 @@ export const deleteLecture = async (lectureId) => {
       status: error.response?.status,
     });
 
-    const errorMessage = error.response?.data?.title || "Xóa bài giảng thất bại";
+    const errorMessage = error.response?.data?.title || "Xóa giang vien thất bại";
+    throw new Error(errorMessage);
+  }
+}
+
+export const viewDetail = async (lectureId) => { 
+  try {
+    // Lấy accessToken từ localStorage
+    const token = localStorage.getItem("accessToken");
+
+    const response = await api.get(`/api/GiangVien/${lectureId}`, {
+      headers: {
+        Authorization: token, 
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching lecture data:", {
+      message: error.message,
+      response: error.response?.data,
+      status: error.response?.status,
+    });
+    const errorMessage = error.response?.data?.message || "Không thể tải dữ liệu từ API";
     throw new Error(errorMessage);
   }
 }

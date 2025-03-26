@@ -91,3 +91,13 @@ export const newPassword = async (data) => {
     throw new Error(errorMessage);
   }
 };
+
+export const logout = () => {
+  try {
+    localStorage.removeItem("accessToken");
+    return true;
+  } catch (error) {
+    console.error('Logout Error:', error.message);
+    return false;
+  }
+}
