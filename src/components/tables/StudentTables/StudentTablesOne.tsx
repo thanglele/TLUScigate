@@ -10,7 +10,7 @@ import {
 } from "../../ui/table";
 
 import Badge from "../../ui/badge/Badge";
-import { FiEye, FiEdit, FiTrash2 } from "react-icons/fi";
+import { FiEye, FiEdit, FiTrash2, FiClock} from "react-icons/fi";
 
 interface Student {
     id: number;
@@ -112,6 +112,10 @@ export default function StudentTablesOne() {
         } else {
             console.log("Hủy bỏ xóa giảng viên với ID:", id);
         }
+    };
+
+    const handleClock = (id: number) => {
+        navigate(`/cap-nhat-tien-do-sv`)
     };
     return (
         <div className="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
@@ -233,6 +237,13 @@ export default function StudentTablesOne() {
                                                 onClick={() => handleDelete(Student.id)}
                                             >
                                                 <FiTrash2 className="w-4 h-4" />
+                                            </button>
+
+                                            <button
+                                                className="text-purple-600 hover:text-purple-900 transition-colors"
+                                                onClick={() => handleClock(Student.id)}
+                                            >
+                                                <FiClock className="w-4 h-4" />
                                             </button>
                                         </div>
                                     </TableCell>
