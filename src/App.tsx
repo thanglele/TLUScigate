@@ -21,6 +21,7 @@ import Home from "./pages/Dashboard/Home";
 import AddFaculty from './pages/Faculty/AddFaculty';
 import ViewsFaculty from './pages/Faculty/ViewsFaculty';
 import AddScience from './pages/Science/AddScience';
+import UpdateScience from './pages/Science/UpdateScience';
 import AddMagazine from './pages/Magazine/AddMagazine';
 import MagazineTables from './pages/Tables/MagazineTables';
 import StudentTables from './pages/Tables/StudentTables';
@@ -78,6 +79,7 @@ export default function App() {
 
           {/* Science */}
           <Route path="/dang-ki-khoa-hoc" element={<AddScience />} />
+          <Route path="/cap-nhat-khoa-hoc" element={<UpdateScience />} />
 
           {/* Đề tài nghiên cứu */}
           <Route path="/sinh-vien-nghien-cuu" element={<StudentTables />} />
