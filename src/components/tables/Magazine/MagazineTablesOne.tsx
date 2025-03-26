@@ -8,6 +8,7 @@ import {
 } from "../../ui/table";
 import { FiEye, FiEdit, FiTrash2 } from "react-icons/fi";
 import { fetchTapChiAnPham } from "../../../api/MagazineAPI";
+import { useNavigate } from "react-router-dom";
 
 interface Magazine {
   id: number;
@@ -30,19 +31,26 @@ const normalizeMagazineData = (data: any[]): Magazine[] => {
   }));
 };
 
-const handleViewDetail = (id: number) => {
-  console.log(`Xem chi tiết ấn phẩm: ${id}`);
-};
-
-const handleEdit = (id: number) => {
-  console.log("Sửa thông tin ấn phẩm:", id);
-};
-
-const handleDelete = (id: number) => {
-  console.log("Xóa ấn phẩm:", id);
-};
 
 export default function MagazineTablesOne() {
+  const navigate = useNavigate();
+  const handleViewDetail = (id: number) => {
+    navigate(`#`)
+  };
+  
+  const handleEdit = (id: number) => {
+    navigate(`/cap-nhat-an-pham`)
+  };
+  
+  const handleDelete = (id: number) => {
+    const confirmDelete = window.confirm("Bạn có muốn xóa ấn phẩm này không?");
+    if (confirmDelete) {
+        console.log("Đã xóa ấn phẩm với ID:", id);
+    } else {
+        console.log("Hủy bỏ xóa ấn phẩm ID:", id);
+    }
+  };
+
   const [magazineData, setMagazineData] = useState<Magazine[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

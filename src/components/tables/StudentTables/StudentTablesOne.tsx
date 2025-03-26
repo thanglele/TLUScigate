@@ -106,11 +106,11 @@ export default function StudentTablesOne() {
     };
 
     const handleDelete = (id: number) => {
-        const confirmDelete = window.confirm("Bạn có muốn xóa giảng viên này không?");
+        const confirmDelete = window.confirm("Bạn có muốn không?");
         if (confirmDelete) {
-            console.log("Đã xóa giảng viên với ID:", id);
+            console.log("Xóa thành công", id);
         } else {
-            console.log("Hủy bỏ xóa giảng viên với ID:", id);
+            console.log("Hủy bỏ ", id);
         }
     };
 

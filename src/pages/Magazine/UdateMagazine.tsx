@@ -15,7 +15,7 @@ const UdateMagazine = () => {
     return (
         <div className="p-6 bg-white rounded-lg shadow-sm dark:bg-gray-800">
             <h1 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white">
-                Đăng kí ấn phẩm
+                Cập nhật ấn phẩm
             </h1>
             <div className="pb-4">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
