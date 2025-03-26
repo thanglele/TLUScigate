@@ -7,7 +7,7 @@ import {
   TableRow,
 } from "../../ui/table";
 import { FiEye, FiEdit, FiTrash2 } from "react-icons/fi";
-import { fetchTapChiAnPham } from "../../../api/MagazineAPI";
+import { fetchTapChiAnPham,deleteTapChiAnPham } from "../../../api/MagazineAPI";
 import { useNavigate } from "react-router-dom";
 
 interface Magazine {
@@ -42,12 +42,15 @@ export default function MagazineTablesOne() {
     navigate(`/cap-nhat-an-pham`)
   };
   
-  const handleDelete = (id: number) => {
-    const confirmDelete = window.confirm("Bạn có muốn xóa ấn phẩm này không?");
-    if (confirmDelete) {
-        console.log("Đã xóa ấn phẩm với ID:", id);
-    } else {
-        console.log("Hủy bỏ xóa ấn phẩm ID:", id);
+  const handleDelete = async (id: number) => {
+    try {
+      await deleteTapChiAnPham(id);
+      alert("Xóa thành công");
+      window.location.reload();
+    } catch (error) {
+      alert("Xóa thất bại");
+
+      console.error(error);
     }
   };
 

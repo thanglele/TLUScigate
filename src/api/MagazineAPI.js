@@ -31,3 +31,21 @@ export const fetchTapChiAnPham = async () => {
 }
 };
 
+export const deleteTapChiAnPham = async (id) => {
+  try {
+     const token = localStorage.getItem("accessToken"); 
+      const response = await api.delete("/api/TapChiAnPham", {
+          headers: {
+              Authorization: token,
+          },
+      });
+  } catch (error) {
+    console.error("Error deleting NCKHTapChiAnPham data:", {
+      message: error.message,
+      response: error.response?.data,
+      status: error.response?.status,
+    });
+    const errorMessage = error.response?.data?.message || "Xóa tạp chí ấn phẩm thất bại";
+    throw new Error(errorMessage);
+  }
+}

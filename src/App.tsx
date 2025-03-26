@@ -37,6 +37,7 @@ import UdateMagazine from "./pages/Magazine/UdateMagazine";
 import ViewsSudent from "./pages/Student/ViewsStudent";
 import ProgressUpdatesStudent from "./pages/Student/ProgressUpdates";
 import BasicTableOne from "./components/tables/BasicTables/BasicTableOne";
+import BaoCao from "./components/auth/BaoCao";
 
 export default function App() {
   return (
@@ -103,6 +104,9 @@ export default function App() {
           <Route path="/an-pham" element={<MagazineTables />} />
           <Route path="/cap-nhat-an-pham" element={<UdateMagazine />} />
           <Route path="/dang-ki-an-pham" element={<AddMagazine />} />
+
+          {/* Bao cao thong ke */}
+          <Route path="/bao-cao-thong-ke" element={<BaoCao />} />
         </Route>
 
         {/* Fallback Route */}

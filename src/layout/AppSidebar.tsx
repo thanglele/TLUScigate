@@ -57,7 +57,7 @@ const navItems: NavItem[] = [
   {
     name: "Báo cáo thống kê",
     icon: <TaskIcon />,
-    path: " ",
+    path: "/bao-cao-thong-ke",
   },
 ];
 
