@@ -1,5 +1,5 @@
 // src/components/tables/ScienceTables/ScienceTablesOne.tsx
-import { useState, useEffect } from 'react';
+import { useState, useEffect, use } from 'react';
 import {
   Table,
   TableBody,
@@ -8,21 +8,19 @@ import {
   TableRow,
 } from "../../ui/table";
 import { fetchScienceData } from "../../../api/scienceAPI.js";
-
-
+import { SidebarProvider } from '../../../context/SidebarContext.js';
 
 interface Science {
   id: number;
-  title: string;
-  language: string;
-  author: string;
-  indexScience: string;
-  publicDate: string;
+  tieuDe: string;
+  ngonNgu: string;
+  tacGia: null;
+  loaiCongBo: string;
+  chiMucKhoaHoc: string;
+  namCongBo: string;
 }
 
-const handleViewDetail = (id: number) => {
-  console.log(`View detail for ID: ${id}`);
-};
+
 
 export default function ScienceTablesOne() {
   const [scienceData, setScienceData] = useState<Science[]>([]);
@@ -30,23 +28,25 @@ export default function ScienceTablesOne() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const loadScienceData = async () => {
+    const loadFacultyData = async () => {
       try {
-        const data = await fetchScienceData();
+        const data = await fetchScienceData();//
         setScienceData(data);
       } catch (err) {
-        setError(err.message || 'Không thể tải dữ liệu từ API. Vui lòng thử lại sau!');
+        setError(
+          err.message || "Khong the tai du lieu tu API"
+        );
         console.error(err);
       } finally {
         setLoading(false);
       }
     };
 
-    loadScienceData();
+    loadFacultyData();
   }, []);
 
-  if (loading) return <div className="text-gray-500">Đang tải dữ liệu...</div>;
-  if (error) return <div className="text-red-500">{error}</div>;
+ if (loading) return <div className='text-gray-500'>"Đang tải dữ liệu ..."</div>
+ if (error) return <div className='text-red-500'>{error}</div>
 
   return (
     <div className="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
@@ -83,7 +83,7 @@ export default function ScienceTablesOne() {
                   isHeader
                   className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
                 >
-                  TRẠNG THÁI
+                LOẠI CÔNG BỐ
                 </TableCell>
                 <TableCell
                   isHeader
@@ -120,22 +120,21 @@ export default function ScienceTablesOne() {
                     {science.ngonNgu}
                   </TableCell>
                   <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
-                    {science.author}
+                    {science.tacGia}
                   </TableCell>
                   <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
-                    {science.indexScience}
+                    {science.loaiCongBo}
                   </TableCell>
                   <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
                     {science.chiMucKhoaHoc}
                   </TableCell>
                   <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
-                    {science.namCongBo}
+                    {science.namCongBo}  
                   </TableCell>
                   <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
                     <div className="flex items-center gap-2">
                       <button
                         className="text-blue-500 hover:text-blue-700"
-                        onClick={() => handleViewDetail(science.id)}
                       >
                         Chi tiết
                       </button>

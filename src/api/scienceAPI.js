@@ -1,34 +1,41 @@
-// src/api/scienceAPI.js
-import axios from 'axios';
+import axios from "axios";
 
 const api = axios.create({
-  baseURL: 'https://scigateapi.thanglele08.id.vn/',
+  baseURL: "https://scigateapi.thanglele08.id.vn/",
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
 });
 
 export const fetchScienceData = async () => {
-  try {
-    const response = await api.get('/api/CongBoKhoaHoc');
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching science data:', {
-      message: error.message,
-      response: error.response?.data,
-      status: error.response?.status,
-    });
-    const errorMessage = error.response?.data?.messages || 'Không thể tải dữ liệu từ API';
-    throw new Error(errorMessage);
-  }
-};
+    try {
+      //lay accessToken tu localStorage
+      const token = localStorage.getItem("accessToken");
+
+      const response = await api.get("api/CongBoKhoaHoc",{
+        headers: {
+          Authorization: token,
+        },
+      });
+
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching sience data:", {
+        message: error.message,
+        response: error.response?.data,
+        status: error.response?.status,
+      });
+      const errorMessage = error.response?.data?.message || "Không thể tải dữ liệu từ API";
+      throw new Error(errorMessage);
+    }
+}
 
 export const createScience = async (scienceData) => {
   try {
-    const response = await api.post('/api/CongBoKhoaHoc', scienceData);
+    const response = await api.post("api/CongBoKhoaHoc", scienceData);
     return response.data;
   } catch (error) {
-    console.error('Error creating science data:', {
+    console.error("Error creating science data:", {
       message: error.message,
       response: error.response?.data,
       status: error.response?.status,
@@ -37,12 +44,12 @@ export const createScience = async (scienceData) => {
     // Lấy chi tiết lỗi từ 'errors' nếu có
     if (error.response?.data?.errors) {
       const errorMessages = Object.entries(error.response.data.errors)
-        .map(([field, messages]) => `${field}: ${messages.join(', ')}`)
-        .join('; ');
+        .map(([field, messages]) => `${field}: ${messages.join(", ")}`)
+        .join("; ");
       throw new Error(`Validation failed: ${errorMessages}`);
     }
 
-    const errorMessage = error.response?.data?.title || 'Thêm công bố khoa học thất bại';
+    const errorMessage = error.response?.data?.title || "Thêm công bố khoa học thất bại";
     throw new Error(errorMessage);
   }
 };
