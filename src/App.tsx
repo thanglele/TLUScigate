@@ -23,12 +23,15 @@ import ViewsFaculty from './pages/Faculty/ViewsFaculty';
 import ProgressUpdates from './pages/Faculty/ProgressUpdates';
 import AddScience from './pages/Science/AddScience';
 import UpdateScience from './pages/Science/UpdateScience';
+import InfoScience from './pages/Science/InfoScience';
 import AddMagazine from './pages/Magazine/AddMagazine';
 import MagazineTables from './pages/Tables/MagazineTables';
 import StudentTables from './pages/Tables/StudentTables';
 import FacultyTables from './pages/Tables/FacultyTables';
 import NewTopicFormStudent from "./pages/Student/NewTopicFormStudent";
 import NewTopicFormFaculty from "./pages/Faculty/NewTopicFormFaculty";
+import FacuktyEdit from "./pages/Faculty/FacuktyEdit";
+import ViewsInfo from "./pages/Faculty/ViewsInfo";
 import SignInForm from "./components/auth/SignInForm";
 import UdateMagazine from "./pages/Magazine/UdateMagazine";
 import ViewsSudent from "./pages/Student/ViewsStudent";
@@ -74,8 +77,10 @@ export default function App() {
           {/* Faculty */}
           <Route path="/giang-vien" element={<BasicTables />} />
           <Route path="/them-giang-vien" element={<AddFaculty />} />
+          <Route path="/chinh-sua-gv" element={<FacuktyEdit />} />
           <Route path="/xem-chi-tiet-giang-vien" element={<ViewsFaculty />} />
           <Route path="/cap-nhat-tien-do-gv" element={<ProgressUpdates />} />
+          <Route path="/info-gv" element={<ViewsInfo />} />
           
           {/* Student */}
           <Route path="/xem-chi-tiet-sinh-vien" element={<ViewsSudent />} />
@@ -84,6 +89,7 @@ export default function App() {
           {/* Science */}
           <Route path="/dang-ki-khoa-hoc" element={<AddScience />} />
           <Route path="/cap-nhat-khoa-hoc" element={<UpdateScience />} />
+          <Route path="/chi-tiet-cong-bo-kh" element={<InfoScience />} />
 
           {/* Đề tài nghiên cứu */}
           <Route path="/sinh-vien-nghien-cuu" element={<StudentTables />} />

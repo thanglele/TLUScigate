@@ -1,14 +1,15 @@
 
-const FacuktyEdit = () => {
+const ViewsInfo = () => {
     const RequiredLabel = ({ children }: { children: string }) => (
       <span className="text-sm font-medium text-gray-700 dark:text-gray-200">
         {children} <span className="text-red-500">*</span>
       </span>
     );
+  
     return (
       <div className="p-6 bg-white rounded-lg shadow-sm dark:bg-gray-800">
         <h1 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white">
-          Chỉnh sửa thông tin giảng viên
+         Thông tin giảng viên
         </h1>
         <div className="pb-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -17,7 +18,7 @@ const FacuktyEdit = () => {
               <input
                 type="text"
                 className="w-full mt-1 px-3 py-2 border rounded-lg dark:border-gray-600 dark:bg-gray-700"
-                placeholder="Nhập họ và tên giảng viên"
+               
               />
             </div>
             <div>
@@ -25,7 +26,7 @@ const FacuktyEdit = () => {
               <input
                 type="text"
                 className="w-full mt-1 px-3 py-2 border rounded-lg dark:border-gray-600 dark:bg-gray-700"
-                placeholder="2251172533"
+               
               />
             </div>
             <div>
@@ -40,7 +41,7 @@ const FacuktyEdit = () => {
               <input
                 type="date"
                 className="w-full mt-1 px-3 py-2 border rounded-lg dark:border-gray-600 dark:bg-gray-700"
-                placeholder="Nhập mã giảng viên"
+                
               />
             </div>
             <div>
@@ -48,7 +49,7 @@ const FacuktyEdit = () => {
               <input
                 type="text"
                 className="w-full mt-1 px-3 py-2 border rounded-lg dark:border-gray-600 dark:bg-gray-700"
-                placeholder="abc@tlu.edu.vn"
+              
               />
             </div>
             <div>
@@ -56,7 +57,7 @@ const FacuktyEdit = () => {
               <input
                 type="text"
                 className="w-full mt-1 px-3 py-2 border rounded-lg dark:border-gray-600 dark:bg-gray-700"
-                placeholder="0985584356"
+               
               />
             </div>
             <div>
@@ -64,7 +65,7 @@ const FacuktyEdit = () => {
               <input
                 type="text"
                 className="w-full mt-1 px-3 py-2 border rounded-lg dark:border-gray-600 dark:bg-gray-700"
-                placeholder="Hà Nội"
+               
               />
             </div>
             <div>
@@ -142,7 +143,7 @@ const FacuktyEdit = () => {
               <input
                 type="date"
                 className="w-full mt-1 px-3 py-2 border rounded-lg dark:border-gray-600 dark:bg-gray-700"
-                placeholder="Nhập mã giảng viên"
+               
               />
             </div>
             <div>
@@ -150,7 +151,7 @@ const FacuktyEdit = () => {
               <input
                 type="text"
                 className="w-full mt-1 px-3 py-2 border rounded-lg dark:border-gray-600 dark:bg-gray-700"
-                placeholder="Nhâp mật khẩu"
+               
               />
             </div>
           </div>
@@ -159,7 +160,7 @@ const FacuktyEdit = () => {
               <RequiredLabel>Ghi chú</RequiredLabel>
               <textarea
                 className="w-full mt-1 px-3 py-2 border rounded-lg dark:border-gray-600 dark:bg-gray-700"
-                placeholder="Ghi chú thêm..."
+               
               />
             </div>
           </div>
@@ -182,4 +183,4 @@ const FacuktyEdit = () => {
     );
   };
   
-  export default FacuktyEdit;
+  export default ViewsInfo;

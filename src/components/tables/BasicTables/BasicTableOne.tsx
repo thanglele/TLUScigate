@@ -1,5 +1,6 @@
 // src/components/tables/FacultyTables/BasicTableOne.tsx
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Table,
   TableBody,
@@ -27,19 +28,26 @@ interface Faculty {
   id: number;
 }
 
-const handleViewDetail = (id: number) => {
-  console.log(`Xem chi tiết giảng viên: ${id}`);
-};
 
-const handleEdit = (id: number) => {
-  console.log("Sửa thông tin giảng viên:", id);
-};
-
-const handleDelete = (id: number) => {
-  console.log("Xóa giảng viên:", id);
-};
 
 export default function BasicTableOne() {
+  const navigate = useNavigate();
+  const handleViewDetail = (id: number) => {
+    navigate(`/info-gv`)
+  };
+  
+  const handleEdit = (id: number) => {
+    navigate(`/chinh-sua-gv`)
+  };
+  
+  const handleDelete = (id: number) => {
+    const confirmDelete = window.confirm("Bạn có muốn xóa giảng viên này không?");
+    if (confirmDelete) {
+        console.log("Đã xóa giảng viên với ID:", id);
+    } else {
+        console.log("Hủy bỏ xóa giảng viên với ID:", id);
+    }
+  };
   const [facultyData, setFacultyData] = useState<Faculty[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

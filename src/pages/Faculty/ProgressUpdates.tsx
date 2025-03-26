@@ -19,7 +19,6 @@ export default function ProgressUpdates() {
                       <input
                           type="text"
                           className="w-full mt-1 px-3 py-2 border rounded-lg dark:border-gray-600 dark:bg-gray-700"
-                          
                       />
                   </div>
                   <div>

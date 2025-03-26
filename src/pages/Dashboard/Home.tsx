@@ -24,18 +24,12 @@ export default function Home() {
         <div className="col-span-1">
           <Card label="Đề tài nghiên cứu" icon={<FaChartBar />} />
         </div>
-      </div>
-
-      {/* Hàng dưới: 2 card so le, căn giữa 2 khe */}
-      <div className="col-span-12 grid grid-cols-4 gap-4 md:gap-2">
-        <div className="col-span-1 col-start-1"></div> {/* Khoảng trống bên trái */}
         <div className="col-span-1">
           <Card label="Giảng viên" icon={<FaUserGraduate />} />
         </div>
         <div className="col-span-1">
           <Card label="Báo cáo - thống kê" icon={<FaClipboardList />} />
         </div>
-        <div className="col-span-1"></div> {/* Khoảng trống bên phải */}
       </div>
     </div>
   );
