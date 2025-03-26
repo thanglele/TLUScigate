@@ -7,7 +7,7 @@ import {
     TableRow,
 } from "../../ui/table";
 import Badge from "../../ui/badge/Badge";
-import { FiEye, FiEdit, FiTrash2 } from "react-icons/fi";
+import { FiEye, FiEdit, FiTrash2,FiClock } from "react-icons/fi";
 
 interface Faculty {
     id: number;
@@ -38,14 +38,14 @@ const tableData: Faculty[] = [
         startDate: "08/01/2005",
         endDate: "08/05/2005",
     },
-   
+
 ];
 
 export default function FacultyTablesOne() {
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
 
     const handleViewDetail = (id: number) => {
-        navigate(`/xem-chi-tiet-giang-vien`); 
+        navigate(`/xem-chi-tiet-giang-vien`);
     };
     const handleEdit = (id: number) => {
         console.log('Sửa thông tin giảng viên:', id);
@@ -58,6 +58,9 @@ export default function FacultyTablesOne() {
         } else {
             console.log("Hủy bỏ xóa giảng viên với ID:", id);
         }
+    };
+    const handleClock = (id: number) => {
+        navigate(`/cap-nhat-tien-do-gv`)
     };
     return (
         <div className="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
@@ -114,8 +117,8 @@ export default function FacultyTablesOne() {
                                                 Faculty.status === "Đã hoàn thành"
                                                     ? "success"
                                                     : Faculty.status === "Đang Thực Hiện"
-                                                    ? "warning"
-                                                    : "error"
+                                                        ? "warning"
+                                                        : "error"
                                             }
                                         >
                                             {Faculty.status}
@@ -146,6 +149,12 @@ export default function FacultyTablesOne() {
                                                 onClick={() => handleDelete(Faculty.id)}
                                             >
                                                 <FiTrash2 className="w-4 h-4" />
+                                            </button>
+                                            <button
+                                                className="text-purple-600 hover:text-purple-900 transition-colors"
+                                                onClick={() => handleClock(Faculty.id)}
+                                            >
+                                                <FiClock className="w-4 h-4" />
                                             </button>
                                         </div>
                                     </TableCell>

@@ -20,6 +20,7 @@ import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
 import AddFaculty from './pages/Faculty/AddFaculty';
 import ViewsFaculty from './pages/Faculty/ViewsFaculty';
+import ProgressUpdates from './pages/Faculty/ProgressUpdates';
 import AddScience from './pages/Science/AddScience';
 import UpdateScience from './pages/Science/UpdateScience';
 import AddMagazine from './pages/Magazine/AddMagazine';
@@ -31,6 +32,7 @@ import NewTopicFormFaculty from "./pages/Faculty/NewTopicFormFaculty";
 import SignInForm from "./components/auth/SignInForm";
 import UdateMagazine from "./pages/Magazine/UdateMagazine";
 import ViewsSudent from "./pages/Student/ViewsStudent";
+import ProgressUpdatesStudent from "./pages/Student/ProgressUpdates";
 
 export default function App() {
   return (
@@ -73,9 +75,11 @@ export default function App() {
           <Route path="/giang-vien" element={<BasicTables />} />
           <Route path="/them-giang-vien" element={<AddFaculty />} />
           <Route path="/xem-chi-tiet-giang-vien" element={<ViewsFaculty />} />
+          <Route path="/cap-nhat-tien-do-gv" element={<ProgressUpdates />} />
           
           {/* Student */}
           <Route path="/xem-chi-tiet-sinh-vien" element={<ViewsSudent />} />
+          <Route path="/cap-nhat-tien-do-sv" element={<ProgressUpdatesStudent />} />
 
           {/* Science */}
           <Route path="/dang-ki-khoa-hoc" element={<AddScience />} />
