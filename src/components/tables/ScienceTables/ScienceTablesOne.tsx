@@ -9,7 +9,7 @@ import {
   TableRow,
 } from "../../ui/table";
 import { fetchScienceData } from "../../../api/scienceAPI.js";
-import { SidebarProvider } from '../../../context/SidebarContext.js';
+
 
 interface Science {
   id: number;
@@ -27,6 +27,7 @@ export default function ScienceTablesOne() {
   const [scienceData, setScienceData] = useState<Science[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const loadFacultyData = async () => {
@@ -48,7 +49,7 @@ export default function ScienceTablesOne() {
 
   if (loading) return <div className='text-gray-500'>"Đang tải dữ liệu ..."</div>
   if (error) return <div className='text-red-500'>{error}</div>
-  const navigate = useNavigate();
+
   const handleViewDetail = (id: number) => {
     navigate(`/chi-tiet-cong-bo-kh`)
   };
