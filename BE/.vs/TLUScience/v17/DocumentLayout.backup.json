@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\TLUScience\\BE\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\services\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:services\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\repository\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:repository\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\services\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:services\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,33 +18,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 250,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "UserRepository.cs",
               "DocumentMoniker": "D:\\TLUScience\\BE\\Repository\\UserRepository.cs",
               "RelativeDocumentMoniker": "Repository\\UserRepository.cs",
-              "ToolTip": "D:\\TLUScience\\BE\\Repository\\UserRepository.cs \u2B24",
-              "RelativeToolTip": "Repository\\UserRepository.cs \u2B24",
-              "ViewState": "AgIAABkBAAAAAAAAAAAUwDQBAAAcAAAAAAAAAA==",
+              "ToolTip": "D:\\TLUScience\\BE\\Repository\\UserRepository.cs",
+              "RelativeToolTip": "Repository\\UserRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD0BAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-22T11:41:47.168Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "AuthenticationService.cs",
               "DocumentMoniker": "D:\\TLUScience\\BE\\Services\\AuthenticationService.cs",
               "RelativeDocumentMoniker": "Services\\AuthenticationService.cs",
-              "ToolTip": "D:\\TLUScience\\BE\\Services\\AuthenticationService.cs \u2B24",
-              "RelativeToolTip": "Services\\AuthenticationService.cs \u2B24",
-              "ViewState": "AgIAAAsBAAAAAAAAAAAiwB8BAAARAAAAAAAAAA==",
+              "ToolTip": "D:\\TLUScience\\BE\\Services\\AuthenticationService.cs",
+              "RelativeToolTip": "Services\\AuthenticationService.cs",
+              "ViewState": "AgIAAAsBAAAAAAAAAAAAAAsBAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T11:39:53.74Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-22T11:39:53.74Z"
             }
           ]
         }

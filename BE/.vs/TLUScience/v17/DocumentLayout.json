@@ -28,7 +28,7 @@
               "RelativeDocumentMoniker": "Repository\\UserRepository.cs",
               "ToolTip": "D:\\TLUScience\\BE\\Repository\\UserRepository.cs",
               "RelativeToolTip": "Repository\\UserRepository.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAA9wDQBAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD0BAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-22T11:41:47.168Z",
               "EditorCaption": ""
@@ -43,8 +43,7 @@
               "RelativeToolTip": "Services\\AuthenticationService.cs",
               "ViewState": "AgIAAAsBAAAAAAAAAAAAAAsBAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T11:39:53.74Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-22T11:39:53.74Z"
             }
           ]
         }

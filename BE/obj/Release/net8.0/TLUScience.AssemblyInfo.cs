@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TLUScience")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+895027e14d285af32cb33e64a40d1cdc4a068190")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+306a36050a567beda2d1278dbd423e13edf0346b")]
 [assembly: System.Reflection.AssemblyProductAttribute("TLUScience")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TLUScience")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
