@@ -12,16 +12,22 @@ const api = axios.create({
 // Hàm lấy danh sách tất cả Tạp chí ấn phẩm (GET /api/TapChiAnPham)
 export const fetchTapChiAnPham = async () => {
   try {
-    const response = await api.get("/api/TapChiAnPham");
-    return response.data;
+      const token = localStorage.getItem("accessToken"); 
+      const response = await api.get("/api/TapChiAnPham", {
+          headers: {
+              Authorization: token,
+          },
+      });
+
+      return response.data;
   } catch (error) {
-    console.error("Error fetching TapChiAnPham data:", {
+      console.error("Error fetching NCKHTapChiAnPham data:", {
       message: error.message,
       response: error.response?.data,
       status: error.response?.status,
-    });
-    const errorMessage = error.response?.data?.message || "Không thể tải dữ liệu Tạp chí ấn phẩm từ API";
-    throw new Error(errorMessage);
-  }
+  });
+  const errorMessage = error.response?.data?.message || "Không thể tải dữ liệu từ API";
+  throw new Error(errorMessage);
+}
 };
 

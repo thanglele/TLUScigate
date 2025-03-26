@@ -133,7 +133,7 @@ export default function FacultyTablesOne() {
                                     <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
                                         {Faculty.endDate}
                                     </TableCell>
-                                    <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
+                                    <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400 flex ml-4 ">
                                         <div className="flex items-center gap-2">
                                             {/* Nút Xem chi tiết */}
                                             <button
@@ -141,14 +141,6 @@ export default function FacultyTablesOne() {
                                                 onClick={() => handleViewDetail(Faculty.id)}
                                             >
                                                 <FiEye className="w-4 h-4" />
-                                            </button>
-
-                                            {/* Nút Sửa */}
-                                            <button
-                                                className="text-green-600 hover:text-green-900 transition-colors"
-                                                onClick={() => handleEdit(Faculty.id)}
-                                            >
-                                                <FiEdit className="w-4 h-4" />
                                             </button>
 
                                             {/* Nút Xóa */}
