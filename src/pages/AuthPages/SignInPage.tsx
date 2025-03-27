@@ -5,7 +5,7 @@ const LoginPage: React.FC = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-    const [borderValid, setBorderValid] = useState(false);
+    const [borderValid] = useState(false);
 
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();
@@ -20,6 +20,7 @@ const LoginPage: React.FC = () => {
 
     const handleKeyDown = (e: React.KeyboardEvent) => {
         // Xử lý sự kiện bàn phím nếu cần
+        console.log(e);
     };
 
     return (

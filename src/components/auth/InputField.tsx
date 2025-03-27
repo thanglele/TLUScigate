@@ -11,6 +11,7 @@ interface InputFieldProps {
   borderClass?: string;
   value?: string;
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  className?: string;
 }
 
 const InputField: React.FC<InputFieldProps> = ({

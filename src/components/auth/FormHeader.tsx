@@ -2,16 +2,17 @@
 import React from "react";
 
 interface FormHeaderProps {
-  value: string;
+  values?: string;
+  datas?:React.ReactNode;
   className?: string;
 }
 
-const FormHeader: React.FC<FormHeaderProps> = ({ value, className }) => {
+const FormHeader: React.FC<FormHeaderProps> = ({ values, className }) => {
   return (
     <div className="flex justify-between items-center mb-3">
-      <h3 className={className}>{value}</h3>
+      <h3 className={className}>{values}</h3>
       <img
-        src="src/icons/logo-dai-hoc-thuy-loi-inkythuatso.svg"
+        src="https://cdn.thanglele08.id.vn/img/logo-dai-hoc-thuy-loi-inkythuatso.svg"
         alt="Logo"
         className="w-20 h-20"
       />

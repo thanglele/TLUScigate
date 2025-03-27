@@ -1,5 +1,5 @@
 // src/components/tables/ScienceTables/ScienceTablesOne.tsx
-import { useState, useEffect, use } from 'react';
+import { useState, useEffect} from 'react';
 import { useNavigate } from "react-router-dom";
 import {
   Table,
@@ -8,6 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from "../../ui/table";
+// @ts-ignore
 import { fetchScienceData } from "../../../api/scienceAPI.js";
 
 
@@ -21,6 +22,9 @@ interface Science {
   namCongBo: string;
 }
 
+interface ErrorModel{
+  message: string;
+}
 
 
 export default function ScienceTablesOne() {
@@ -34,11 +38,12 @@ export default function ScienceTablesOne() {
       try {
         const data = await fetchScienceData();//
         setScienceData(data);
-      } catch (err) {
+      } catch (error) {
+        const err = error as ErrorModel;
         setError(
           err.message || "Khong the tai du lieu tu API"
         );
-        console.error(err);
+        console.error(error);
       } finally {
         setLoading(false);
       }
@@ -51,6 +56,7 @@ export default function ScienceTablesOne() {
   if (error) return <div className='text-red-500'>{error}</div>
 
   const handleViewDetail = (id: number) => {
+    console.log("Log: " + id);
     navigate(`/chi-tiet-cong-bo-kh`)
   };
 

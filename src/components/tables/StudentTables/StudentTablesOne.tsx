@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom"; 
-import { confirmAlert } from "react-confirm-alert";
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import {
     Table,
@@ -98,6 +97,7 @@ export default function StudentTablesOne() {
 
     
     const handleViewDetail = (id: number) => {
+        console.log("Log: " + id);
         navigate(`/xem-chi-tiet-sinh-vien`); 
     };
 
@@ -115,6 +115,7 @@ export default function StudentTablesOne() {
     };
 
     const handleClock = (id: number) => {
+        console.log("Log: " + id);
         navigate(`/cap-nhat-tien-do-sv`)
     };
     return (

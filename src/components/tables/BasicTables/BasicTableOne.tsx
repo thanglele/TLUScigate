@@ -9,6 +9,7 @@ import {
 } from "../../ui/table";
 import Badge from "../../ui/badge/Badge";
 import { FiEye, FiEdit, FiTrash2 } from "react-icons/fi";
+// @ts-ignore
 import { fetchLectureData, deleteLecture, viewDetail } from "../../../api/LectureAPI";
 import { toast } from "react-toastify";
 
@@ -28,15 +29,21 @@ interface Faculty {
   id: number;
 }
 
+interface ErrorModel{
+  message: string;
+}
+
 export default function BasicTableOne() {
   const navigate = useNavigate();
 
   const handleViewDetail = async (maGV: number) => {
-        navigate('/info-gv'); 
+      console.log("Log: " + maGV);
+      navigate('/info-gv'); 
     }
   
 
   const handleEdit = async (maGV: number) => {
+    console.log("Log: " + maGV);
     navigate('/chinh-sua-gv');
   };
 
@@ -62,9 +69,10 @@ export default function BasicTableOne() {
         const updatedData = await fetchLectureData();
         setFacultyData(updatedData);
       } catch (error) {
-        console.error("Lỗi khi xóa giảng viên:", error.message);
+        const err = error as ErrorModel;
+        console.error("Lỗi khi xóa giảng viên:", err.message);
         toast.update("delete-lecture", {
-          render: error.message || "Xóa giảng viên không thành công!",
+          render: err.message || "Xóa giảng viên không thành công!",
           type: "error",
           autoClose: 5000,
         });
@@ -86,11 +94,12 @@ export default function BasicTableOne() {
       try {
         const data = await fetchLectureData();
         setFacultyData(data);
-      } catch (err) {
+      } catch (error) {
+        const err = error as ErrorModel;
         setError(
           err.message || "Không thể tải dữ liệu từ API. Vui lòng thử lại sau!"
         );
-        console.error(err);
+        console.error(error);
       } finally {
         setLoading(false);
       }

@@ -7,6 +7,7 @@ import {
   TableRow,
 } from "../../ui/table";
 import { FiEye, FiEdit, FiTrash2 } from "react-icons/fi";
+// @ts-ignore
 import { fetchTapChiAnPham,deleteTapChiAnPham } from "../../../api/MagazineAPI";
 import { useNavigate } from "react-router-dom";
 
@@ -35,10 +36,12 @@ const normalizeMagazineData = (data: any[]): Magazine[] => {
 export default function MagazineTablesOne() {
   const navigate = useNavigate();
   const handleViewDetail = (id: number) => {
+    console.log("Log: " + id);
     navigate(`#`)
   };
   
   const handleEdit = (id: number) => {
+    console.log("Log: " + id);
     navigate(`/cap-nhat-an-pham`)
   };
   

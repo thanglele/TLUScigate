@@ -7,7 +7,8 @@ import Button from "../../components/auth/Button";
 import Link from "../../components/auth/Link";
 import WelcomeContent from "../../components/auth/WelcomeContent";
 import ForgotPasswordPage from "../../components/auth/ForgorPasswordPage";
-import { login } from "../../api/authAPI";
+// @ts-ignore
+import { login } from "../../api/authAPI.js";
 
 const SignInForm: React.FC = () => {
   const navigate = useNavigate();
@@ -105,7 +106,7 @@ const SignInForm: React.FC = () => {
           <>
             <WelcomeContent />
             <Form>
-              <FormHeader value="ĐĂNG NHẬP" className="font-bold text-4xl" />
+              <FormHeader values="ĐĂNG NHẬP" className="font-bold text-4xl" />
               <InputField
                 fontLabel="font-medium"
                 label="Tài khoản"

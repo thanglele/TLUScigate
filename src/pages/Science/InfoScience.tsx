@@ -1,13 +1,40 @@
 // src/components/AddScience.jsx
+import {ChangeEvent} from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+// @ts-ignore
 import { createScience } from '../../api/scienceAPI.js';
+
+interface ErrorModel{
+  message: string;
+}
+
+interface FormData {
+  maCongBo: string;
+  tieuDe: string;
+  tomTat: string;
+  tuKhoa: string;
+  ngonNgu: string;
+  loaiCongBo: string;
+  issnIsbn: string;
+  chiMucKhoaHoc: string;
+  impactFactor: string;
+  doi: string;
+  namCongBo: string;
+  soTrang: string;
+  fileDinhKem: File | string;
+  tacGia: string;
+  email: string;
+  hocHam: string;
+  hocVi: string;
+  chucVi: string;
+}
 
 const InfoScience = () => {
   const navigate = useNavigate();
 
   // State cho các trường trong form
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     maCongBo: '',
     tieuDe: '',
     tomTat: '',
@@ -31,7 +58,7 @@ const InfoScience = () => {
   const [loading, setLoading] = useState(false);
 
   // Xử lý thay đổi input
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -40,11 +67,18 @@ const InfoScience = () => {
   };
 
   // Xử lý file upload (file đính kèm)
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    
+    // Kiểm tra kiểu file nếu cần
+    if (file && !file.type.match(/(pdf|doc|docx)$/i)) {
+      alert('Chỉ chấp nhận file PDF hoặc Word');
+      return;
+    }
+  
     setFormData((prev) => ({
       ...prev,
-      fileDinhKem: file ? file : '', // Lưu file object thay vì chỉ tên file
+      fileDinhKem: file || '',
     }));
   };
 
@@ -52,14 +86,18 @@ const InfoScience = () => {
   const handleSubmit = async () => {
     setLoading(true);
 
-    // Kiểm tra các trường bắt buộc trước khi gửi
-    const requiredFields = ['maCongBo', 'tieuDe', 'tomTat', 'namCongBo', 'tacGia'];
-    const missingFields = requiredFields.filter((field) => !formData[field].trim());
-    if (missingFields.length > 0) {
-      alert(`Vui lòng điền các trường bắt buộc: ${missingFields.join(', ')}`);
-      setLoading(false);
-      return;
-    }
+    const requiredFields: (keyof FormData)[] = ['maCongBo', 'tieuDe', 'tomTat', 'namCongBo', 'tacGia'];
+  
+  const missingFields = requiredFields.filter((field) => {
+    const value = formData[field];
+    return typeof value === 'string' ? !value.trim() : !value;
+  });
+
+  if (missingFields.length > 0) {
+    alert(`Vui lòng điền các trường bắt buộc: ${missingFields.join(', ')}`);
+    setLoading(false);
+    return;
+  }
 
     try {
       // Chuẩn bị dữ liệu gửi lên API
@@ -80,14 +118,15 @@ const InfoScience = () => {
         navigate('/science-tables');
       }, 2000);
     } catch (error) {
+      const err = error as ErrorModel
       // Hiển thị lỗi chi tiết từ API
-      alert(error.message);
+      alert(err.message);
     } finally {
       setLoading(false);
     }
   };
 
-  const RequiredLabel = ({ children }) => (
+  const RequiredLabel = ({ children }: { children: React.ReactNode }) => (
     <span className="text-sm font-medium text-gray-700 dark:text-gray-200">
       {children} <span className="text-red-500">*</span>
     </span>

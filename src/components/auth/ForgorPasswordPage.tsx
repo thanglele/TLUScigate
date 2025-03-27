@@ -5,6 +5,7 @@ import Form from "../../components/auth/Form";
 import FormHeader from "../../components/auth/FormHeader";
 import InputField from "../../components/auth/InputField";
 import Button from "../../components/auth/Button";
+// @ts-ignore
 import { forgotPassword } from "../../api/authAPI";
 
 interface ForgotPasswordPageProps {
@@ -50,7 +51,7 @@ const ForgotPasswordPage: React.FC<ForgotPasswordPageProps> = ({ onBackToLogin }
 
   return (
     <Form>
-      <FormHeader value="Bạn quên mật khẩu?" className="font-bold text-3xl" />
+      <FormHeader values="Bạn quên mật khẩu?" className="font-bold text-3xl" />
       <InputField
         fontLabel="font-medium"
         label="Tài khoản"

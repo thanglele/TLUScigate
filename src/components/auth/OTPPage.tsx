@@ -7,6 +7,7 @@ import FormHeader from "../../components/auth/FormHeader";
 import InputField from "../../components/auth/InputField";
 import Button from "../../components/auth/Button";
 import ChangePasswordPage from "./ChangePasswordPage";
+// @ts-ignore
 import { checkOTP } from "../../api/authAPI";
 
 const OTPPage: React.FC = () => {
@@ -60,7 +61,7 @@ const OTPPage: React.FC = () => {
           <Form>
             <HeaderLeftContent value="TRƯỜNG ĐẠI HỌC THỦY LỢI" />
             <FormHeader
-              value={
+              datas={
                 <>
                   Chúng tôi đã gửi mã của bạn đến: <br /> {email || "Không có email"}
                   <p className="text-xs font-light">
@@ -87,7 +88,7 @@ const OTPPage: React.FC = () => {
               color="bg-blue-600"
               className="bg-blue-600 text-white hover:bg-blue-700"
               onClick={handleCheckOTP}
-              disabled={!email}
+              //disabled={!email}
             />
           </Form>
         ) : (

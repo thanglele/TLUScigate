@@ -7,7 +7,7 @@ import {
     TableRow,
 } from "../../ui/table";
 import Badge from "../../ui/badge/Badge";
-import { FiEye, FiEdit, FiTrash2,FiClock } from "react-icons/fi";
+import { FiEye, FiTrash2,FiClock } from "react-icons/fi";
 
 interface Faculty {
     id: number;
@@ -45,11 +45,12 @@ export default function FacultyTablesOne() {
     const navigate = useNavigate();
 
     const handleViewDetail = (id: number) => {
+        console.log("Log: " + id);
         navigate(`/xem-chi-tiet-giang-vien`);
     };
-    const handleEdit = (id: number) => {
-        console.log('Sửa thông tin giảng viên:', id);
-    };
+    // const handleEdit = (id: number) => {
+    //     console.log('Sửa thông tin giảng viên:', id);
+    // };
 
     const handleDelete = (id: number) => {
         const confirmDelete = window.confirm("Bạn có muốn xóa giảng viên này không?");
@@ -60,6 +61,7 @@ export default function FacultyTablesOne() {
         }
     };
     const handleClock = (id: number) => {
+        console.log("Log: " + id);
         navigate(`/cap-nhat-tien-do-gv`)
     };
     return (

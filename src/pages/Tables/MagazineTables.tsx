@@ -2,8 +2,6 @@
 import ComponentCard from "../../components/common/ComponentCard";
 import MagazineTablesOne from "../../components/tables/Magazine/MagazineTablesOne";
 
-import { useNavigate } from "react-router-dom";
-
 export default function MagazineTables() {
     // const navigate = useNavigate();
 

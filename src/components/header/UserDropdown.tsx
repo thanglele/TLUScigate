@@ -2,13 +2,14 @@ import { useState } from "react";
 import { DropdownItem } from "../ui/dropdown/DropdownItem";
 import { Dropdown } from "../ui/dropdown/Dropdown";
 import { Link } from "react-router";
+// @ts-ignore
 import {logout} from "../../api/authAPI";
 import { useNavigate } from "react-router";
 
 export default function UserDropdown() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
-  const [isLogout, setIsLogout] = useState(false);  
+  //const [isLogout, setIsLogout] = useState(false);  
 
   const resetEmail = localStorage.getItem("resetEmail");
 

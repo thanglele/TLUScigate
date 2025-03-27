@@ -6,6 +6,7 @@ import FormHeader from "../../components/auth/FormHeader";
 import InputField from "../../components/auth/InputField";
 import Button from "../../components/auth/Button";
 import HeaderLeftContent from "../../components/auth/HeaderLeftContent";
+// @ts-ignore
 import { newPassword } from "../../api/authAPI";
 
 const ChangePasswordPage: React.FC = () => {
@@ -76,7 +77,7 @@ const ChangePasswordPage: React.FC = () => {
       <div className="flex flex-col md:flex-row justify-between w-full max-w-6xl px-5 md:gap-60 m-2">
         <Form>
           <HeaderLeftContent value="TRƯỜNG ĐẠI HỌC THỦY LỢI" />
-          <FormHeader value="Đổi mật khẩu" className="text-4xl font-bold" />
+          <FormHeader values="Đổi mật khẩu" className="text-4xl font-bold" />
           <InputField
             label="Mật khẩu mới"
             type="password"
@@ -102,7 +103,7 @@ const ChangePasswordPage: React.FC = () => {
             color="bg-blue-600"
             className="bg-blue-600 text-white hover:bg-blue-700"
             onClick={handleSubmit}
-            disabled={!email || isLoading}
+            //disabled={!email || isLoading}
           />
         </Form>
       </div>
