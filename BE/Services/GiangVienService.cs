@@ -5,7 +5,7 @@ using TLUScience.Interface;
 public interface IGiangVienService
 {
     public Task<List<GiangVienDTO>> GetFullGiangVienAsync();
-    public Task<GiangVienCRUD> GetGiangVienAsync(int id);
+    public Task<GiangVienDTO> GetGiangVienAsync(int id);
     public Task<bool> AddGiangVienAsync(GiangVienDTO giangVien);
     public Task<bool> UpdateGiangVienAsync(int id, GiangVienDTO giangVien);
     public Task<bool> DeleteGiangVienAsync(int id);
@@ -23,89 +23,104 @@ public class GiangVienService : IGiangVienService
     public async Task<List<GiangVienDTO>> GetFullGiangVienAsync()
     {
         var giangViens = await _giangVienRepository.GetFullGiangVienAsync();
-        return giangViens.Select(gv => new GiangVienDTO
-        {
-            ID = gv.ID,
-            MaGV = gv.MaGV,
-            HoTen = gv.HoTen,
-            Email = gv.TaiKhoan?.Email ?? "",
-            HocHam = gv.HocHam ?? "",
-            HocVi = gv.HocVi ?? "",
-            ChucVu = gv.ChucVu ?? "",
-            TrangThai = gv.TrangThai ?? "",
-            ChuyenNganh = gv.MaBoMonNavigation?.TenBoMon ?? "",
-            GioiTinh = gv.GioiTinh ?? "",
-            DiaChi = gv.DiaChi ?? "",
-            SoDienThoai = gv.SoDienThoai ?? "",
-            NgaySinh = gv.NgaySinh,
-            GhiChu = gv.GhiChu ?? ""
-        }).ToList();
-
+        return giangViens.Select(MapToDTO).ToList();
     }
-    public async Task<GiangVienCRUD> GetGiangVienAsync(int id)
+
+    public async Task<GiangVienDTO> GetGiangVienAsync(int id)
     {
         var giangvien = await _giangVienRepository.GetGiangVienAsync(id);
-        string nganh = "";
-        foreach (var item in giangvien.Lops) 
-        {
-            nganh = item.MaNganhNavigation.TenNganh;
-            break;
-        }    
-        return new GiangVienCRUD()
-        {
-            MaGV = giangvien.MaGV,
-            HoTen = giangvien.HoTen,
-            Email = giangvien.TaiKhoan.Email,
-            HocHam = giangvien.HocHam,
-            HocVi = giangvien.HocVi,
-            ChucVu = giangvien.ChucVu,
-            TrangThai = giangvien.TrangThai,
-            ChuyenNganh = nganh,
-            GioiTinh = giangvien.GioiTinh,
-            DiaChi = giangvien.DiaChi,
-            SoDienThoai = giangvien.SoDienThoai,
-            GhiChu = giangvien.GhiChu
-        };
+        return giangvien != null ? MapToDTO(giangvien) : null;
     }
+
     public async Task<bool> AddGiangVienAsync(GiangVienDTO giangVien)
     {
-        var giangvienEntity = new GiangVien
+        try
         {
-            MaGV = giangVien.MaGV,
-            HoTen = giangVien.HoTen,
-            HocHam = giangVien.HocHam,
-            HocVi = giangVien.HocVi,
-            ChucVu = giangVien.ChucVu,
-            TrangThai = giangVien.TrangThai,
-            GioiTinh = giangVien.GioiTinh,
-            DiaChi = giangVien.DiaChi,
-            SoDienThoai = giangVien.SoDienThoai,
-            GhiChu = giangVien.GhiChu
-        };
-        await _giangVienRepository.AddGiangVienAsync(giangvienEntity);
-        return true;
+            var entity = MapToEntity(giangVien);
+            var result = await _giangVienRepository.AddGiangVienAsync(entity);
+            return result != null;
+        }
+        catch
+        {
+            return false;
+        }
     }
+
     public async Task<bool> UpdateGiangVienAsync(int id, GiangVienDTO giangVien)
     {
-        var giangvienEntity = await _giangVienRepository.GetGiangVienAsync(id);
-        giangvienEntity.MaGV = giangVien.MaGV;
-        giangvienEntity.HoTen = giangVien.HoTen;
-        giangvienEntity.HocHam = giangVien.HocHam;
-        giangvienEntity.HocVi = giangVien.HocVi;
-        giangvienEntity.ChucVu = giangVien.ChucVu;
-        giangvienEntity.TrangThai = giangVien.TrangThai;
-        giangvienEntity.GioiTinh = giangVien.GioiTinh;
-        giangvienEntity.DiaChi = giangVien.DiaChi;
-        giangvienEntity.SoDienThoai = giangVien.SoDienThoai;
-        giangvienEntity.GhiChu = giangVien.GhiChu;
-        await _giangVienRepository.UpdateGiangVienAsync(giangvienEntity);
-        return true;
+        try
+        {
+            var existingEntity = await _giangVienRepository.GetGiangVienAsync(id);
+            if (existingEntity == null) return false;
+
+            UpdateEntityFromDTO(existingEntity, giangVien);
+            var result = await _giangVienRepository.UpdateGiangVienAsync(existingEntity);
+            return result != null;
+        }
+        catch
+        {
+            return false;
+        }
     }
 
     public async Task<bool> DeleteGiangVienAsync(int id)
     {
-        var giangvien = await _giangVienRepository.GetGiangVienAsync(id);
-        await _giangVienRepository.DeleteGiangVienAsync(giangvien);
-        return true;
+        try
+        {
+            var entity = await _giangVienRepository.GetGiangVienAsync(id);
+            if (entity == null) return false;
+
+            return await _giangVienRepository.DeleteGiangVienAsync(entity);
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    private GiangVienDTO MapToDTO(GiangVien gv) => new GiangVienDTO
+    {
+        ID = gv.ID,
+        MaGV = gv.MaGV,
+        HoTen = gv.HoTen,
+        Email = gv.TaiKhoan?.Email ?? "",
+        HocHam = gv.HocHam ?? "",
+        HocVi = gv.HocVi ?? "",
+        ChucVu = gv.ChucVu ?? "",
+        TrangThai = gv.TrangThai ?? "",
+        ChuyenNganh = gv.MaBoMonNavigation?.TenBoMon ?? "",
+        GioiTinh = gv.GioiTinh ?? "",
+        DiaChi = gv.DiaChi ?? "",
+        SoDienThoai = gv.SoDienThoai ?? "",
+        NgaySinh = gv.NgaySinh,
+        GhiChu = gv.GhiChu ?? ""
+    };
+
+    private GiangVien MapToEntity(GiangVienDTO dto) => new GiangVien
+    {
+        MaGV = dto.MaGV,
+        HoTen = dto.HoTen,
+        HocHam = dto.HocHam,
+        HocVi = dto.HocVi,
+        ChucVu = dto.ChucVu,
+        TrangThai = dto.TrangThai,
+        GioiTinh = dto.GioiTinh,
+        DiaChi = dto.DiaChi,
+        SoDienThoai = dto.SoDienThoai,
+        GhiChu = dto.GhiChu
+    };
+
+    private void UpdateEntityFromDTO(GiangVien entity, GiangVienDTO dto)
+    {
+        entity.MaGV = dto.MaGV;
+        entity.HoTen = dto.HoTen;
+        entity.HocHam = dto.HocHam;
+        entity.HocVi = dto.HocVi;
+        entity.ChucVu = dto.ChucVu;
+        entity.TrangThai = dto.TrangThai;
+        entity.GioiTinh = dto.GioiTinh;
+        entity.DiaChi = dto.DiaChi;
+        entity.SoDienThoai = dto.SoDienThoai;
+        entity.GhiChu = dto.GhiChu;
     }
 }

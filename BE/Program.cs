@@ -187,6 +187,9 @@ try
     builder.Services.AddScoped<INCKHSinhVienRepository, NCKHSinhVienRepository>();
     builder.Services.AddScoped<INCKHSinhVienService, NCKHSinhVienService>();
 
+    builder.Services.AddScoped<INCKHGiangVienRepository, NCKHGiangVienRepository>();
+    builder.Services.AddScoped<INCKHGiangVienService, NCKHGiangVienService>();
+
     builder.Services.AddScoped<ISinhVienNCKHRepository, SinhVienNCKHRepository>();
     builder.Services.AddScoped<ITienDoRepository, TienDoRepository>();
     builder.Services.AddScoped<IDeTaiNghienCuuRepository, DeTaiNghienCuuRepository>();

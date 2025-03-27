@@ -18,33 +18,35 @@ public class GiangVienRepository : IGiangVienRepository
 
     public GiangVienRepository(AppDbContext context)
     {
-        if (context == null)
-        {
-            throw new InvalidOperationException("AppDbContext chưa được inject vào GiangVienRepository!");
-        }
-        _context = context;
+        _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
     public async Task<List<GiangVien>> GetFullGiangVienAsync()
     {
-        return await _context.GiangViens.ToListAsync();
+        return await _context.GiangViens
+            .Include(g => g.TaiKhoan)
+            .Include(g => g.MaBoMonNavigation)
+            .ToListAsync();
     }
 
     public async Task<GiangVien> GetGiangVienAsync(int id)
     {
-        return await _context.GiangViens.FindAsync(id);
+        return await _context.GiangViens
+            .Include(g => g.TaiKhoan)
+            .Include(g => g.MaBoMonNavigation)
+            .FirstOrDefaultAsync(g => g.ID == id);
     }
 
     public async Task<GiangVien> AddGiangVienAsync(GiangVien giangVien)
     {
-        _context.GiangViens.Add(giangVien);
+        await _context.GiangViens.AddAsync(giangVien);
         await _context.SaveChangesAsync();
         return giangVien;
     }
 
     public async Task<GiangVien> UpdateGiangVienAsync(GiangVien giangVien)
     {
-        _context.GiangViens.Update(giangVien);
+        _context.Entry(giangVien).State = EntityState.Modified;
         await _context.SaveChangesAsync();
         return giangVien;
     }
@@ -52,7 +54,7 @@ public class GiangVienRepository : IGiangVienRepository
     public async Task<bool> DeleteGiangVienAsync(GiangVien giangVien)
     {
         _context.GiangViens.Remove(giangVien);
-        await _context.SaveChangesAsync();
-        return true;
+        var result = await _context.SaveChangesAsync();
+        return result > 0;
     }
 }

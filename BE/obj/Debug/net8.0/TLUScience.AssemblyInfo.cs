@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TLUScience")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+34e73c5647385bc442e4513388373652192132eb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b17f0718e659c43a3bc3a9fea1ad1253bbc904c9")]
 [assembly: System.Reflection.AssemblyProductAttribute("TLUScience")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TLUScience")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

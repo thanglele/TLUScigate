@@ -20,50 +20,55 @@ namespace TLUScience.Controllers
         [HttpGet]
         public async Task<ActionResult> GetFullGiangVienAsync()
         {
-            return Ok(await _giangVienService.GetFullGiangVienAsync());
+            var result = await _giangVienService.GetFullGiangVienAsync();
+            return Ok(new { success = true, data = result });
         }
 
         [Authorize(Roles = "Ban quan ly")]
         [HttpGet("{id}")]
         public async Task<ActionResult> GetGiangvienAsync(int id)
         {
-            return Ok(await _giangVienService.GetGiangVienAsync(id));
+            var result = await _giangVienService.GetGiangVienAsync(id);
+            if (result == null)
+                return NotFound(new { success = false, message = "Không tìm thấy giảng viên" });
+            
+            return Ok(new { success = true, data = result });
         }
 
         [Authorize(Roles = "Ban quan ly")]
         [HttpPost]
-        public async Task<ActionResult> addGiangvienAsync([FromBody] GiangVienDTO giangvien)
+        public async Task<ActionResult> AddGiangvienAsync([FromBody] GiangVienDTO giangvien)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             var result = await _giangVienService.AddGiangVienAsync(giangvien);
-            if (result)
-            {
-                return Ok(new { message = "Thêm tài khoản giảng viên thành công!" });
-            }
-            return BadRequest(new { message = "Thêm tài khoản giảng viên thất bại, vui lòng thử lại!" });
+            return Ok(new { success = result, 
+                message = result ? "Thêm giảng viên thành công!" : "Thêm giảng viên thất bại!" 
+            });
         }
 
         [Authorize(Roles = "Ban quan ly")]
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateGiangvienAsync(int id,[FromBody] GiangVienDTO giangvien)
+        public async Task<ActionResult> UpdateGiangvienAsync(int id, [FromBody] GiangVienDTO giangvien)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             var result = await _giangVienService.UpdateGiangVienAsync(id, giangvien);
-            if (result)
-            {
-                return Ok(new { message = "Sửa tài khoản giảng viên thành công!" });
-            }
-            return BadRequest(new { message = "Sửa tài khoản giảng viên thất bại, vui lòng thử lại!" });
+            return Ok(new { success = result, 
+                message = result ? "Cập nhật giảng viên thành công!" : "Cập nhật giảng viên thất bại!" 
+            });
         }
 
         [Authorize(Roles = "Ban quan ly")]
         [HttpDelete("{id}")]
-        public async Task<ActionResult> RemoveGiangvienAsync(int id, [FromBody] GiangVienDTO giangvien)
+        public async Task<ActionResult> DeleteGiangvienAsync(int id)
         {
             var result = await _giangVienService.DeleteGiangVienAsync(id);
-            if (result)
-            {
-                return Ok(new { message = "Xóa tài khoản giảng viên thành công!" });
-            }
-            return BadRequest(new { message = "Xóa tài khoản giảng viên thất bại, vui lòng thử lại!" });
+            return Ok(new { success = result, 
+                message = result ? "Xóa giảng viên thành công!" : "Xóa giảng viên thất bại!" 
+            });
         }
     }
 }

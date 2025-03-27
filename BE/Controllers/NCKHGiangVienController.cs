@@ -1,97 +1,204 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TLUScience.DTOs;
 using TLUScience.Services;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace TLUScience.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class NCKHGiangVienController : Controller
+    public class NCKHGiangVienController : ControllerBase
     {
         private readonly INCKHGiangVienService _nckhGiangVienService;
+        private readonly ILogger<NCKHGiangVienController> _logger;
 
-        public NCKHGiangVienController(INCKHGiangVienService nckhGiangVienService)
+        public NCKHGiangVienController(
+            INCKHGiangVienService nckhGiangVienService,
+            ILogger<NCKHGiangVienController> logger)
         {
             _nckhGiangVienService = nckhGiangVienService;
+            _logger = logger;
         }
 
         /// <summary>
-        /// Lấy danh sách toàn bộ đề tài nghiên cứu
+        /// Lấy danh sách toàn bộ đề tài nghiên cứu khoa học của giảng viên
         /// </summary>
+        [Authorize(Roles = "Ban quan ly,Giang vien")]
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<ActionResult<IEnumerable<NCKHGiangVienDTO>>> GetAll()
         {
-            var result = await _nckhGiangVienService.GetFullNCKHGiangVienAsync();
-            return Ok(result);
+            try
+            {
+                var result = await _nckhGiangVienService.GetFullNCKHGiangVienAsync();
+                return Ok(new { 
+                    success = true, 
+                    data = result,
+                    message = "Lấy danh sách đề tài NCKH thành công"
+                });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Lỗi khi lấy danh sách đề tài NCKH");
+                return StatusCode(500, new { 
+                    success = false, 
+                    message = "Đã xảy ra lỗi khi lấy danh sách đề tài nghiên cứu"
+                });
+            }
         }
 
         /// <summary>
         /// Lấy thông tin một đề tài nghiên cứu theo ID
         /// </summary>
+        [Authorize(Roles = "Ban quan ly,Giang vien")]
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<ActionResult<NCKHGiangVienDTO>> GetById(int id)
         {
-            var result = await _nckhGiangVienService.GetNCKHGiangVienAsync(id);
-            if (result == null)
+            try
             {
-                return NotFound(new { message = "Không tìm thấy đề tài nghiên cứu!" });
+                var result = await _nckhGiangVienService.GetNCKHGiangVienAsync(id);
+                if (result == null)
+                {
+                    return NotFound(new { 
+                        success = false, 
+                        message = $"Không tìm thấy đề tài nghiên cứu với ID: {id}"
+                    });
+                }
+                
+                return Ok(new { 
+                    success = true, 
+                    data = result,
+                    message = "Lấy thông tin đề tài NCKH thành công"
+                });
             }
-            return Ok(result);
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Lỗi khi lấy đề tài NCKH với ID={id}");
+                return StatusCode(500, new { 
+                    success = false, 
+                    message = "Đã xảy ra lỗi khi lấy thông tin đề tài nghiên cứu"
+                });
+            }
         }
 
         /// <summary>
         /// Thêm mới một đề tài nghiên cứu
         /// </summary>
+        [Authorize(Roles = "Ban quan ly,Giang vien")]
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] NCKHGiangVienDTO model)
+        public async Task<ActionResult> Create([FromBody] NCKHGiangVienDTO model)
         {
-            if (model == null)
+            try
             {
-                return BadRequest(new { message = "Dữ liệu đầu vào không hợp lệ!" });
-            }
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(new { 
+                        success = false, 
+                        message = "Dữ liệu không hợp lệ",
+                        errors = ModelState.Values.SelectMany(v => v.Errors)
+                    });
+                }
 
-            var isAdded = await _nckhGiangVienService.AddNCKHGiangVienAsync(model);
-            if (!isAdded)
+                var isSuccess = await _nckhGiangVienService.AddNCKHGiangVienAsync(model);
+                if (!isSuccess)
+                {
+                    return BadRequest(new { 
+                        success = false, 
+                        message = "Không thể thêm đề tài nghiên cứu"
+                    });
+                }
+
+                return Ok(new { 
+                    success = true, 
+                    message = "Thêm đề tài nghiên cứu thành công"
+                });
+            }
+            catch (Exception ex)
             {
-                return StatusCode(500, new { message = "Lỗi khi thêm đề tài nghiên cứu!" });
+                _logger.LogError(ex, "Lỗi khi thêm đề tài NCKH");
+                return StatusCode(500, new { 
+                    success = false, 
+                    message = "Đã xảy ra lỗi khi thêm đề tài nghiên cứu"
+                });
             }
-
-            return Ok(new { message = "Thêm thành công!" });
         }
 
         /// <summary>
         /// Cập nhật một đề tài nghiên cứu theo ID
         /// </summary>
+        [Authorize(Roles = "Ban quan ly,Giang vien")]
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] NCKHGiangVienDTO model)
+        public async Task<ActionResult> Update(int id, [FromBody] NCKHGiangVienDTO model)
         {
-            if (model == null)
+            try
             {
-                return BadRequest(new { message = "Dữ liệu đầu vào không hợp lệ!" });
-            }
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(new { 
+                        success = false, 
+                        message = "Dữ liệu không hợp lệ",
+                        errors = ModelState.Values.SelectMany(v => v.Errors)
+                    });
+                }
 
-            var isUpdated = await _nckhGiangVienService.UpdateNCKHGiangVienAsync(id, model);
-            if (!isUpdated)
+                var isSuccess = await _nckhGiangVienService.UpdateNCKHGiangVienAsync(id, model);
+                if (!isSuccess)
+                {
+                    return NotFound(new { 
+                        success = false, 
+                        message = $"Không tìm thấy đề tài nghiên cứu với ID: {id}"
+                    });
+                }
+
+                return Ok(new { 
+                    success = true, 
+                    message = "Cập nhật đề tài nghiên cứu thành công"
+                });
+            }
+            catch (Exception ex)
             {
-                return NotFound(new { message = "Không tìm thấy đề tài nghiên cứu để cập nhật!" });
+                _logger.LogError(ex, $"Lỗi khi cập nhật đề tài NCKH với ID={id}");
+                return StatusCode(500, new { 
+                    success = false, 
+                    message = "Đã xảy ra lỗi khi cập nhật đề tài nghiên cứu"
+                });
             }
-
-            return Ok(new { message = "Cập nhật thành công!" });
         }
 
         /// <summary>
         /// Xóa một đề tài nghiên cứu theo ID
         /// </summary>
+        [Authorize(Roles = "Ban quan ly")]
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
-            var isDeleted = await _nckhGiangVienService.DeleteNCKHGiangVienAsync(id);
-            if (!isDeleted)
+            try
             {
-                return NotFound(new { message = "Không tìm thấy đề tài nghiên cứu để xóa!" });
-            }
+                var isSuccess = await _nckhGiangVienService.DeleteNCKHGiangVienAsync(id);
+                if (!isSuccess)
+                {
+                    return NotFound(new { 
+                        success = false, 
+                        message = $"Không tìm thấy đề tài nghiên cứu với ID: {id}"
+                    });
+                }
 
-            return Ok(new { message = "Xóa thành công!" });
+                return Ok(new { 
+                    success = true, 
+                    message = "Xóa đề tài nghiên cứu thành công"
+                });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Lỗi khi xóa đề tài NCKH với ID={id}");
+                return StatusCode(500, new { 
+                    success = false, 
+                    message = "Đã xảy ra lỗi khi xóa đề tài nghiên cứu"
+                });
+            }
         }
     }
 }

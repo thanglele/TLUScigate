@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lesyt\\OneDrive\\Máy tính\\Scigate\\BE\\TLUScience.csproj": {}
+    "C:\\Users\\lesyt\\OneDrive\\Máy tính\\Scigate\\be\\TLUScience.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lesyt\\OneDrive\\Máy tính\\Scigate\\BE\\TLUScience.csproj": {
+    "C:\\Users\\lesyt\\OneDrive\\Máy tính\\Scigate\\be\\TLUScience.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lesyt\\OneDrive\\Máy tính\\Scigate\\BE\\TLUScience.csproj",
+        "projectUniqueName": "C:\\Users\\lesyt\\OneDrive\\Máy tính\\Scigate\\be\\TLUScience.csproj",
         "projectName": "TLUScience",
-        "projectPath": "C:\\Users\\lesyt\\OneDrive\\Máy tính\\Scigate\\BE\\TLUScience.csproj",
+        "projectPath": "C:\\Users\\lesyt\\OneDrive\\Máy tính\\Scigate\\be\\TLUScience.csproj",
         "packagesPath": "C:\\Users\\lesyt\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lesyt\\OneDrive\\Máy tính\\Scigate\\BE\\obj\\",
+        "outputPath": "C:\\Users\\lesyt\\OneDrive\\Máy tính\\Scigate\\be\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lesyt\\AppData\\Roaming\\NuGet\\NuGet.Config"

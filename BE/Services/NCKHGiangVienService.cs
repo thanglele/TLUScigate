@@ -5,230 +5,242 @@ using TLUScience.DTOs;
 using TLUScience.Entities;
 using TLUScience.Interface;
 using TLUScience.Repository;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace TLUScience.Services
 {
     public interface INCKHGiangVienService
     {
-        public Task<List<NCKHGiangVienDTO>> GetFullNCKHGiangVienAsync();
-        public Task<NCKHGiangVienDTO> GetNCKHGiangVienAsync(int id);
-        public Task<bool> AddNCKHGiangVienAsync(NCKHGiangVienDTO nCKHSinhVien);
-        public Task<bool> UpdateNCKHGiangVienAsync(int id, NCKHGiangVienDTO nCKHSinhVien);
-        public Task<bool> DeleteNCKHGiangVienAsync(int id);
+        Task<List<NCKHGiangVienDTO>> GetFullNCKHGiangVienAsync();
+        Task<NCKHGiangVienDTO?> GetNCKHGiangVienAsync(int id);
+        Task<bool> AddNCKHGiangVienAsync(NCKHGiangVienDTO nCKHGiangVien);
+        Task<bool> UpdateNCKHGiangVienAsync(int id, NCKHGiangVienDTO nCKHGiangVien);
+        Task<bool> DeleteNCKHGiangVienAsync(int id);
     }
+
     public class NCKHGiangVienService : INCKHGiangVienService
     {
-        private readonly IGiangVienRepository _GiangVienRepository;
-        private readonly INCKHGiangVienRepository _NCKHGiangVienRepository;
+        private readonly INCKHGiangVienRepository _nCKHGiangVienRepository;
         private readonly AppDbContext _appDbContext;
+        private readonly ILogger<NCKHGiangVienService> _logger;
 
-        public NCKHGiangVienService(IGiangVienRepository GiangVienRepository, INCKHGiangVienRepository nCKHGiangVienRepository, AppDbContext appDbContext)
+        public NCKHGiangVienService(
+            INCKHGiangVienRepository nCKHGiangVienRepository, 
+            AppDbContext appDbContext,
+            ILogger<NCKHGiangVienService> logger)
         {
-            _GiangVienRepository = GiangVienRepository;
-            _NCKHGiangVienRepository = nCKHGiangVienRepository;
+            _nCKHGiangVienRepository = nCKHGiangVienRepository;
             _appDbContext = appDbContext;
+            _logger = logger;
         }
-
 
         public async Task<List<NCKHGiangVienDTO>> GetFullNCKHGiangVienAsync()
         {
-            var nckhGiangViens = await _NCKHGiangVienRepository.GetFullNCKHGiangVienAsync();
-            var giangViens = await _GiangVienRepository.GetFullGiangVienAsync();
-            var linhvucs = await _appDbContext.LinhVucNghienCuus.ToListAsync();
-
-            List<NCKHGiangVienDTO> nCKHGiangVienDTOs = new List<NCKHGiangVienDTO>();
-            for (int i = 0; i < nckhGiangViens.Count(); i++)
+            try
             {
-                var temp = new NCKHGiangVienDTO()
-                {
-                    MaDeTai = nckhGiangViens[i].MaDeTai,
-                    TenDeTai = nckhGiangViens[i].TenDeTai,
-                    LinhVucNghienCuu = nckhGiangViens[i].ID_LinhVucs.Select(linhvuc => linhvuc.TenLinhVuc).ToList(),
-                    ChuNhiemDeTai = nckhGiangViens[i].ChuNhiemDeTai,
-                    //Nganh = nckhGiangViens[i].ChuNhiemDeTaiNavigation.MaBoMonNavigation.TenBoMon,
-                    //Khoa = nckhGiangViens[i].ChuNhiemDeTaiNavigation.MaBoMonNavigation.MaKhoaNavigation.TenKhoa,
-                    MaChuNhiem = nckhGiangViens[i].ChuNhiemDeTaiNavigation.MaGV,
-                    HocVi = nckhGiangViens[i].ChuNhiemDeTaiNavigation.HocVi,
-                    HocHam = nckhGiangViens[i].ChuNhiemDeTaiNavigation.HocHam,
-                    NgayBatDau = nckhGiangViens[i].NgayBatDau,
-                    NgayKetThuc = nckhGiangViens[i].NgayKetThuc,
-                    KinhPhi = nckhGiangViens[i].KinhPhi,
-                    TrangThai = nckhGiangViens[i].TrangThai,
-                    NguonKinhPhi = nckhGiangViens[i].TrangThai,
-                    MucTieu = nckhGiangViens[i].MucTieu,
-                    KetQuaDuKien = nckhGiangViens[i].KetQuaDuKien,
-                    FileHoanThanh = nckhGiangViens[i].FileHoanThanh
-                };
-                var thanhvienthamgias = (from thanhvien in nckhGiangViens[i].ThanhVienDeTais
-                                         join thongtin in giangViens on thanhvien.MaGVNavigation.MaGV equals thongtin.MaGV
-                                         select new ThanhVien()
-                                         {
-                                             TenThanhVien = thongtin.HoTen,
-                                             MaThanhVien = thanhvien.MaGV,
-                                             HocHam = thongtin.HocHam,
-                                             HocVi = thongtin.HocVi,
-                                             Nganh = thongtin.MaBoMonNavigation.TenBoMon,
-                                             Khoa = thongtin.MaBoMonNavigation.MaKhoaNavigation.TenKhoa
-                                         }).ToList(); // Chuyển kết quả thành danh sách
-
-                // Sửa chỗ này: Dùng AddRange thay vì Add
-                temp.thanhvienthamgia.AddRange(thanhvienthamgias);
-
-                nCKHGiangVienDTOs.Add(temp);
+                var deTaiList = await _nCKHGiangVienRepository.GetFullNCKHGiangVienAsync();
+                return deTaiList.Select(MapToDTO).ToList();
             }
-            return nCKHGiangVienDTOs;
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Lỗi khi lấy danh sách đề tài NCKH Giảng viên");
+                return new List<NCKHGiangVienDTO>();
+            }
         }
 
-        public async Task<NCKHGiangVienDTO> GetNCKHGiangVienAsync(int id)
+        public async Task<NCKHGiangVienDTO?> GetNCKHGiangVienAsync(int id)
         {
-            var nckhGiangViens = await _NCKHGiangVienRepository.GetFullNCKHGiangVienAsync();
-            var giangViens = await _GiangVienRepository.GetFullGiangVienAsync();
-            var linhvucs = await _appDbContext.LinhVucNghienCuus.ToListAsync();
-
-            List<NCKHGiangVienDTO> nCKHGiangVienDTOs = new List<NCKHGiangVienDTO>();
-            for (int i = 0; i < nckhGiangViens.Count(); i++)
+            try
             {
-                var temp = new NCKHGiangVienDTO()
-                {
-                    MaDeTai = nckhGiangViens[i].MaDeTai,
-                    TenDeTai = nckhGiangViens[i].TenDeTai,
-                    LinhVucNghienCuu = nckhGiangViens[i].ID_LinhVucs.Select(linhvuc => linhvuc.TenLinhVuc).ToList(),
-                    ChuNhiemDeTai = nckhGiangViens[i].ChuNhiemDeTai,
-                    //Nganh = nckhGiangViens[i].ChuNhiemDeTaiNavigation.MaBoMonNavigation.TenBoMon,
-                    //Khoa = nckhGiangViens[i].ChuNhiemDeTaiNavigation.MaBoMonNavigation.MaKhoaNavigation.TenKhoa,
-                    MaChuNhiem = nckhGiangViens[i].ChuNhiemDeTaiNavigation.MaGV,
-                    HocVi = nckhGiangViens[i].ChuNhiemDeTaiNavigation.HocVi,
-                    HocHam = nckhGiangViens[i].ChuNhiemDeTaiNavigation.HocHam,
-                    NgayBatDau = nckhGiangViens[i].NgayBatDau,
-                    NgayKetThuc = nckhGiangViens[i].NgayKetThuc,
-                    KinhPhi = nckhGiangViens[i].KinhPhi,
-                    TrangThai = nckhGiangViens[i].TrangThai,
-                    NguonKinhPhi = nckhGiangViens[i].TrangThai,
-                    MucTieu = nckhGiangViens[i].MucTieu,
-                    KetQuaDuKien = nckhGiangViens[i].KetQuaDuKien,
-                    FileHoanThanh = nckhGiangViens[i].FileHoanThanh
-                };
-                var thanhvienthamgias = (from thanhvien in nckhGiangViens[i].ThanhVienDeTais
-                                         join thongtin in giangViens on thanhvien.MaGVNavigation.MaGV equals thongtin.MaGV
-                                         select new ThanhVien()
-                                         {
-                                             TenThanhVien = thongtin.HoTen,
-                                             MaThanhVien = thanhvien.MaGV,
-                                             HocHam = thongtin.HocHam,
-                                             HocVi = thongtin.HocVi,
-                                             Nganh = thongtin.MaBoMonNavigation.TenBoMon,
-                                             Khoa = thongtin.MaBoMonNavigation.MaKhoaNavigation.TenKhoa
-                                         }).ToList(); // Chuyển kết quả thành danh sách
-
-                // Sửa chỗ này: Dùng AddRange thay vì Add
-                temp.thanhvienthamgia.AddRange(thanhvienthamgias);
-
-                nCKHGiangVienDTOs.Add(temp);
+                var deTai = await _nCKHGiangVienRepository.GetByIdAsync(id);
+                return deTai != null ? MapToDTO(deTai) : null;
             }
-            return nCKHGiangVienDTOs[id];
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Lỗi khi lấy đề tài NCKH Giảng viên ID={id}");
+                return null;
+            }
         }
 
-        public async Task<bool> AddNCKHGiangVienAsync(NCKHGiangVienDTO nCKHSinhVien)
+        public async Task<bool> AddNCKHGiangVienAsync(NCKHGiangVienDTO nCKHGiangVien)
         {
-            // Tạo đối tượng NCKHGiangVien mới
-            var newNCKH = new DeTaiNghienCuu
+            try
             {
-                MaDeTai = nCKHSinhVien.MaDeTai,
-                TenDeTai = nCKHSinhVien.TenDeTai,
-                ChuNhiemDeTai = nCKHSinhVien.MaChuNhiem,
-                NgayBatDau = nCKHSinhVien.NgayBatDau,
-                NgayKetThuc = nCKHSinhVien.NgayKetThuc,
-                KinhPhi = nCKHSinhVien.KinhPhi,
-                TrangThai = nCKHSinhVien.TrangThai,
-                NguonKinhPhi = nCKHSinhVien.NguonKinhPhi,
-                MucTieu = nCKHSinhVien.MucTieu,
-                KetQuaDuKien = nCKHSinhVien.KetQuaDuKien,
-                FileHoanThanh = nCKHSinhVien.FileHoanThanh
-            };
-
-            // Thêm lĩnh vực nghiên cứu (nếu có)
-            if (nCKHSinhVien.LinhVucNghienCuu != null && nCKHSinhVien.LinhVucNghienCuu.Any())
-            {
-                var linhVucEntities = await _appDbContext.LinhVucNghienCuus
-                    .Where(lv => nCKHSinhVien.LinhVucNghienCuu.Contains(lv.TenLinhVuc))
-                    .ToListAsync();
-
-                newNCKH.ID_LinhVucs = linhVucEntities;
+                var entity = await MapToDeTaiEntity(nCKHGiangVien);
+                var result = await _nCKHGiangVienRepository.AddNCKHGiangVienAsync(entity);
+                return result != null;
             }
-
-            // Thêm danh sách thành viên tham gia (nếu có)
-            if (nCKHSinhVien.thanhvienthamgia != null && nCKHSinhVien.thanhvienthamgia.Any())
+            catch (Exception ex)
             {
-                newNCKH.ThanhVienDeTais = nCKHSinhVien.thanhvienthamgia.Select(tv => new ThanhVienDeTai
-                {
-                    MaGV = tv.MaThanhVien
-                }).ToList();
+                _logger.LogError(ex, "Lỗi khi thêm đề tài NCKH Giảng viên");
+                return false;
             }
-
-            await _NCKHGiangVienRepository.AddNCKHGiangVienAsync(newNCKH);
-            return true;
         }
 
         public async Task<bool> UpdateNCKHGiangVienAsync(int id, NCKHGiangVienDTO nCKHGiangVien)
         {
-            var existingNCKH = await _appDbContext.DeTaiNghienCuus
-            .Include(n => n.ID_LinhVucs)
-            .Include(n => n.ThanhVienDeTais)
-            .FirstOrDefaultAsync(n => n.ID == id);
+            try
+            {
+                var existingDeTai = await _nCKHGiangVienRepository.GetByIdAsync(id);
+                if (existingDeTai == null) return false;
 
-            if (existingNCKH == null)
+                await UpdateDeTaiEntityFromDTO(existingDeTai, nCKHGiangVien);
+                var result = await _nCKHGiangVienRepository.UpdateNCKHGiangVienAsync(existingDeTai);
+                return result != null;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Lỗi khi cập nhật đề tài NCKH Giảng viên ID={id}");
                 return false;
-
-            // Cập nhật thông tin cơ bản
-            existingNCKH.MaDeTai = nCKHGiangVien.MaDeTai;
-            existingNCKH.TenDeTai = nCKHGiangVien.TenDeTai;
-            existingNCKH.ChuNhiemDeTai = nCKHGiangVien.MaChuNhiem;
-            existingNCKH.NgayBatDau = nCKHGiangVien.NgayBatDau;
-            existingNCKH.NgayKetThuc = nCKHGiangVien.NgayKetThuc;
-            existingNCKH.KinhPhi = nCKHGiangVien.KinhPhi;
-            existingNCKH.TrangThai = nCKHGiangVien.TrangThai;
-            existingNCKH.NguonKinhPhi = nCKHGiangVien.NguonKinhPhi;
-            existingNCKH.MucTieu = nCKHGiangVien.MucTieu;
-            existingNCKH.KetQuaDuKien = nCKHGiangVien.KetQuaDuKien;
-            existingNCKH.FileHoanThanh = nCKHGiangVien.FileHoanThanh;
-
-            // Cập nhật lĩnh vực nghiên cứu
-            if (nCKHGiangVien.LinhVucNghienCuu != null && nCKHGiangVien.LinhVucNghienCuu.Any())
-            {
-                var linhVucEntities = await _appDbContext.LinhVucNghienCuus
-                    .Where(lv => nCKHGiangVien.LinhVucNghienCuu.Contains(lv.TenLinhVuc))
-                    .ToListAsync();
-
-                // Xóa lĩnh vực cũ
-                existingNCKH.ID_LinhVucs.Clear();
-
-                // Thêm lĩnh vực mới từng cái một
-                foreach (var linhVuc in linhVucEntities)
-                {
-                    existingNCKH.ID_LinhVucs.Add(linhVuc);
-                }
             }
-
-            // Cập nhật danh sách thành viên tham gia
-            if (nCKHGiangVien.thanhvienthamgia != null)
-            {
-                existingNCKH.ThanhVienDeTais.Clear();
-                existingNCKH.ThanhVienDeTais = nCKHGiangVien.thanhvienthamgia.Select(tv => new ThanhVienDeTai
-                {
-                    MaGV = tv.MaThanhVien
-                }).ToList();
-            }
-
-            await _NCKHGiangVienRepository.UpdateNCKHGiangVienAsync(existingNCKH);
-            return true;
         }
 
         public async Task<bool> DeleteNCKHGiangVienAsync(int id)
         {
-            var existingNCKH = await _NCKHGiangVienRepository.GetByIdAsync(id);
-            if (existingNCKH == null) return false;
+            try
+            {
+                var existingDeTai = await _nCKHGiangVienRepository.GetByIdAsync(id);
+                if (existingDeTai == null) return false;
 
-            return await _NCKHGiangVienRepository.DeleteNCKHGiangVienAsync(existingNCKH);
+                return await _nCKHGiangVienRepository.DeleteNCKHGiangVienAsync(existingDeTai);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Lỗi khi xóa đề tài NCKH Giảng viên ID={id}");
+                return false;
+            }
         }
+
+        #region Private Helper Methods
+
+        private NCKHGiangVienDTO MapToDTO(DeTaiNghienCuu deTai)
+        {
+            return new NCKHGiangVienDTO
+            {
+                ID = deTai.ID,
+                MaDeTai = deTai.MaDeTai,
+                TenDeTai = deTai.TenDeTai,
+                LinhVucNghienCuu = deTai.ID_LinhVucs?.Select(lv => lv.TenLinhVuc).ToList() ?? new List<string>(),
+                ChuNhiemDeTai = deTai.ChuNhiemDeTaiNavigation?.HoTen,
+                Nganh = deTai.ChuNhiemDeTaiNavigation?.MaBoMonNavigation?.TenBoMon,
+                Khoa = deTai.ChuNhiemDeTaiNavigation?.MaBoMonNavigation?.MaKhoaNavigation?.TenKhoa,
+                MaChuNhiem = deTai.ChuNhiemDeTai,
+                HocVi = deTai.ChuNhiemDeTaiNavigation?.HocVi,
+                HocHam = deTai.ChuNhiemDeTaiNavigation?.HocHam,
+                NgayBatDau = deTai.NgayBatDau,
+                NgayKetThuc = deTai.NgayKetThuc,
+                KinhPhi = deTai.KinhPhi,
+                TrangThai = deTai.TrangThai,
+                NguonKinhPhi = deTai.NguonKinhPhi,
+                MucTieu = deTai.MucTieu,
+                KetQuaDuKien = deTai.KetQuaDuKien,
+                FileHoanThanh = deTai.FileHoanThanh,
+                thanhvienthamgia = deTai.ThanhVienDeTais?.Select(tv => new ThanhVien
+                {
+                    TenThanhVien = tv.MaGVNavigation?.HoTen,
+                    MaThanhVien = tv.MaGV,
+                    HocVi = tv.MaGVNavigation?.HocVi,
+                    HocHam = tv.MaGVNavigation?.HocHam,
+                    Nganh = tv.MaGVNavigation?.MaBoMonNavigation?.TenBoMon,
+                    Khoa = tv.MaGVNavigation?.MaBoMonNavigation?.MaKhoaNavigation?.TenKhoa
+                }).ToList() ?? new List<ThanhVien>()
+            };
+        }
+
+        private async Task<DeTaiNghienCuu> MapToDeTaiEntity(NCKHGiangVienDTO dto)
+        {
+            var entity = new DeTaiNghienCuu
+            {
+                MaDeTai = dto.MaDeTai,
+                TenDeTai = dto.TenDeTai,
+                ChuNhiemDeTai = dto.MaChuNhiem,
+                NgayBatDau = dto.NgayBatDau,
+                NgayKetThuc = dto.NgayKetThuc,
+                KinhPhi = dto.KinhPhi,
+                TrangThai = dto.TrangThai,
+                NguonKinhPhi = dto.NguonKinhPhi,
+                MucTieu = dto.MucTieu,
+                KetQuaDuKien = dto.KetQuaDuKien,
+                FileHoanThanh = dto.FileHoanThanh
+            };
+
+            // Thêm lĩnh vực nghiên cứu
+            if (dto.LinhVucNghienCuu != null && dto.LinhVucNghienCuu.Any())
+            {
+                var linhVucEntities = await _appDbContext.LinhVucNghienCuus
+                    .Where(lv => dto.LinhVucNghienCuu.Contains(lv.TenLinhVuc))
+                    .ToListAsync();
+
+                entity.ID_LinhVucs = linhVucEntities;
+            }
+
+            // Thêm thành viên tham gia
+            if (dto.thanhvienthamgia != null && dto.thanhvienthamgia.Any())
+            {
+                entity.ThanhVienDeTais = dto.thanhvienthamgia
+                    .Where(tv => !string.IsNullOrEmpty(tv?.MaThanhVien))
+                    .Select(tv => new ThanhVienDeTai
+                    {
+                        MaGV = tv!.MaThanhVien
+                    })
+                    .ToList();
+            }
+
+            return entity;
+        }
+
+        private async Task UpdateDeTaiEntityFromDTO(DeTaiNghienCuu entity, NCKHGiangVienDTO dto)
+        {
+            // Cập nhật thông tin cơ bản
+            entity.MaDeTai = dto.MaDeTai;
+            entity.TenDeTai = dto.TenDeTai;
+            entity.ChuNhiemDeTai = dto.MaChuNhiem;
+            entity.NgayBatDau = dto.NgayBatDau;
+            entity.NgayKetThuc = dto.NgayKetThuc;
+            entity.KinhPhi = dto.KinhPhi;
+            entity.TrangThai = dto.TrangThai;
+            entity.NguonKinhPhi = dto.NguonKinhPhi;
+            entity.MucTieu = dto.MucTieu;
+            entity.KetQuaDuKien = dto.KetQuaDuKien;
+            entity.FileHoanThanh = dto.FileHoanThanh;
+
+            // Cập nhật lĩnh vực nghiên cứu
+            entity.ID_LinhVucs.Clear();
+            if (dto.LinhVucNghienCuu != null && dto.LinhVucNghienCuu.Any())
+            {
+                var linhVucEntities = await _appDbContext.LinhVucNghienCuus
+                    .Where(lv => dto.LinhVucNghienCuu.Contains(lv.TenLinhVuc))
+                    .ToListAsync();
+
+                foreach (var lv in linhVucEntities)
+                {
+                    entity.ID_LinhVucs.Add(lv);
+                }
+            }
+
+            // Cập nhật thành viên tham gia
+            _appDbContext.ThanhVienDeTais.RemoveRange(entity.ThanhVienDeTais);
+            entity.ThanhVienDeTais.Clear();
+
+            if (dto.thanhvienthamgia != null && dto.thanhvienthamgia.Any())
+            {
+                var thanhVienEntities = dto.thanhvienthamgia
+                    .Where(tv => !string.IsNullOrEmpty(tv?.MaThanhVien))
+                    .Select(tv => new ThanhVienDeTai
+                    {
+                        MaGV = tv!.MaThanhVien,
+                        MaDeTai = entity.MaDeTai
+                    })
+                    .ToList();
+
+                entity.ThanhVienDeTais = thanhVienEntities;
+            }
+        }
+
+        #endregion
     }
 }
