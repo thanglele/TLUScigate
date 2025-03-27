@@ -21,7 +21,8 @@ const SignInForm: React.FC = () => {
   const [passBorderClass, setPassBorderClass] = useState<string>("border-gray-300");
 
   const isValidEmail = (email: string): boolean =>
-    /^[^\s@]+@[^\s@]+\.(com|org|net|edu|gov|mil|biz|info|io|co\.uk|co\.jp)$/.test(email);
+    /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/i.test(email);
+  
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
