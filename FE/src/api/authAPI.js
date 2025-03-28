@@ -12,32 +12,32 @@ const api = axios.create({
 });
 
 export const login = async (credentials) => {
-    try {
-      const response = await api.post('/Auth/Login', {
-        email: credentials.email,
-        password: credentials.password,
-      });
-  
-      const { accessToken } = response.data;
-      
-      if (accessToken) {
-        // Lưu token vào localStorage (hoặc sessionStorage nếu muốn chỉ lưu tạm thời)
-        localStorage.setItem("accessToken", accessToken);
-      }
-  
-      console.log("Đăng nhập thành công:", response.data);
-      return response.data;
-    } catch (error) {
-      console.error('Login Error:', {
-        message: error.message,
-        response: error.response?.data,
-        status: error.response?.status,
-      });
-      const errorMessage = error.response?.data?.messages || 'Đăng nhập thất bại';
-      throw new Error(errorMessage);
+  try {
+    const response = await api.post('/Auth/Login', {
+      email: credentials.email,
+      password: credentials.password,
+    });
+
+    const { accessToken } = response.data;
+    
+    if (accessToken) {
+      // Lưu token vào localStorage (hoặc sessionStorage nếu muốn chỉ lưu tạm thời)
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("role", response.data.role);
     }
-  };
-  
+
+    console.log("Đăng nhập thành công:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error('Login Error:', {
+      message: error.message,
+      response: error.response?.data,
+      status: error.response?.status,
+    });
+    const errorMessage = error.response?.data?.messages || 'Đăng nhập thất bại';
+    throw new Error(errorMessage);
+  }
+};
 
 export const forgotPassword = async (credentials) => {
   try {

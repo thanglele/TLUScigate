@@ -20,7 +20,7 @@ export const fetchLectureData = async () => {
         },
       });
   
-      return response.data;
+      return response;
     } catch (error) {
       console.error("Error fetching lecture data:", {
         message: error.message,

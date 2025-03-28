@@ -1,4 +1,3 @@
-// src/api/NCKHGiangVienAPI.js
 import axios from "axios";
 
 // Tạo instance của axios với baseURL và headers mặc định
@@ -13,7 +12,7 @@ const api = axios.create({
 export const fetchNCKHGiangVien = async () => {
   try {
       const token = localStorage.getItem("accessToken"); 
-      const response = await api.get("/api/NCKH", {
+      const response = await api.get("/api/NCKHGiangVien", {
           headers: {
               Authorization: token,
           },

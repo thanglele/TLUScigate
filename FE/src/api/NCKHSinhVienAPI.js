@@ -7,7 +7,7 @@ const api = axios.create ({
     },
 });
 
-export const fetchNCKHGiangVien = async () => {
+export const fetchNCKHSinhVien = async () => {
     try {
         const token = localStorage.getItem("accessToken"); 
         const response = await api.get("/api/NCKHSinhVien", {

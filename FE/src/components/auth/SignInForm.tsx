@@ -21,7 +21,8 @@ const SignInForm: React.FC = () => {
   const [passBorderClass, setPassBorderClass] = useState<string>("border-gray-300");
 
   const isValidEmail = (email: string): boolean =>
-    /^[^\s@]+@[^\s@]+\.(com|org|net|edu|gov|mil|biz|info|io|co\.uk|co\.jp)$/.test(email);
+    /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/i.test(email);
+  
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -80,8 +81,12 @@ const SignInForm: React.FC = () => {
       setEmailBorderClass("border-green-500");
       setPassBorderClass("border-green-500");
       navigate("/dashboard");
-    } catch (error: any) {
-      setError(error.message);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError("Đã xảy ra lỗi không xác định!");
+      }
       setEmailBorderClass("border-red-800");
       setPassBorderClass("border-red-800");
     } finally {
