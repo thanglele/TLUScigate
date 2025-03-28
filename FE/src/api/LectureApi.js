@@ -1,41 +1,49 @@
 // src/api/LectureApi.ts
 import axios from "axios";
 
+//const BASE_URL = "http://localhost:5186";
+const BASE_URL = "http://api.thanglele.cloud";
+
 const api = axios.create({
-  baseURL: "https://scigateapi.thanglele08.id.vn/",
+  baseURL: "http://api.thanglele.cloud",
+  //baseURL: "http://localhost:5186",
   headers: {
     "Content-Type": "application/json",
   },
 });
 
-
 export const fetchLectureData = async () => {
-    try {
-      // Lấy accessToken từ localStorage
-      const token = localStorage.getItem("accessToken");
-  
-      const response = await api.get("/api/GiangVien", {
-        headers: {
-          Authorization: token, // Thêm token vào header
-        },
-      });
-  
-      return response;
-    } catch (error) {
-      console.error("Error fetching lecture data:", {
-        message: error.message,
-        response: error.response?.data,
-        status: error.response?.status,
-      });
-      const errorMessage = error.response?.data?.message || "Không thể tải dữ liệu từ API";
-      throw new Error(errorMessage);
-    }
-  };
-  
+  try {
+    // Lấy accessToken từ localStorage
+    const token = localStorage.getItem("accessToken");
+
+    const response = await api.get("/api/GiangVien", {
+      headers: {
+        Authorization: token, // Thêm token vào header
+      },
+    });
+
+    return response;
+  } catch (error) {
+    console.error("Error fetching lecture data:", {
+      message: error.message,
+      response: error.response?.data,
+      status: error.response?.status,
+    });
+    const errorMessage =
+      error.response?.data?.message || "Không thể tải dữ liệu từ API";
+    throw new Error(errorMessage);
+  }
+};
 
 export const createLecture = async (lectureData) => {
   try {
-    const response = await api.post("/api/GiangVien", lectureData);
+    const token = localStorage.getItem("accessToken");
+    const response = await api.post(`/api/GiangVien`, lectureData, {
+      headers: {
+        Authorization: token, // Gửi token trong header
+      },
+    });
     return response.data;
   } catch (error) {
     console.error("Error creating lecture data:", {
@@ -52,14 +60,20 @@ export const createLecture = async (lectureData) => {
       throw new Error(`Validation failed: ${errorMessages}`);
     }
 
-    const errorMessage = error.response?.data?.title || "Thêm bài giảng thất bại";
+    const errorMessage =
+      error.response?.data?.title || "Thêm giảng viên thất bại";
     throw new Error(errorMessage);
   }
 };
 
 export const updateLecture = async (lectureId, lectureData) => {
   try {
-    const response = await api.put(`/api/GiangVien/${lectureId}`, lectureData);
+    const token = localStorage.getItem("accessToken");
+    const response = await api.put(`/api/GiangVien/${lectureId}`, lectureData, {
+      headers: {
+        Authorization: token, // Gửi token trong header
+      },
+    });
     return response.data;
   } catch (error) {
     console.error("Error updating lecture data:", {
@@ -76,10 +90,11 @@ export const updateLecture = async (lectureId, lectureData) => {
       throw new Error(`Validation failed: ${errorMessages}`);
     }
 
-    const errorMessage = error.response?.data?.title || "Cập nhật bài giảng thất bại";
+    const errorMessage =
+      error.response?.data?.title || "Cập nhật giảng viên thất bại";
     throw new Error(errorMessage);
   }
-}
+};
 
 export const deleteLecture = async (lectureId) => {
   try {
@@ -87,7 +102,7 @@ export const deleteLecture = async (lectureId) => {
 
     const response = await api.delete(`/api/GiangVien/${lectureId}`, {
       headers: {
-        Authorization: token, 
+        Authorization: token,
       },
     });
 
@@ -99,30 +114,34 @@ export const deleteLecture = async (lectureId) => {
       status: error.response?.status,
     });
 
-    const errorMessage = error.response?.data?.title || "Xóa giang vien thất bại";
+    const errorMessage =
+      error.response?.data?.title || "Xóa giang vien thất bại";
     throw new Error(errorMessage);
   }
-}
+};
 
-export const viewDetail = async (lectureId) => { 
+export const viewDetail = async (lectureId) => {
   try {
     // Lấy accessToken từ localStorage
     const token = localStorage.getItem("accessToken");
 
-    const response = await api.get(`/api/GiangVien/${lectureId}`, {
+    const response = await fetch(BASE_URL + `/api/GiangVien/${lectureId}`, {
+      method: "GET",
       headers: {
-        Authorization: token, 
+        "Content-Type": "application/json",
+        Authorization: token,
       },
     });
 
-    return response.data;
+    return await response.json();
   } catch (error) {
     console.error("Error fetching lecture data:", {
       message: error.message,
       response: error.response?.data,
       status: error.response?.status,
     });
-    const errorMessage = error.response?.data?.message || "Không thể tải dữ liệu từ API";
+    const errorMessage =
+      error.response?.data?.message || "Không thể tải dữ liệu từ API";
     throw new Error(errorMessage);
   }
-}
+};

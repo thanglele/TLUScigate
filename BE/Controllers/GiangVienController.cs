@@ -21,7 +21,7 @@ namespace TLUScience.Controllers
         public async Task<ActionResult> GetFullGiangVienAsync()
         {
             var result = await _giangVienService.GetFullGiangVienAsync();
-            return Ok(new { success = true, data = result });
+            return Ok(result);
         }
 
         [Authorize(Roles = "Ban quan ly")]
@@ -30,9 +30,9 @@ namespace TLUScience.Controllers
         {
             var result = await _giangVienService.GetGiangVienAsync(id);
             if (result == null)
-                return NotFound(new { success = false, message = "Không tìm thấy giảng viên" });
+                return NotFound(new { message = "Không tìm thấy giảng viên" });
             
-            return Ok(new { success = true, data = result });
+            return Ok(result);
         }
 
         [Authorize(Roles = "Ban quan ly")]
@@ -47,7 +47,6 @@ namespace TLUScience.Controllers
             {
                 return Ok(new
                 {
-                    success = result,
                     message = "Thêm giảng viên thành công!"
                 });
             }    
@@ -55,7 +54,6 @@ namespace TLUScience.Controllers
             {
                 return BadRequest(new
                 {
-                    success = result,
                     message = "Thêm giảng viên thất bại!"
                 });
             }    
@@ -74,7 +72,6 @@ namespace TLUScience.Controllers
             {
                 return Ok(new
                 {
-                    success = result,
                     message = "Cập nhật giảng viên thành công!"
                 });
             }
@@ -82,7 +79,6 @@ namespace TLUScience.Controllers
             {
                 return BadRequest(new
                 {
-                    success = result,
                     message = "Cập nhật giảng viên thất bại!"
                 });
             }
@@ -98,7 +94,6 @@ namespace TLUScience.Controllers
             {
                 return Ok(new
                 {
-                    success = result,
                     message = "Xóa giảng viên thành công!"
                 });
             }
@@ -106,7 +101,6 @@ namespace TLUScience.Controllers
             {
                 return BadRequest(new
                 {
-                    success = result,
                     message = "Xóa giảng viên thất bại!"
                 });
             }

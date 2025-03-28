@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Tạo instance của axios với baseURL và headers mặc định
 const api = axios.create({
-  baseURL: "https://scigateapi.thanglele08.id.vn/",
+  baseURL: "http://api.thanglele.cloud",
   headers: {
     "Content-Type": "application/json",
   },

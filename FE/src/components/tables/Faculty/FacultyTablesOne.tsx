@@ -9,7 +9,17 @@ import {
 import Badge from "../../ui/badge/Badge";
 import { FiEye, FiTrash2, FiClock } from "react-icons/fi";
 import { useEffect, useState } from "react";
+// @ts-ignore
 import { fetchNCKHGiangVien } from "../../../api/NCKHGiangVienAPI";
+
+type BadgeColor =
+  | "primary"
+  | "success"
+  | "error"
+  | "warning"
+  | "info"
+  | "light"
+  | "dark";
 
 interface Faculty {
   id: number;
@@ -48,7 +58,9 @@ export default function FacultyTablesOne() {
   };
 
   const handleDelete = (id: number) => {
-    const confirmDelete = window.confirm("Bạn có muốn xóa giảng viên này không?");
+    const confirmDelete = window.confirm(
+      "Bạn có muốn xóa giảng viên này không?"
+    );
     if (confirmDelete) {
       console.log("Đã xóa giảng viên với ID:", id);
     } else {
@@ -161,7 +173,10 @@ export default function FacultyTablesOne() {
                     {faculty.chuNhiem}
                   </TableCell>
                   <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
-                    <Badge size="sm" color={getStatusColor(faculty.trangThai)}>
+                    <Badge
+                      size="sm"
+                      color={getStatusColor(faculty.trangThai) as BadgeColor}
+                    >
                       {faculty.trangThai || "Không xác định"}
                     </Badge>
                   </TableCell>

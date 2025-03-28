@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\TLUScience\\BE\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\controllers\\giangviencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:controllers\\giangviencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{36B65106-5031-40B7-B699-FB51C4F0F092}|TLUScience.csproj|d:\\tluscience\\be\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -30,30 +30,30 @@
       "DocumentGroups": [
         {
           "DockedWidth": 250,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "AuthController.cs",
               "DocumentMoniker": "D:\\TLUScience\\BE\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
               "ToolTip": "D:\\TLUScience\\BE\\Controllers\\AuthController.cs",
               "RelativeToolTip": "Controllers\\AuthController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGgAAAA0AAAAAAAAAA==",
+              "ViewState": "AgIAAF8AAAAAAAAAAAAwwGgAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-28T15:50:33.13Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "GiangVienController.cs",
               "DocumentMoniker": "D:\\TLUScience\\BE\\Controllers\\GiangVienController.cs",
               "RelativeDocumentMoniker": "Controllers\\GiangVienController.cs",
               "ToolTip": "D:\\TLUScience\\BE\\Controllers\\GiangVienController.cs",
               "RelativeToolTip": "Controllers\\GiangVienController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGIAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAACAAAAAAAAAAAAAwwCIAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-28T09:52:53.646Z",
               "EditorCaption": ""
@@ -68,8 +68,7 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAADQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-28T09:48:00.555Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-28T09:48:00.555Z"
             },
             {
               "$type": "Document",
@@ -81,8 +80,7 @@
               "RelativeToolTip": "Repository\\UserRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T11:41:47.168Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-22T11:41:47.168Z"
             },
             {
               "$type": "Document",
@@ -94,8 +92,7 @@
               "RelativeToolTip": "Services\\AuthenticationService.cs",
               "ViewState": "AgIAAAsBAAAAAAAAAAAAAAsBAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T11:39:53.74Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-22T11:39:53.74Z"
             }
           ]
         }

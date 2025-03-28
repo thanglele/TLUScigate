@@ -1,7 +1,7 @@
 // src/api/authAPI.ts
 import axios from 'axios';
 
-const API_URL = 'https://scigateapi.thanglele08.id.vn';
+const API_URL = 'http://api.thanglele.cloud';
 //const API_URL = 'http://localhost:5186';
 
 const api = axios.create({

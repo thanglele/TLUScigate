@@ -10,11 +10,7 @@ import {
 import Badge from "../../ui/badge/Badge";
 import { FiEye, FiEdit, FiTrash2 } from "react-icons/fi";
 // @ts-ignore
-import {
-  fetchLectureData,
-  deleteLecture,
-  viewDetail,
-} from "../../../api/LectureAPI";
+import { fetchLectureData, deleteLecture, viewDetail, } from "../../../api/LectureAPI";
 import { toast } from "react-toastify";
 
 interface Faculty {
@@ -42,12 +38,12 @@ export default function BasicTableOne() {
 
   const handleViewDetail = async (maGV: number) => {
     console.log("Log: " + maGV);
-    navigate("/info-gv");
+    navigate(`/info-gv/${maGV}`);
   };
 
   const handleEdit = async (maGV: number) => {
     console.log("Log: " + maGV);
-    navigate("/chinh-sua-gv");
+    navigate(`/chinh-sua-gv/${maGV}`);
   };
 
   const handleDelete = async (maGV: number) => {
@@ -72,7 +68,7 @@ export default function BasicTableOne() {
 
         // Cập nhật lại danh sách sau khi xóa
         const updatedData = await fetchLectureData();
-        setFacultyData(updatedData);
+        setFacultyData(updatedData.data);
       } catch (error) {
         const err = error as ErrorModel;
         console.error("Lỗi khi xóa giảng viên:", err.message);
@@ -98,8 +94,8 @@ export default function BasicTableOne() {
     const loadFacultyData = async () => {
       try {
         const response = await fetchLectureData();
-        console.log("Fetched Data:", response.data.data);
-        setFacultyData(response.data.data);
+        console.log("Fetched Data:", response.data);
+        setFacultyData(response.data);
       } catch (error) {
         const err = error as ErrorModel;
         setError(

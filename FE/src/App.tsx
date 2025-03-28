@@ -80,10 +80,10 @@ export default function App() {
           <Route path="/giang-vien" element={<BasicTables />} />
           <Route path="/danh-sach-giang-vien" element={<BasicTableOne />} />
           <Route path="/them-giang-vien" element={<AddFaculty />} />
-          <Route path="/chinh-sua-gv" element={<FacuktyEdit />} />
+          <Route path="/chinh-sua-gv/:id" element={<FacuktyEdit />} />
           <Route path="/xem-chi-tiet-giang-vien" element={<ViewsFaculty />} />
           <Route path="/cap-nhat-tien-do-gv" element={<ProgressUpdates />} />
-          <Route path="/info-gv" element={<ViewsInfo />} />
+          <Route path="/info-gv/:id" element={<ViewsInfo />} />
           
           {/* Student */}
           <Route path="/xem-chi-tiet-sinh-vien" element={<ViewsSudent />} />
