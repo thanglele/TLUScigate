@@ -7,6 +7,8 @@ import {logout} from "../../api/authAPI";
 import { useNavigate } from "react-router";
 
 export default function UserDropdown() {
+  const role = localStorage.getItem('role');
+
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   //const [isLogout, setIsLogout] = useState(false);  
@@ -45,7 +47,7 @@ export default function UserDropdown() {
           <img src="/images/user/owner.jpg" alt="User" />
         </span>
 
-        <span className="block mr-1 font-medium text-theme-sm">Admin</span>
+        <span className="block mr-1 font-medium text-theme-sm">{role}</span>
         <svg
           className={`stroke-gray-500 dark:stroke-gray-400 transition-transform duration-200 ${
             isOpen ? "rotate-180" : ""
@@ -73,7 +75,7 @@ export default function UserDropdown() {
       >
         <div>
           <span className="block font-medium text-gray-700 text-theme-sm dark:text-gray-400">
-            Ngô Minh Trung
+            Ngô Minh Trung {role}
           </span>
           <span className="mt-0.5 block text-theme-xs text-gray-500 dark:text-gray-400">
             {resetEmail}

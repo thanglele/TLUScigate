@@ -7,90 +7,25 @@ import {
     TableHeader,
     TableRow,
 } from "../../ui/table";
+//@ts-ignore
+import {fetchNCKHSinhVien} from "../../../api/NCKHSinhVienAPI";
 
 import Badge from "../../ui/badge/Badge";
 import { FiEye, FiEdit, FiTrash2, FiClock} from "react-icons/fi";
+import { useEffect, useState } from "react";
 
 interface Student {
     id: number;
-    nameProject: string;
-    facultyName: string;
-    status: string;
-    science: string;
-    startDate: string;
-    endDate: string;
-    teamLeader: string;
+    tenHoatDong: string;
+    tenGiangVien: string;
+    kinhPhiHd: string;
+    diaDiem: string;
+    trangThai: string;
+    fileHoanThanh: string;
+    ngayBatDau: string;
+    ngayKetThuc: string;
 }
 
-// Define the table data using the interface
-const tableData: Student[] = [
-    {
-        id: 1,
-        nameProject: "Website Quản Lý Phòng Trọ",
-        facultyName: "PSG. TS Nguyễn Văn An",
-        status: "Đang thực hiện",
-        science: "CNTT",
-        startDate: "08/01/2005",
-        endDate: "08/05/2005",
-        teamLeader: "Ngô Minh Trung"
-
-    },
-    {
-        id: 2,
-        nameProject: "Website Quản Lý Phòng Trọ",
-        facultyName: "PSG. TS Nguyễn Văn An",
-        status: "Đã hoàn thành",
-        science: "CNTT",
-        startDate: "08/01/2005",
-        endDate: "08/05/2005",
-        teamLeader: "Ngô Minh Trung"
-
-    },
-    {
-        id: 3,
-        nameProject: "Website Quản Lý Phòng Trọ",
-        facultyName: "PSG. TS Nguyễn Văn An",
-        status: "Đang thực hiện",
-        science: "CNTT",
-        startDate: "08/01/2005",
-        endDate: "08/05/2005",
-        teamLeader: "Ngô Minh Trung"
-
-    },
-    {
-        id: 4,
-        nameProject: "Website Quản Lý Phòng Trọ",
-        facultyName: "PSG. TS Nguyễn Văn An",
-        status: "Đã hoàn thành",
-        science: "CNTT",
-        startDate: "08/01/2005",
-        endDate: "08/05/2005",
-        teamLeader: "Ngô Minh Trung"
-
-    },
-    {
-        id: 5,
-        nameProject: "Website Quản Lý Phòng Trọ",
-        facultyName: "PSG. TS Nguyễn Văn An",
-        status: "Đang thực hiện",
-        science: "CNTT",
-        startDate: "08/01/2005",
-        endDate: "08/05/2005",
-        teamLeader: "Ngô Minh Trung"
-
-    },
-    {
-        id: 6,
-        nameProject: "Website Quản Lý Phòng Trọ",
-        facultyName: "PSG. TS Nguyễn Văn An",
-        status: "Đã hoàn thành",
-        science: "CNTT",
-        startDate: "08/01/2005",
-        endDate: "08/05/2005",
-        teamLeader: "Ngô Minh Trung"
-
-    }
-];
 
 export default function StudentTablesOne() {
     const navigate = useNavigate(); 
@@ -118,6 +53,36 @@ export default function StudentTablesOne() {
         console.log("Log: " + id);
         navigate(`/cap-nhat-tien-do-sv`)
     };
+
+
+    const [studentData, setStudentData] = useState<Student[]>([]);
+          const [loading, setLoading] = useState(true);
+          const [error, setError] = useState<string | null>(null);
+        
+          useEffect(() => {
+            const loadFacultyData = async () => {
+              try {
+                const response = await fetchNCKHSinhVien();
+                console.log("Fetched Data:", response);
+                setStudentData(response);
+              } catch (error) {
+                const err = error as Error;
+                setError(
+                  err.message || "Không thể tải dữ liệu từ API. Vui lòng thử lại sau!"
+                );
+                console.error("Fetch error:", error);
+              } finally {
+                setLoading(false);
+              }
+            };
+        
+            loadFacultyData();
+          }, []);
+        
+          if (loading) return <div className="text-gray-500">Đang tải dữ liệu...</div>;
+          if (error) return <div className="text-red-500">{error}</div>;
+
+
     return (
         <div className="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
             <div className="max-w-full overflow-x-auto">
@@ -148,25 +113,37 @@ export default function StudentTablesOne() {
                                     isHeader
                                     className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
                                 >
+                                   KINH PHÍ
+                                </TableCell>
+                                <TableCell
+                                    isHeader
+                                    className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                                >
+                                    ĐỊA ĐIỂM
+                                </TableCell>
+                                <TableCell
+                                    isHeader
+                                    className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                                >
                                     TRẠNG THÁI
                                 </TableCell>
                                 <TableCell
                                     isHeader
                                     className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
                                 >
-                                    KHOA
+                                   NGÀY BẮT ĐẦU 
                                 </TableCell>
                                 <TableCell
                                     isHeader
                                     className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
                                 >
-                                    NGÀY BẮT ĐẦU
+                                   NGÀY KẾT THÚC
                                 </TableCell>
                                 <TableCell
                                     isHeader
                                     className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
                                 >
-                                    NGÀY KẾT THÚC
+                                   FILE HOÀN THÀNH 
                                 </TableCell>
                                 <TableCell
                                     isHeader
@@ -180,46 +157,52 @@ export default function StudentTablesOne() {
 
                         {/* Table Body */}
                         <TableBody className="divide-y divide-gray-100 dark:divide-white/[0.05]">
-                            {tableData.map((Student) => (
-                                <TableRow key={Student.id}>
+                            {studentData.map((student) => (
+                                <TableRow key={student.id}>
                                     <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                                        {Student.id}
+                                        {student.id}
                                     </TableCell>
                                     <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                                        {Student.nameProject}
+                                        {student.tenHoatDong}
                                     </TableCell>
                                     <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                                        {Student.facultyName}
+                                        {student.tenGiangVien}
+                                    </TableCell>
+                                    <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
+                                        {student.kinhPhiHd}
+                                    </TableCell>
+                                    <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
+                                        {student.diaDiem}
                                     </TableCell>
                                     <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
                                         <Badge
                                             size="sm"
                                             color={
-                                                Student.status === "Đã hoàn thành"
+                                                student.trangThai === "Hoàn thành"
                                                     ? "success"
-                                                    : Student.status === "Đang thực hiện"
+                                                    : student.trangThai === "Đang thực hiện"
                                                         ? "warning"
                                                         : "error"
                                             }
                                         >
-                                            {Student.status}
+                                            {student.trangThai}
                                         </Badge>
                                     </TableCell>
                                     <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
-                                        {Student.science}
+                                        {student.ngayBatDau}
                                     </TableCell>
                                     <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
-                                        {Student.startDate}
+                                        {student.ngayKetThuc}
                                     </TableCell>
                                     <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
-                                        {Student.endDate}
+                                        {student.fileHoanThanh}
                                     </TableCell>
                                     <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
                                         <div className="flex items-center gap-2">
                                             {/* Nút Xem chi tiết */}
                                             <button
                                                 className="text-blue-600 hover:text-blue-900 transition-colors"
-                                                onClick={() => handleViewDetail(Student.id)}
+                                                onClick={() => handleViewDetail(student.id)}
                                             >
                                                 <FiEye className="w-4 h-4" />
                                             </button>
@@ -227,7 +210,7 @@ export default function StudentTablesOne() {
                                             {/* Nút Sửa */}
                                             <button
                                                 className="text-green-600 hover:text-green-900 transition-colors"
-                                                onClick={() => handleEdit(Student.id)}
+                                                onClick={() => handleEdit(student.id)}
                                             >
                                                 <FiEdit className="w-4 h-4" />
                                             </button>
@@ -235,14 +218,14 @@ export default function StudentTablesOne() {
                                             {/* Nút Xóa */}
                                             <button
                                                 className="text-red-600 hover:text-red-900 transition-colors"
-                                                onClick={() => handleDelete(Student.id)}
+                                                onClick={() => handleDelete(student.id)}
                                             >
                                                 <FiTrash2 className="w-4 h-4" />
                                             </button>
 
                                             <button
                                                 className="text-purple-600 hover:text-purple-900 transition-colors"
-                                                onClick={() => handleClock(Student.id)}
+                                                onClick={() => handleClock(student.id)}
                                             >
                                                 <FiClock className="w-4 h-4" />
                                             </button>

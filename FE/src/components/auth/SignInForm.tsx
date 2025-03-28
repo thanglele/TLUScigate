@@ -81,8 +81,12 @@ const SignInForm: React.FC = () => {
       setEmailBorderClass("border-green-500");
       setPassBorderClass("border-green-500");
       navigate("/dashboard");
-    } catch (error: any) {
-      setError(error.message);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError("Đã xảy ra lỗi không xác định!");
+      }
       setEmailBorderClass("border-red-800");
       setPassBorderClass("border-red-800");
     } finally {
