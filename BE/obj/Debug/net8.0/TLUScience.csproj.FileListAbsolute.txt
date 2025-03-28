@@ -201,8 +201,6 @@ D:/TLUScience/BE/obj/Debug/net8.0/TLUScience.AssemblyInfo.cs
 D:/TLUScience/BE/obj/Debug/net8.0/TLUScience.csproj.CoreCompileInputs.cache
 D:/TLUScience/BE/obj/Debug/net8.0/TLUScience.MvcApplicationPartsAssemblyInfo.cs
 D:/TLUScience/BE/obj/Debug/net8.0/TLUScience.MvcApplicationPartsAssemblyInfo.cache
-D:/TLUScience/BE/obj/Debug/net8.0/TLUScience.RazorAssemblyInfo.cache
-D:/TLUScience/BE/obj/Debug/net8.0/TLUScience.RazorAssemblyInfo.cs
 D:/TLUScience/BE/obj/Debug/net8.0/TLUScience.sourcelink.json
 D:/TLUScience/BE/bin/Debug/net8.0/appsettings.Development.json
 D:/TLUScience/BE/bin/Debug/net8.0/appsettings.json
@@ -846,8 +844,6 @@ D:\TLUScience\BE\obj\Debug\net8.0\TLUScience.AssemblyInfo.cs
 D:\TLUScience\BE\obj\Debug\net8.0\TLUScience.csproj.CoreCompileInputs.cache
 D:\TLUScience\BE\obj\Debug\net8.0\TLUScience.MvcApplicationPartsAssemblyInfo.cs
 D:\TLUScience\BE\obj\Debug\net8.0\TLUScience.MvcApplicationPartsAssemblyInfo.cache
-D:\TLUScience\BE\obj\Debug\net8.0\TLUScience.RazorAssemblyInfo.cache
-D:\TLUScience\BE\obj\Debug\net8.0\TLUScience.RazorAssemblyInfo.cs
 D:\TLUScience\BE\obj\Debug\net8.0\TLUScience.sourcelink.json
 D:\TLUScience\BE\obj\Debug\net8.0\scopedcss\bundle\TLUScience.styles.css
 D:\TLUScience\BE\obj\Debug\net8.0\staticwebassets.build.json
@@ -865,7 +861,6 @@ D:\TLUScience\BE\obj\Debug\net8.0\refint\TLUScience.dll
 D:\TLUScience\BE\obj\Debug\net8.0\TLUScience.pdb
 D:\TLUScience\BE\obj\Debug\net8.0\TLUScience.genruntimeconfig.cache
 D:\TLUScience\BE\obj\Debug\net8.0\ref\TLUScience.dll
-D:\TLUScience\BE\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\lesyt\OneDrive\Máy tính\Scigate\BE\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\lesyt\OneDrive\Máy tính\Scigate\BE\bin\Debug\net8.0\appsettings.json
 C:\Users\lesyt\OneDrive\Máy tính\Scigate\BE\bin\Debug\net8.0\TLUScience.staticwebassets.runtime.json

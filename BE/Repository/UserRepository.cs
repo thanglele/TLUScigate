@@ -1,5 +1,4 @@
 ﻿using TLUScience.Models;
-using TLUScience.Data;
 using System;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;

@@ -312,8 +312,6 @@ D:\TLUScience\BE\obj\Release\net8.0\TLUScience.AssemblyInfo.cs
 D:\TLUScience\BE\obj\Release\net8.0\TLUScience.csproj.CoreCompileInputs.cache
 D:\TLUScience\BE\obj\Release\net8.0\TLUScience.MvcApplicationPartsAssemblyInfo.cs
 D:\TLUScience\BE\obj\Release\net8.0\TLUScience.MvcApplicationPartsAssemblyInfo.cache
-D:\TLUScience\BE\obj\Release\net8.0\TLUScience.RazorAssemblyInfo.cache
-D:\TLUScience\BE\obj\Release\net8.0\TLUScience.RazorAssemblyInfo.cs
 D:\TLUScience\BE\obj\Release\net8.0\TLUScience.sourcelink.json
 D:\TLUScience\BE\obj\Release\net8.0\scopedcss\bundle\TLUScience.styles.css
 D:\TLUScience\BE\obj\Release\net8.0\staticwebassets.build.json
