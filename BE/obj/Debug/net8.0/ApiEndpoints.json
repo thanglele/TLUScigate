@@ -164,7 +164,7 @@
   },
   {
     "ContainingType": "TLUScience.Controllers.GiangVienController",
-    "Method": "addGiangvienAsync",
+    "Method": "AddGiangvienAsync",
     "RelativePath": "api/GiangVien",
     "HttpMethod": "POST",
     "IsController": true,
@@ -217,7 +217,7 @@
   },
   {
     "ContainingType": "TLUScience.Controllers.GiangVienController",
-    "Method": "RemoveGiangvienAsync",
+    "Method": "DeleteGiangvienAsync",
     "RelativePath": "api/GiangVien/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
@@ -226,11 +226,6 @@
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "giangvien",
-        "Type": "TLUScience.DTOs.GiangVienDTO",
         "IsRequired": true
       }
     ],
@@ -244,7 +239,17 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[TLUScience.DTOs.NCKHGiangVienDTO, TLUScience, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "TLUScience.Controllers.NCKHGiangVienController",
@@ -276,7 +281,17 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "TLUScience.DTOs.NCKHGiangVienDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "TLUScience.Controllers.NCKHGiangVienController",

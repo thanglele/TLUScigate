@@ -207,11 +207,9 @@ try
     // Thêm CORS service
     builder.Services.AddCors(options =>
     {
-        options.AddPolicy("AllowAllOrigins", corsBuilder =>
+        options.AddPolicy("AllowAll", corsBuilder =>
         {
-            corsBuilder.AllowAnyOrigin()
-                       .AllowAnyHeader()
-                       .AllowAnyMethod();
+            corsBuilder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
         });
     });
 
@@ -227,7 +225,7 @@ try
         Secure = CookieSecurePolicy.Always
     });
 
-    app.UseCors("AllowAllOrigins");
+    app.UseCors("AllowAll");
 
     app.UseHttpsRedirection();
     app.UseStaticFiles();

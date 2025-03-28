@@ -102,7 +102,7 @@ namespace TLUScience.Controllers
                 {
                     Response.Cookies.Append("TokenInfor", JsonSerializer.Serialize(responseToken), new CookieOptions
                     {
-                        Domain = ".thanglele08.id.vn",
+                        Domain = ".thanglele.cloud",
                         Path = "/",
                         HttpOnly = false,
                         Secure = true,

@@ -1030,3 +1030,4 @@ C:\Users\lesyt\OneDrive\Máy tính\Scigate\BE\obj\Debug\net8.0\refint\TLUScience
 C:\Users\lesyt\OneDrive\Máy tính\Scigate\BE\obj\Debug\net8.0\TLUScience.pdb
 C:\Users\lesyt\OneDrive\Máy tính\Scigate\BE\obj\Debug\net8.0\TLUScience.genruntimeconfig.cache
 C:\Users\lesyt\OneDrive\Máy tính\Scigate\BE\obj\Debug\net8.0\ref\TLUScience.dll
+D:\TLUScience\BE\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
