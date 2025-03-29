@@ -10,7 +10,7 @@ import Badge from "../../ui/badge/Badge";
 import { FiEye, FiTrash2, FiClock } from "react-icons/fi";
 import { useEffect, useState } from "react";
 // @ts-ignore
-import { fetchNCKHGiangVien } from "../../../api/NCKHGiangVienAPI";
+import { fetchNCKHGiangVien, RemoveNCKHGiangVienbyID } from "../../../api/NCKHGiangVienAPI";
 
 type BadgeColor =
   | "primary"
@@ -24,7 +24,7 @@ type BadgeColor =
 interface Faculty {
   id: number;
   tenDeTai: string;
-  chuNhiem: string;
+  chuNhiemDeTai: string;
   trangThai: string; // Thay tienDo thành trangThai để khớp với đoạn code bạn cung cấp
   khoa: string;
   ngayBatDau: string;
@@ -53,24 +53,30 @@ export default function FacultyTablesOne() {
   const navigate = useNavigate();
 
   const handleViewDetail = (id: number) => {
-    console.log("Log: " + id);
-    navigate(`/xem-chi-tiet-giang-vien`);
+    navigate(`/xem-chi-tiet-giang-vien/${id}`);
   };
 
   const handleDelete = (id: number) => {
     const confirmDelete = window.confirm(
-      "Bạn có muốn xóa giảng viên này không?"
+      "Bạn có muốn xóa đề tài giảng viên này không?"
     );
     if (confirmDelete) {
-      console.log("Đã xóa giảng viên với ID:", id);
+      console.log("Đã xóa đề tài giảng viên với ID:", id);
+      try{
+        RemoveNCKHGiangVienbyID(id);
+        navigate("/giang-vien-nghien-cuu");
+      }
+      catch (error){
+        console.error("Lỗi xóa: ", error);
+      }
     } else {
-      console.log("Hủy bỏ xóa giảng viên với ID:", id);
+      console.log("Hủy bỏ xóa đề tài giảng viên với ID:", id);
     }
   };
 
   const handleClock = (id: number) => {
     console.log("Log: " + id);
-    navigate(`/cap-nhat-tien-do-gv`);
+    navigate(`/cap-nhat-tien-do-gv/${id}`);
   };
 
   const [facultyData, setFacultyData] = useState<Faculty[]>([]);
@@ -170,7 +176,7 @@ export default function FacultyTablesOne() {
                     {faculty.tenDeTai}
                   </TableCell>
                   <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                    {faculty.chuNhiem}
+                    {faculty.chuNhiemDeTai}
                   </TableCell>
                   <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
                     <Badge

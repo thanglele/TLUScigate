@@ -34,11 +34,7 @@ namespace TLUScience.Controllers
             try
             {
                 var result = await _nckhGiangVienService.GetFullNCKHGiangVienAsync();
-                return Ok(new { 
-                    success = true, 
-                    data = result,
-                    message = "Lấy danh sách đề tài NCKH thành công"
-                });
+                return Ok(result);
             }
             catch (Exception ex)
             {
@@ -68,11 +64,7 @@ namespace TLUScience.Controllers
                     });
                 }
                 
-                return Ok(new { 
-                    success = true, 
-                    data = result,
-                    message = "Lấy thông tin đề tài NCKH thành công"
-                });
+                return Ok(result);
             }
             catch (Exception ex)
             {

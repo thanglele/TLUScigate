@@ -81,8 +81,8 @@ export default function App() {
           <Route path="/danh-sach-giang-vien" element={<BasicTableOne />} />
           <Route path="/them-giang-vien" element={<AddFaculty />} />
           <Route path="/chinh-sua-gv/:id" element={<FacuktyEdit />} />
-          <Route path="/xem-chi-tiet-giang-vien" element={<ViewsFaculty />} />
-          <Route path="/cap-nhat-tien-do-gv" element={<ProgressUpdates />} />
+          <Route path="/xem-chi-tiet-giang-vien/:id" element={<ViewsFaculty />} />
+          <Route path="/cap-nhat-tien-do-gv/:id" element={<ProgressUpdates />} />
           <Route path="/info-gv/:id" element={<ViewsInfo />} />
           
           {/* Student */}

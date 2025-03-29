@@ -5,8 +5,7 @@ import axios from "axios";
 const BASE_URL = "http://api.thanglele.cloud";
 
 const api = axios.create({
-  baseURL: "http://api.thanglele.cloud",
-  //baseURL: "http://localhost:5186",
+  baseURL: BASE_URL,
   headers: {
     "Content-Type": "application/json",
   },
